@@ -28,27 +28,25 @@
   @if $obj3 != "empty" {
     transition: $obj $th, $obj2 $th, $obj3 $th;
   }
-
   @if $obj2 != "empty" {
     transition: $obj $th, $obj2 $th;
   }
-
   @else {
     transition: $obj $th;
   }
 
 }
 //Бордер
-//@mixin bdr($side,$color,$size) {
-//  @if $side == all {
-//    border: $size solid $color;
-//  }
-//  @else{
-//    border-{$side}: $size solid $color;
-//    //border-$side: $size solid $color;
-//
-//  }
-//}
+@mixin bdr($side,$color,$size) {
+  @if $side == all {
+    border: $size solid $color;
+  }
+  @else{
+    border-#{$side}: $size solid $color;
+    //border-$side: $size solid $color;
+
+  }
+}
 
 
 

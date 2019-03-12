@@ -1,8 +1,9 @@
 header.header.page__header
   .parallax
-    +image('parallax/bg__back-plan.png', 'parallax__img parallax__img_back-plan img')
+    +image('parallax/bg__back-plan.png', 'parallax__img parallax__back-plan img')
     //+image('parallax/bg__back-plan.png', 'parallax__img parallax__img_middle-plan img')
-    +image('parallax/bg__front-plan.png', 'parallax__img parallax__img_front-plan img')
+    .parallax__img_middle-plan
+    +image('parallax/bg__front-plan.png', 'parallax__img parallax__front-plan img')
   .header__topbar
     .header__logo
       +image('logo.png', 'logo')
