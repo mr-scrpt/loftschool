@@ -1,23 +1,59 @@
 @mixin desktopHd() {
-  @media screen and (max-width: $bp-desktop-hd) {
-    @content;
+  @media screen and (max-width: $ bp-desktop-hd) {
+    @content ;
   }
 }
 
 @mixin desktop() {
-  @media screen and (max-width: $bp-desktop) {
-    @content;
+  @media screen and (max-width: $ bp-desktop) {
+    @content ;
   }
 }
 
 @mixin tablets() {
-  @media screen and (max-width: $bp-tablets) {
-    @content;
+  @media screen and (max-width: $ bp-tablets) {
+    @content ;
   }
 }
 
 @mixin phones() {
-  @media screen and (max-width: $bp-phones) {
-    @content;
+  @media screen and (max-width: $ bp-phones) {
+    @content ;
   }
 }
+
+
+//Анимация
+@mixin ts($obj, $obj2:"empty", $obj3:"empty") {
+  @if $obj3 != "empty" {
+    transition: $obj $th, $obj2 $th, $obj3 $th;
+  }
+
+  @if $obj2 != "empty" {
+    transition: $obj $th, $obj2 $th;
+  }
+
+  @else {
+    transition: $obj $th;
+  }
+
+}
+//Бордер
+//@mixin bdr($side,$color,$size) {
+//  @if $side == all {
+//    border: $size solid $color;
+//  }
+//  @else{
+//    border-{$side}: $size solid $color;
+//    //border-$side: $size solid $color;
+//
+//  }
+//}
+
+
+
+
+
+
+
+
