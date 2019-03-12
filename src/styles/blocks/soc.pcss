@@ -1,0 +1,21 @@
+.soc-top{
+  &__inner{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+  &__icon{
+
+    fill: #706a65;
+    @include ts(fill);
+    &:hover{
+      fill: $orange;
+    }
+  }
+  &__link{
+    margin: 0 20px;
+    &:first-child{
+      margin-right: 0;
+    }
+  }
+}

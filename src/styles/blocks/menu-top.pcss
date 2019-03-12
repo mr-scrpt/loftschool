@@ -1,0 +1,14 @@
+.menu-top{
+  &__link{
+    display: inline-block;
+    text-decoration: none;
+    color: $top-menu__link-color;
+    padding: 65px 30px;
+    border-bottom: 3px solid transparent;
+    @include ts(color, border-color);
+    &:hover{
+      color: $orange;
+      border-color: $orange;
+    }
+  }
+}
