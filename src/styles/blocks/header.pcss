@@ -1,7 +1,18 @@
 .header{
+  &__stock-bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    @include bgc(pink);
+    z-index: -2;
+
+  }
   &__inner{
     position: relative;
+    min-height: 100vh;
     height: 1650px;
+
+
   }
   &__content{
     position: relative;
@@ -12,6 +23,7 @@
     margin: auto;
     display: flex;
     align-items: center;
+
   }
   &__logo{
     width: 21%;
