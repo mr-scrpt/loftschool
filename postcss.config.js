@@ -14,6 +14,7 @@ module.exports = {
     require("postcss-advanced-variables")({
       variables: JSON.parse(
         fs.readFileSync("./src/styles/variables.json", "utf-8")
+        ,fs.readFileSync("./src/styles/mixins.pcss", "utf-8")
       )
     }),
     require("postcss-nested"),

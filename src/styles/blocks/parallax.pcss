@@ -1,5 +1,5 @@
 .parallax {
-  &__img {
+  &__block {
     display: block;
     position: absolute;
     top: 0;
@@ -8,9 +8,12 @@
     right: 0;
   }
   &__back-plan {
-    z-index: -1;
+    z-index: -2;
   }
-
+  &__middle-plan{
+    z-index: -1;
+    top: 490px;
+  }
   &__front-plan {
     top: 524px;
     z-index: 0;

@@ -37,16 +37,22 @@
 
 }
 //Бордер
-@mixin bdr($side,$color,$size) {
-  @if $side == all {
-    border: $size solid $color;
-  }
-  @else{
-    border-#{$side}: $size solid $color;
-    //border-$side: $size solid $color;
+//@mixin bdr($side,$color,$size) {
+//  @if $side == all {
+//    border: $size solid $color;
+//  }
+//  @else{
+//    border-#{$side}: $(side) $size solid $color;
+//  }
+//}
 
-  }
+// Фон
+
+@mixin bgc($color){
+  background: $color;
 }
+
+
 
 
 

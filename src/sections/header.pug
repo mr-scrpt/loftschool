@@ -1,9 +1,18 @@
 header.header.page__header
   .parallax
-    +image('parallax/bg__back-plan.png', 'parallax__img parallax__back-plan img')
-    //+image('parallax/bg__back-plan.png', 'parallax__img parallax__img_middle-plan img')
-    .parallax__img_middle-plan
-    +image('parallax/bg__front-plan.png', 'parallax__img parallax__front-plan img')
+    +image('parallax/bg__back-plan.png', 'parallax__block parallax__back-plan img')
+    .parallax__block.parallax__middle-plan.me
+      .me__inner
+        .me__info
+          .me__line Личный сайт
+          .me__line веб разработчика
+        .me__name Дмитрий Лукьянов
+    +image('parallax/bg__front-plan.png', 'parallax__block parallax__front-plan img')
+  .arrow
+    .arrow__inner
+      .arrow__scroll
+        span.arrow__text Скролл
+        +icon(`icon__arrow-down`, 'icon icon_arrow-down arrow__icon')
   .header__topbar
     .header__logo
       +image('logo.png', 'logo')
