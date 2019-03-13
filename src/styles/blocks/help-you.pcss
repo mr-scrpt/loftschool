@@ -1,0 +1,47 @@
+.help-you{
+  background: $dark;
+  position: relative;
+    &:before{
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -70px;
+      width: 662px;
+      height: 983px;
+      background: url(../images/content/bg__hands.png) no-repeat;
+    }
+
+  &__inner{
+    width: 1480px;
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+
+  }
+  &__content{
+    //@include bgc(pink);
+    width: 66.666%;
+  }
+  &__info{
+    width: 62.5%;
+    //@include bgc(pink);
+  }
+  &__title{
+    color: #fff;
+    font-size: 30px;
+    font-weight: $font_bold;
+  }
+  &__text{
+    color: #fff;
+    opacity: .5;
+    padding-bottom: 100px;
+  }
+  &__skils{
+    width: 87.5%;
+    margin-left: auto;
+    //@include bgc(pink);
+  }
+}

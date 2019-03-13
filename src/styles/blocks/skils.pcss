@@ -1,0 +1,32 @@
+.skils{
+  &__row{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__title{
+    width: 100%;
+    color: #fff;
+    font-size: 24px;
+    font-weight: $font_bold;
+  }
+  &__box{
+    width: 25%;
+    @include bgc(pink)
+  }
+  &__item{
+    position: relative;
+    max-width: 160px;
+    //padding: 20px;
+  }
+  &__name{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 18px;
+    font-weight: $font_bold;
+    opacity: .5;
+  }
+}

@@ -1,0 +1,29 @@
+.help-you.page__help-you
+  .help-you__inner
+    .help-you__content
+      .help-you__info
+        h2.help-you__title Чем я могу быть полезен вам
+        .help-you__text Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+      .help-you__skils.skils
+        -let skils = {'Front-end':['HTML5','CSS3','Javascript','JQ и Vue.js'], 'WorkFlow':['git','terminal','Gulp','Webpack']}
+        each skill in skills
+        .skils__row
+          .skils__title Front-end
+          .skils__box
+            .skils__item
+              svg(viewBox="0 0 138 138")
+                circle(
+                r="65"
+                cx="50%"
+                cy="50%"
+                fill="none"
+                class="svg-circle svg-circle_first"
+                )
+                circle(
+                r="65"
+                cx="50%"
+                cy="50%"
+                class="svg-circle svg-circle_second svg-circle_r90"
+                )
+              .skils__name HTML5
+
