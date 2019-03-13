@@ -1,25 +1,26 @@
 .arrow{
-  position: absolute;
-  width: 100%;
-
-  &__inner{
-    height: 100vh;
-    position: relative;
-  }
   &__scroll{
-    fill: #fff;
     position: absolute;
     bottom: 120px;
     left: 50%;
-    transform: translateX(50%);
+    transform: translateX(-50%);
     display: flex;
-    height: 20px;
-    z-index: 1;
-  }
-  &__text{
+    height: 30px;
+    align-items: center;
+    fill: #fff;
     color: #fff;
+    @include ts(fill,color);
+    &:hover{
+      cursor: pointer;
+      color: $orange;
+      fill: $orange;
+
+    }
+  }
+
+  &__text{
     font-size: 18px;
     font-weight: 600;
-    transform: translateY(-20%);
   }
+
 }

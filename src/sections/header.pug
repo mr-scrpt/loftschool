@@ -1,32 +1,28 @@
 header.header.page__header
-  .parallax
-    +image('parallax/bg__back-plan.png', 'parallax__block parallax__back-plan img')
-    .parallax__block.parallax__middle-plan.me
-      .me__inner
-        .me__info
-          .me__line Личный сайт
-          .me__line веб разработчика
-        .me__name Дмитрий Лукьянов
-    +image('parallax/bg__front-plan.png', 'parallax__block parallax__front-plan img')
-  .arrow
-    .arrow__inner
-      .arrow__scroll
-        span.arrow__text Скролл
-        +icon(`icon__arrow-down`, 'icon icon_arrow-down arrow__icon')
-  .header__topbar
-    .header__logo
-      +image('logo.png', 'logo')
-    nav.header__menu.menu-top
-      -let menu = ['Главная', 'Обо мне','Навыки','Работы','Отзывы','Связаться']
-      each item in menu
-        a(href=`#${item}`, class="menu-top__link")=item
-    .header__soc.soc-top
-      .soc-top__inner
-        -let soc = {gh: "github.com", vk: "vk.com",insta: "instagram.com"}
-        each val, index in soc
-          a(href=`${val}`, class="soc-top__link")
-            +icon(`icon__${index}`, `icon icon_${index} soc-top__icon`)
-        //+icon('icon__vk', 'icon icon_vk soc__icon')
-        //+icon('icon__insta', 'icon icon_insta soc__icon')
-
-
+  .header__inner
+    .parallax
+      +image('parallax/bg__back-plan.png', 'parallax__block parallax__back-plan img')
+      .parallax__block.parallax__middle-plan.me
+        .me__inner
+          .me__info
+            .me__line Личный сайт
+            .me__line веб разработчика
+          .me__name Дмитрий Лукьянов
+      +image('parallax/bg__front-plan.png', 'parallax__block parallax__front-plan img')
+      .arrow
+        .arrow__scroll
+          span.arrow__text Скролл
+          +icon(`icon__arrow-down`, 'icon icon_arrow-down arrow__icon')
+      .header__topbar
+        .header__logo
+          +image('logo.png', 'logo')
+        nav.header__menu.menu-top
+          -let menu = ['Главная', 'Обо мне','Навыки','Работы','Отзывы','Связаться']
+          each item in menu
+            a(href=`#${item}`, class="menu-top__link")=item
+        .header__soc.soc-top
+          .soc-top__inner
+            -let soc = {gh: "github.com", vk: "vk.com",insta: "instagram.com"}
+            each val, index in soc
+              a(href=`${val}`, class="soc-top__link")
+                +icon(`icon__${index}`, `icon icon_${index} soc-top__icon`)

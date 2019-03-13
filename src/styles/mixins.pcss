@@ -53,7 +53,14 @@
 }
 
 
-
+/*@define-mixin bdr $side, $color, $size:1px {
+  @if $side == all {
+      border: $size solid $color;
+  }
+  @else{
+      border-$(side): $size solid $color;
+    }
+}*/
 
 
 
