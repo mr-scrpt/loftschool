@@ -1,0 +1,64 @@
+.slider{
+  &__inner{
+    position: relative;
+  }
+  &__main-img{
+    display: block;
+
+  }
+  &__media{
+    position: absolute;
+    right: -48px;
+    bottom: 50px;
+    display: flex;
+    align-items: flex-start;
+  }
+  &__other-img{
+    cursor: pointer;
+    &_active{
+      //border: 3px solid $orange;
+      outline: 3px solid $orange;
+      margin:0 3px;
+    }
+  }
+  &__ctrls{
+    width: 48px;
+
+  }
+  &__ctrl{
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $blue_dark;
+    @include ts(background);
+    &:hover{
+      background: $orange;
+      cursor: pointer;
+    }
+  }
+  &__icon{
+    fill: #fff;
+    &-prev{
+      rotation: 180deg;
+    }
+  }
+  &__number{
+    position: absolute;
+    @include bgc(blue);
+    bottom: 0;
+    right: -150px;
+    width: 150px;
+    z-index: 0;
+    //overflow: hidden;
+
+  }
+  &__number-box{
+    font-size: 400px;
+    font-weight: $font_bold;
+    color: #f0f0f0;
+    margin-left: -40px;
+  }
+
+}

@@ -1,5 +1,31 @@
 .my-works{
+  @include bgc(pink);
   &__inner{
     height: 100vh;
+    padding: 200px 0;
+    width: 1480px;
+    margin: auto;
+
+  }
+  &__head{
+    width: 100%;
+    margin-bottom: 100px;
+  }
+  &__title{
+    font-size: 36px;
+    font-weight: $font_bold;
+  }
+  &__box{
+    display: flex;
+  }
+  &__slider{
+    @include bgc(blue);
+    margin-right: 15px;
+  }
+  &__about{
+    width:  calc(25% - 30px);
+
+    margin-left: auto;
+    @include bgc(yellow);
   }
 }
