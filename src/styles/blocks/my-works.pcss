@@ -19,13 +19,14 @@
     display: flex;
   }
   &__slider{
-    @include bgc(blue);
+    //@include bgc(blue);
     margin-right: 15px;
+    width: 66.6666%;
   }
   &__about{
     width:  calc(25% - 30px);
     margin-left: auto;
-    @include bgc(yellow);
+    //@include bgc(yellow);
   }
   &__tags{
     width: 100%;
@@ -36,10 +37,29 @@
   }
   &__text{
     font-weight: $font_semibold;
+    margin-bottom: 45px;
+  }
+  &__link{
+    display: inline-block;
+    padding: 3px 7px;
+    outline: 2px solid transparent;
+    @include ts(outline);
+    cursor: pointer;
+    &:hover{
+      outline: 2px solid $orange;
+    }
+  }
+  &__icon{
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+
   }
   &__link-text{
+    display: inline-block;
     font-size: 18px;
     font-weight: $font_bold;
     color: $links-color;
+    padding-left: 10px;
   }
 }

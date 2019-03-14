@@ -7,5 +7,11 @@
     padding: 10px 18px;
     margin: 0 15px 0 0;
     border-radius: 15px;
+    cursor: pointer;
+    @include ts(background,color);
+    &:hover{
+      @include bgc($orange);
+      color: #fff;
+    }
   }
 }
