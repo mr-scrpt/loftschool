@@ -14,4 +14,6 @@
   ,"bp-desktop": "1200px"
   ,"bp-tablets": "768px"
   ,"bp-phones": "480px"
+  ,"container": "1480px"
+
 }

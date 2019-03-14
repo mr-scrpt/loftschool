@@ -1,21 +1,29 @@
-section.about-me.page__about-me
+.about-me.page__about-me
   .about-me__inner
-    .about-me__visual
-      +image('content/user.jpg', 'about-me__user-img img')
-      table.about-me__table.table
-        tr.table__row
-          td.table__cell.table__cell_name Проживаю:
-          td.table__cell.table__cell_value Харьков
-        tr.table__row
-          td.table__cell.table__cell_name Возраст:
-          td.table__cell.table__cell_value 31 год
-        tr.table__row
-          td.table__cell.table__cell_name Родился:
-          td.table__cell.table__cell_value 2 декабря 1987
-    .about-me__descriotion
-      .wysiwyg.about-me__wysiwyg
-        .wysiwyg__about-me
-          p Привет, меня зовут
-          h2 Дмитрий Лукьянов
-          p Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
-      i.about-me__note Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+    .about-me__head
+      .about-me__title Что обо мне говорят
+      .about-me__ctrls.slider
+        .slider__ctrl.slider__ctrl_around
+          +icon(`icon__arrow-slider`, 'icon icon_arrow-slider slider__icon slider__icon-prev')
+        .slider__ctrl.slider__ctrl_around
+          +icon(`icon__arrow-slider`, 'icon icon_arrow-slider slider__icon slider__icon-next')
+
+    .about-me__comments.comments
+      .comments__inner
+        .comments__item.comment
+          .comment__text
+            | Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+          .comment__author-row
+            .comment__userpic
+              +image('content/user__koval.png', 'comment__userpic-img img')
+            .comment__author-info
+              .comment__author-name Ковальчук Дмитрий
+              .comment__office Основатель Loftschool
+
+        .comments__item.comment
+          .comment__text
+            | Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+          .comment__author-row
+            .comment__userpic
+            .comment__author-name Ковальчук Дмитрий
+            .comment__office Основатель Loftschool

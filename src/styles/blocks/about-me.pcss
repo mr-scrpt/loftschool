@@ -1,63 +1,32 @@
 .about-me{
-  position: relative;
-  z-index: 1;
-  background-color: $dark;
   &__inner{
     display: flex;
-    justify-content: center;
-    padding: 190px 0;
-    max-width: 1480px;
-    margin: auto;
-  //align-items: center;
-    //min-height: 100vh;
-  }
-  &__visual{
-    //@include bgc(yellow);
-    width: 25%;
-  }
-  &__descriotion{
-    //@include bgc(pink);
-    width: 41.6666%;
-    display: flex;
     flex-direction: column;
-  }
-  &__wysiwyg{
-    flex-grow: 1;
-  }
-  &__note{
-    height: 100px;
-    color: #fff;
-    opacity: .5;
     position: relative;
-    font-style: italic;
-    font-weight: 300;
+    padding: 140px 0;
+  }
+  &__head{
+    //width: 100%;
+    display: flex;
+    margin-bottom: 100px;
+  }
+  &__title{
+    font-size: 36px;
+    font-weight: $font_bold;
     color: #fff;
-    &:before{
-      position: absolute;
-      left: -50px;
-      transform: translateY(100%);
-      width: 27px;
-      height: 27px;
-      content: "*";
-      font-style: italic;
-      font-size: 48px;
-      line-height: 0;
-      color: $red;
-      opacity: .5;
-
-
-    }
+    padding-right: 85px;
   }
-  &__user-img{
-    display: block;
-    margin: 0 auto 80px;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    overflow: hidden;
+  &__ctrls{
+    display: flex;
+    justify-content: space-between;
+    width: 130px;
+  }
+  &__comments{
+    //@include bgc(pink);
+    display: flex;
+  }
+  &__inner{
+    width: 66.6666%;
+  }
 
-  }
-  &__table{
-    width:100%
-  }
 }
