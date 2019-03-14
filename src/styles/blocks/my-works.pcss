@@ -1,5 +1,5 @@
 .my-works{
-  @include bgc(pink);
+  //@include bgc(pink);
   &__inner{
     height: 100vh;
     padding: 200px 0;
@@ -24,8 +24,22 @@
   }
   &__about{
     width:  calc(25% - 30px);
-
     margin-left: auto;
     @include bgc(yellow);
+  }
+  &__tags{
+    width: 100%;
+  }
+  &__subtitle{
+    font-size: 30px;
+    font-weight: $font_bold;
+  }
+  &__text{
+    font-weight: $font_semibold;
+  }
+  &__link-text{
+    font-size: 18px;
+    font-weight: $font_bold;
+    color: $links-color;
   }
 }

@@ -12,14 +12,23 @@
     bottom: 50px;
     display: flex;
     align-items: flex-start;
+
   }
-  &__other-img{
-    cursor: pointer;
+  &__minislides{
+    display: flex;
+
+  }
+  &__minilide{
+    max-width: 180px;
     &_active{
-      //border: 3px solid $orange;
       outline: 3px solid $orange;
       margin:0 3px;
     }
+  }
+  &__other-img{
+    cursor: pointer;
+    display: block;
+
   }
   &__ctrls{
     width: 48px;
@@ -46,12 +55,11 @@
   }
   &__number{
     position: absolute;
-    @include bgc(blue);
     bottom: 0;
     right: -150px;
     width: 150px;
-    z-index: 0;
-    //overflow: hidden;
+    z-index: -1;
+
 
   }
   &__number-box{

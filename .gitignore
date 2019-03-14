@@ -4,4 +4,7 @@ node_modules
 .idea
 dist
 *.log
+*.rar
+*.zip
+*.tar
 template

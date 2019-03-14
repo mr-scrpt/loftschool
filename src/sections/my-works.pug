@@ -10,10 +10,15 @@ section.my-works.page__my-works
           +image('slider/slide__first.jpg', 'slider__main-img img')
           .slider__media
             .slider__minislides
-              +image('slider/slide__fourth.jpg', 'slider__other-img slider__other-img_active img')
-              +image('slider/slide__second.jpg', 'slider__other-img img')
-              +image('slider/slide__third.jpg', 'slider__other-img img')
-              +image('slider/slide__fourth.jpg', 'slider__other-img img')
+              -let slides = ['first','second','third','fourth','fifth']
+                each slide in slides
+                  if (slide == 'first')
+                    .slider__minilide.slider__minilide_active
+                      +image(`slider/slide__${slide}.jpg`, 'slider__other-img img')
+                  else
+                    .slider__minilide
+                      +image(`slider/slide__${slide}.jpg`, 'slider__other-img img')
+
             .slider__ctrls
               .slider__ctrl.slider__ctrl_next
                 +icon(`icon__arrow-slider`, 'icon icon_arrow-slider slider__icon slider__icon-next')
@@ -23,13 +28,17 @@ section.my-works.page__my-works
       .my-works__about
         .my-works__tags.tags
           .tags__inner
-            .tags__item
-            .tags__text HTML
+            -let tags = ['html','css3','javascript']
+            each item in tags
+              .tags__item
+                .tags__text=item
+
         .my-works__description
-          .my-works__subtitle
-          .my-works__text
-          .my-works__link
+          h2.my-works__subtitle Сайт школы образования
+          .my-works__text Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
+          a.my-works__link
             .my-works__icon.icon.icon__my-works-link
+            .my-works__link-text Посмотреть сайт
 
 
 
