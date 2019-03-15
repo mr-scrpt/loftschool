@@ -1,0 +1,49 @@
+.input{
+  position: relative;
+  display: inline-block;
+  background: transparent;
+  touch-action: manipulation ;
+  &:before{
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    bottom: 1px;
+    left: 1px   ;
+    content: '';
+    background: transparent;
+  }
+  &_width-full{
+    flex-grow: 1;
+  }
+
+  &.input__box{
+    position: relative;
+    display: block;
+    user-select: none;
+  }
+  & .input__control{
+    font: inherit;
+    line-height: inherit;
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0;
+    width: 100%;
+    border: 0;
+    outline: none;
+    background: none;
+    color: #fff;
+    font-weight: $font_bold;
+    font-size: 18px;
+  }
+  &.input_size_xl{
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  &.input_size_xl .input__control{
+    height: 38px;
+  }
+
+
+}

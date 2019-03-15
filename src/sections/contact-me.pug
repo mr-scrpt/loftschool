@@ -1,0 +1,27 @@
+.contact-me.section
+  .section__inner
+    .section__head
+      .section__title Связаться со мной
+    .contact-me__content
+      form(action='', method='POST').form-contact.contact-me__form
+        .form-contact__box.form-contact__box_half
+          label(for="name", class="label").form-contact__label Введите ваше имя
+          .form-contact__row
+            +icon(`icon__name`, 'icon icon_form form-contact__icon')
+            span.input.input_size_xl.input_width-full
+              span.input__box
+                input(placeholder="Имя", name="name" id="name").input__control
+
+        .form-contact__box.form-contact__box_half
+          label(for="email", class="label").form-contact__label Введите ваш email
+          .form-contact__row
+            +icon(`icon__name`, 'icon icon_form form-contact__icon')
+            span.input.input_size_xl.input_width-full
+              span.input__box
+                input(placeholder="Имя", name="name" id="email").input__control
+
+        .form-contact__box.form-contact__box_full
+          label(for="email", class="label").form-contact__label Введите ваш email
+          .form-contact__row
+            +icon(`icon__message`, 'icon icon_form form-contact__icon')
+            textarea.textarea.form-contact__textarea

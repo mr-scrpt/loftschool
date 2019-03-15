@@ -1,1 +1,25 @@
-h2 new hello 111
+footer.footer.page__footer
+  .footer__inner
+    .footer__copyright-block
+      .footer__copyright © 2019
+      .footer__author
+        .footer__author-name Дмитрий Лукьянов
+        .footer__author-description Личный сайт вебразработчика
+    .footer__main-block
+      nav.footer__menu.menu-footer
+        each item in menu
+          a(href=`#${item}`, class="menu-footer__link")=item
+      .footer__motivation
+        .footer__text
+          | Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
+        .footer__social.soc-block.soc-block_footer
+          .soc-block__inner
+            each val, index in soc
+              a(href=`${val}`, class="soc-block__link")
+                +icon(`icon__${index}`, `icon icon_${index} soc-block__icon`)
+      .footer__quote
+        .footer__text
+          | Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
+        .footer__quote-author Martin Golding
+
+

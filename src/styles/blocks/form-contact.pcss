@@ -1,0 +1,44 @@
+.form-contact{
+  display: flex;
+  flex-wrap: wrap;
+  &__box{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+    &_half{
+      width: calc(50% - 50px);
+      padding-right: 50px;
+      //background-color: pink;
+    }
+    &_full{
+      width: calc(100% - 50px);
+      padding-right: 50px;
+    }
+  }
+  &__label{
+    width: 100%;
+    padding-left: 50px;
+  }
+  &__row{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 15px 0;
+    border-bottom: 1px solid #fff;
+  }
+  &__icon{
+    padding: 3px;
+    fill: rgba(#fff, .3);
+    margin-right: 16px;
+  }
+  &__textarea{
+    background: transparent;
+    border: none;
+    width: calc(100% - 60px);
+    resize: none;
+    color: #fff;
+    font-weight: $font_bold;
+    font-size: 18px;
+  }
+
+}
