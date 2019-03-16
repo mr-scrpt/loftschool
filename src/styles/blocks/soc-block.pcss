@@ -1,57 +1,40 @@
 .soc-block{
-  &__inner{
-    display: flex;
-    align-items: center;
-  }
-
-  &__link{
-    margin-right: 40px;
-  }
-
-
-
-
-  &_header{
-    .soc-block__inner{
-      justify-content: flex-end;
-    }
-    .soc-block__link:last-child{
-      margin-right: 0;
-    }
-    .soc-block__icon {
-      fill: #706a65;
-      @include ts(fill);
-      &:hover{
-        fill: $orange;
-      }
-    }
-  }
-  &_footer{
+  display: flex;
+  align-items: center;
+  &_alt{
     .soc-block__link{
       margin-right: 20px;
       border: 1px solid rgba(#fff, .3);
       border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      @include ts(border-color);
-      &:hover{
-        border-color: $orange;
-      }
+      width: 50px;
+      height: 50px;
+      position: relative;
     }
-
-    .soc-block__icon {
-      display: block;
-      padding: 10px;
+    .soc-block__icon{
+      position: absolute;
       width: 20px;
       height: 20px;
-      fill: rgba(#fff, .3);
-      @include ts(fill);
-      &:hover{
-        fill: $orange;
-      }
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
     }
+  }
+  &__link{
+    margin-right: 40px;
+    display: block;
 
-
+    &:last-child{
+      margin-right: 0;
+    }
+  }
+  &__icon{
+    fill: rgba(#fff, .3);
+    @include ts(fill);
+    width: 30px;
+    height: 30px;
+    &:hover{
+      fill: $orange
+    }
   }
 
 }

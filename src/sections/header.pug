@@ -6,12 +6,12 @@ header.header
         -let menu = ['Главная', 'Обо мне','Навыки','Работы','Отзывы','Связаться']
           each item in menu
             a(href=`#${item}`, class="menu-top__link")=item
-      .header__soc.soc-block.soc-block_header
-        .soc-block__inner
+      .header__soc.soc-block
+        //.soc-block__inner
         -let soc = {insta: "instagram.com", vk: "vk.com" ,gh: "github.com"}
           each val, index in soc
             a(href=`${val}`, class="soc-block__link")
-              +icon(`icon__${index}`, `icon icon_${index} soc-block__icon`)
+              +icon(`icon__${index}`, `soc-block__icon`)
     .header__me.me
       .me__inner
         .me__info
