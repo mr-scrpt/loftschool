@@ -6,7 +6,7 @@
   }
   &__text{
     margin-right: 15px;
-    color: rgba(#fff, .5);
+    @include to(#fff,.5);
     padding-bottom: 30px;
     font-weight: $font_semibold;
     line-height: 30px;
@@ -35,6 +35,7 @@
     font-weight: $font_bold;
   }
   &__office{
-    color: rgba(#fff, .3);
+
+    @include to(#fff,.3);
   }
 }

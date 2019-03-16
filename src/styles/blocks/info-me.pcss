@@ -26,8 +26,7 @@
   }
   &__note{
     height: 100px;
-    color: #fff;
-    opacity: .5;
+    @include to(#fff,.5);
     position: relative;
     font-style: italic;
     font-weight: 300;
@@ -42,8 +41,7 @@
       font-style: italic;
       font-size: 48px;
       line-height: 0;
-      color: $red;
-      opacity: .5;
+      @include to(red,.3);
 
 
     }

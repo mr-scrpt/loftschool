@@ -5,22 +5,27 @@
 }
 
 @mixin desktop() {
-  @media screen and (max-width: $ bp-desktop) {
+  @media screen and (max-width: $bp-desktop) {
     @content ;
   }
 }
 
 @mixin tablets() {
-  @media screen and (max-width: $ bp-tablets) {
+  @media screen and (max-width: $bp-tablets) {
     @content ;
   }
 }
 
 @mixin phones() {
-  @media screen and (max-width: $ bp-phones) {
+  @media screen and (max-width: $bp-phones) {
     @content ;
   }
 }
+// Для прозрачности текста
+@mixin to($color,$value){
+    color: rgba($color, $value);
+}
+
 
 
 //Анимация

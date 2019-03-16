@@ -1,25 +1,16 @@
 .me{
-
   &__inner{
     display: flex;
-    //@include bgc(yellow);
     max-width: 640px;
-    margin: auto;
-    justify-content: center;
-
   }
   &__info{
-
-    //@include bgc(pink);
     font-size: 18px;
     text-align: right;
-    color: rgba(#fff, 0.4);
+    @include to(#fff,.4);
     padding-right: 30px;
     min-width: 170px;
   }
   &__name{
-
-    //@include bgc(blue);
     color: #fff;
     font-size: 72px;
     font-weight: 800;
