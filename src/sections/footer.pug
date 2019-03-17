@@ -14,7 +14,7 @@ footer.footer
           | Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
         .footer__social.soc-block.soc-block_alt
             each val, index in soc
-              a(href=`${val}`, class="soc-block__link")
+              a(href=`${val}`, class="soc-block__link", target="_blank")
                 +icon(`icon__${index}`, `icon icon_${index} soc-block__icon`)
       .footer__quote
         .footer__text

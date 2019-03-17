@@ -11,7 +11,7 @@ header.header
         //.soc-block__inner
         -let soc = {insta: "instagram.com", vk: "vk.com" ,gh: "github.com"}
           each val, index in soc
-            a(href=`${val}`, class="soc-block__link")
+            a(href=`${val}`, class="soc-block__link", target="_blank")
               +icon(`icon__${index}`, `soc-block__icon`)
     .header__me.me
       .me__inner
