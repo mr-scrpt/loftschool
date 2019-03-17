@@ -1,0 +1,19 @@
+.parallax {
+  position: absolute;
+  width: 1800px;
+  min-height: 2000px;
+  height: 200vh;
+  overflow: hidden;
+  &__layer{
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    &_back-plan{
+      top: 0;
+    }
+    &_front-plan{
+      top: 530px;
+      z-index: 1;
+    }
+  }
+}
