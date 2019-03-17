@@ -7,13 +7,14 @@
     &:before{
       content: "";
       position: absolute;
-      z-index: 2;
+      z-index: 1;
       left: 0;
       right: 0;
       bottom: -70px;
-      width: 662px;
-      height: 983px;
+      width: 100%;
+      height: 100%;
       background: url(../images/content/bg__hands.png) no-repeat;
+      background-size: contain;
     }
 
   &__inner{
@@ -49,6 +50,8 @@
   &__skils{
     width: 87.5%;
     margin-left: auto;
+    position: relative;
+    z-index: 2;
     //@include bgc(pink);
   }
 }
