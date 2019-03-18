@@ -1,4 +1,5 @@
 const fs = require("fs");
+const path = require("path");
 
 module.exports = {
   syntax: "postcss-scss",
@@ -17,6 +18,17 @@ module.exports = {
         ,fs.readFileSync("./src/styles/mixins.pcss", "utf-8")
       )
     }),
+    require('postcss-mixins')({
+      //mixinsDir: path.join(__dirname, 'mixins')
+      mixins: {
+        hover: function (mixin) {
+          let rule = postcss.rule({ selector: '&:hover, &.hover' });
+          rule.append(mixin.nodes);
+          mixin.replaceWith(rule);
+        }
+      }
+    }),
+    require('postcss-simple-vars'),
     require("postcss-nested"),
     require("postcss-rgb"),
     require("postcss-inline-svg")({
