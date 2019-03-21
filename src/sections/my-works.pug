@@ -7,17 +7,17 @@ section.my-works
         .slider__inner
           .slider__number
             .slider__number-box 2
-          +image('slider/slide__first.jpg', 'slider__main-img img')
+          +image('slider/slide__first.jpg', 'slider__main-img img', 'Главный слайд')
           .slider__media
             .slider__minislides
               -let slides = ['first','second','third','fourth','fifth']
-                each slide in slides
+                each slide, num in slides
                   if (slide == 'first')
                     .slider__minilide.slider__minilide_active
-                      +image(`slider/slide__${slide}.jpg`, 'slider__other-img img')
+                      +image(`slider/slide__${slide}.jpg`, 'slider__other-img img', `Слайд ${num}`)
                   else
                     .slider__minilide
-                      +image(`slider/slide__${slide}.jpg`, 'slider__other-img img')
+                      +image(`slider/slide__${slide}.jpg`, 'slider__other-img img', `Слайд ${num}`)
 
             .slider__ctrls
               .slider__ctrl
