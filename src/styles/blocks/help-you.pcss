@@ -9,12 +9,23 @@
       position: absolute;
       z-index: 1;
       left: 0;
-      right: 0;
       bottom: -70px;
-      width: 100%;
-      height: 100%;
+      width: 662px;
+      height: 983px;
       background: url(../images/content/bg__hands.png) no-repeat;
       background-size: contain;
+
+      @include tablets{
+        width: 486px;
+        height: 337px;
+        bottom: 0;
+        background-size: cover;
+        left: 50%;
+        background: url(../images/content/bg__hands_rotate.png) no-repeat;
+        transform: translate(-50%);
+
+
+      }
     }
 
   &__inner{
@@ -26,32 +37,58 @@
     flex-direction: row-reverse;
     align-items: center;
     position: relative;
+    z-index: 2;
+    @include tablets {
+      justify-content: center;
+    }
 
   }
   &__content{
     width: 66.666%;
+    display: flex;
+    flex-wrap: wrap;
+    @include desktop {
+      color: red;
+    }
+    @include tablets {
+      width: 90%;
+    }
+    @include middle {
+      width: 100%;
+    }
   }
   &__info{
-    width: 62.5%;
-    
+    width: 100%;
+    @include tablets {
+      text-align: center;
+    }
+
   }
   &__title{
     color: #fff;
     font-size: 30px;
-
     font-weight: $font_bold;
     margin:0 0 40px;
-
+    position: relative;
   }
   &__text{
     @include to(#fff,.5);
     padding-bottom: 100px;
+    width: 62.5%;
+    @include tablets {
+      width: 80%;
+      margin: auto;
+    }
   }
-  &__skils{
+  &__skills{
     width: 87.5%;
     margin-left: auto;
-    position: relative;
-    z-index: 2;
-    //@include bgc(pink);
+
+
+    @include laptop {
+      margin-left: 0;
+      width: 100%;
+    }
+
   }
 }

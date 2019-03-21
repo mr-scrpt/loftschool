@@ -1,20 +1,21 @@
 {
-  "text-color": "#414c63"
-  ,"top-menu__link-color": "#fff"
-  ,"th": "0.5s"
-  ,"orange": "#ff9a00"
-  ,"dark": "#1b1f22"
-  ,"blue_dark": "#2d3c4e"
-  ,"red": "#ff0000"
-  ,"font_light": "300"
-  ,"font_semibold": "600"
-  ,"font_bold": "700"
-  ,"font_extrabold": "800"
-  ,"links-color": "#4b6fd7"
-  ,"bp-desktop-hd": "1800px"
-  ,"bp-desktop": "1200px"
-  ,"bp-tablets": "768px"
-  ,"bp-phones": "480px"
-  ,"container": "1480px"
-
+  "text-color": "#414c63",
+  "top-menu__link-color": "#fff",
+  "th": "0.5s",
+  "orange": "#ff9a00",
+  "dark": "#1b1f22",
+  "blue_dark": "#2d3c4e",
+  "red": "#ff0000",
+  "font_light": "300",
+  "font_semibold": "600",
+  "font_bold": "700",
+  "font_extrabold": "800",
+  "links-color": "#4b6fd7",
+  "bp-desktop-hd": "1800px",
+  "bp-desktop": "1200px",
+  "bp-laptop": "994px",
+  "bp-tablets": "768px",
+  "bp-middle": "1200px",
+  "bp-phones": "480px",
+  "container": "1480px"
 }
