@@ -1,29 +1,31 @@
-section.my-works
-  .my-works__inner.page__container
+section.my-works.page__container
+  .my-works__inner
     .my-works__head
       .title.title_alt Мои работы
     .my-works__box
       .my-works__slider.slider
         .slider__inner
-          .slider__number
-            .slider__number-box 2
-          +image('slider/slide__first.jpg', 'slider__main-img img', 'Главный слайд')
-          .slider__media
-            .slider__minislides
-              -let slides = ['first','second','third','fourth','fifth']
+          .slider__main-img-box
+            .slider__media
+              .slider__minislides
+                -let slides = ['second','third','fourth','fifth']
                 each slide, num in slides
-                  if (slide == 'first')
-                    .slider__minilide.slider__minilide_active
+                  if (slide == 'second')
+                    .slider__minislide.slider__minislide_active
                       +image(`slider/slide__${slide}.jpg`, 'slider__other-img img', `Слайд ${num}`)
                   else
-                    .slider__minilide
+                    .slider__minislide
                       +image(`slider/slide__${slide}.jpg`, 'slider__other-img img', `Слайд ${num}`)
 
-            .slider__ctrls
-              .slider__ctrl
-                +icon(`icon__arrow-slider`, 'icon icon_arrow-slider slider__icon slider__icon-next')
-              .slider__ctrl
-                +icon(`icon__arrow-slider`, 'icon icon_arrow-slider slider__icon slider__icon-prev')
+              .slider__ctrls
+                .slider__ctrl
+                  +icon(`icon__arrow-slider`, 'icon icon_arrow-slider slider__icon slider__icon-next')
+                .slider__ctrl
+                  +icon(`icon__arrow-slider`, 'icon icon_arrow-slider slider__icon slider__icon-prev')
+
+            +image('slider/slide__first.jpg', 'slider__main-img img', 'Главный слайд')
+          .slider__number
+            .slider__number-box 2
 
       .my-works__about
         .my-works__tags.tags
