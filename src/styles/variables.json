@@ -15,7 +15,7 @@
   "bp-desktop": "1200px",
   "bp-laptop": "994px",
   "bp-tablets": "768px",
-  "bp-middle": "1200px",
+  "bp-middle": "640px",
   "bp-phones": "480px",
   "container": "1480px"
 }

@@ -13,6 +13,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    z-index: 3;
 
   }
   &__logo{
@@ -32,28 +33,20 @@
   }
   &__menu-open{
     display: none;
-    background-color: yellow;
     @include laptop {
-      display: inline-block;
+      display: block;
     }
   }
-  &__menu-box{
-    display: block;
+  &__menu-close{
+    display: none;
     @include laptop {
-      display: none;
-      &_show{
-        display: block;
-        position: fixed;
-        z-index: 5;
-        right: 0;
-        top: 0;
-        background: #fff;
-        width: 325px;
-        height: 100%;
-      }
+      display: block;
+      background: yellow;
+      position: absolute;
+      top: 20px;
+      right: 50px;
     }
   }
-
   &__soc{
     order: 3;
     @include laptop {
