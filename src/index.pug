@@ -1,4 +1,6 @@
 include mixins
+-let menu = ['Главная', 'Обо мне','Навыки','Работы','Отзывы','Связаться']
+-let soc = {insta: "instagram.com", vk: "vk.com" ,gh: "github.com"}
 <!DOCTYPE html>
 html(lang="en")
   head
@@ -8,7 +10,7 @@ html(lang="en")
     title Portfolio | main page
   body.page
     .page__wrapper
-      include sections/welcome
+      //-include sections/welcome
       include sections/help-you
       include sections/my-works
       include sections/media
