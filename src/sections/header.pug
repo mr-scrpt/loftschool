@@ -9,11 +9,9 @@ header.header
           .menu-top__inner
             .header__menu-close X
             nav.menu-top__list
-
               each item in menu
                 a(href=`#${item}`, class="menu-top__link")=item
             .menu-top__bottom
-
                 each val, index in soc
                   a(href=`${val}`, class="soc-block__link")
                     +icon(`icon__${index}`, `soc-block__icon`)
