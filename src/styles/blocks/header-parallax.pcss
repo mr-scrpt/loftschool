@@ -1,12 +1,14 @@
 .parallax{
-  position: relative;
-  height: 2500px;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   &__inner{
     position: relative;
+    height: 2500px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  &__animation{
+    //position: relative;
     overflow: hidden;
     height: 1600px;
   }
@@ -18,51 +20,44 @@
   width: 100%;
   height: 100%;
   &:nth-child(1){
+    z-index: 10;
     .parallax__img{
       top: 0;
-
     }
   }
   &:nth-child(2){
+    z-index: 20;
     .parallax__img{
       top: 370px;
-
     }
   }
   &:nth-child(3){
-    top:calc(50vh);
-    width: 100%;
-    //height: 300px;
-    background: yellow;
-  }
-  &:nth-child(4){
+    z-index: 30;
     .parallax__img{
       top:500px;
-
     }
 
-
-
   }
-  &:nth-child(5){
+  &:nth-child(4){
+    z-index: 40;
     .parallax__img{
       top:900px;
-
+    }
+  }
+  &:nth-child(5){
+    z-index: 50;
+    .parallax__img{
+      top:900px;
     }
   }
   &:nth-child(6){
+    z-index: 60;
     .parallax__img{
       top:900px;
-
-    }
-  }
-  &:nth-child(7){
-    .parallax__img{
-      top:900px;
-
     }
   }
 }
+
 .parallax__img{
   width: 100%;
   min-width: 1920px;

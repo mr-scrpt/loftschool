@@ -1,6 +1,6 @@
 window.addEventListener('DOMContentLoaded', (e)=>{
   const
-    parallax = document.querySelector('.parallax__inner'),
+    parallax = document.querySelector('.parallax__animation'),
     layers = parallax.children;
 
   function moveLayerDependensOnScroll(wScroll) {
