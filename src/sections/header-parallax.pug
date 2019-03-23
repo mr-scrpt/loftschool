@@ -1,3 +1,23 @@
 .parallax
-  +image('parallax/bg__back-plan.png', 'parallax__layer parallax__layer_back-plan', 'задний план', 'presentation')
-  +image('parallax/bg__front-plan.png', 'parallax__layer parallax__layer_front-plan', 'пердний план','presentation')
+  .test
+    .test__content 222222222222222222
+  .parallax__inner
+    .parallax__layer(data-speed=`0.1`)
+      +image(`parallax/parallax__layer-1.png`, `parallax__img`, 'задний план', 'presentation')
+    .parallax__layer(data-speed=`0.2`)
+      +image(`parallax/parallax__layer-2.png`, `parallax__img`, 'задний план', 'presentation')
+    .parallax__layer(data-speed=`0.3`)
+      .header__me.me
+        .me__inner
+          .me__info
+            .me__line Личный сайт
+            .me__line веб разработчика
+          .me__name Дмитрий Лукьянов
+    .parallax__layer(data-speed=`0.4`)
+      +image(`parallax/parallax__layer-3.png`, `parallax__img`, 'задний план', 'presentation')
+    .parallax__layer(data-speed=`0.5`)
+      +image(`parallax/parallax__layer-4.png`, `parallax__img`, 'задний план', 'presentation')
+    .parallax__layer(data-speed=`0.6`)
+      +image(`parallax/parallax__layer-5.png`, `parallax__img`, 'задний план', 'presentation')
+    .parallax__layer(data-speed=`0.7`)
+      +image(`parallax/parallax__layer-6.png`, `parallax__img`, 'задний план', 'presentation')
