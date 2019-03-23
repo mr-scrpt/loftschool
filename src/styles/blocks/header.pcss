@@ -18,6 +18,8 @@
     align-items: center;
     justify-content: space-between;
     z-index: 80;
+    position: relative;
+    z-index: 200;
 
   }
   &__logo{
@@ -26,7 +28,6 @@
     text-transform: uppercase;
     color: #fff;
     order: 1;
-    background-color: yellow;
   }
   &__menu{
     padding: 0 10px;
@@ -39,16 +40,25 @@
     display: none;
     @include laptop {
       display: block;
+      cursor: pointer;
+      @include ts(opacity);
+      &:hover{
+        opacity: 0.5;
+      }
     }
   }
   &__menu-close{
     display: none;
     @include laptop {
       display: block;
-      background: yellow;
       position: absolute;
-      top: 20px;
+      top: 60px;
       right: 50px;
+      cursor: pointer;
+      @include ts(opacity);
+      &:hover{
+        opacity: 0.5;
+      }
     }
   }
   &__soc{

@@ -4,22 +4,23 @@ header.header
       .header__logo
        | ДЛ
       .header__menu
-        span.header__menu-open _-_
+        +image(`icons/icon__menu-sandwich.png`, `header__menu-open`, 'меню', 'presentation')
         .menu-top
           .menu-top__inner
-            .header__menu-close X
-            nav.menu-top__list
-              each item in menu
-                a(href=`#${item}`, class="menu-top__link")=item
-            .menu-top__bottom
-                each val, index in soc
-                  a(href=`${val}`, class="soc-block__link")
-                    +icon(`icon__${index}`, `soc-block__icon`)
+            .menu-top__box
+              .header__menu-close
+                +image(`icons/icon__menu-close.png`, `.header__menu-close`, 'меню', 'presentation')
+              nav.menu-top__list
+                each item in menu
+                  a(href=`#${item}`, class="menu-top__link")=item
+              .menu-top__bottom.soc-block_menu
+                  each val, index in soc
+                    a(href=`${val}`, class="soc-block__link")
+                      +icon(`icon__${index}`, `soc-block__icon`)
 
 
 
       .header__soc.soc-block
-
           each val, index in soc
             a(href=`${val}`, class="soc-block__link")
               +icon(`icon__${index}`, `soc-block__icon`)
