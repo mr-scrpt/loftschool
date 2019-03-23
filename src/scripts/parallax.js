@@ -6,7 +6,7 @@ window.addEventListener('DOMContentLoaded', (e)=>{
   function moveLayerDependensOnScroll(wScroll) {
     Array.from(layers).forEach(layer =>{
       const divider = layer.dataset.speed;
-      const strafe = wScroll * divider / 6;
+      const strafe = wScroll * divider / 15;
 
       layer.style.transform = `translateY(-${strafe}%)`;
     })
