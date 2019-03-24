@@ -4,12 +4,14 @@ header.header
       .header__logo
        | ДЛ
       .header__menu
-        +image(`icons/icon__menu-sandwich.png`, `header__menu-open`, 'меню', 'presentation')
+        //+image(`icons/icon__menu-sandwich.png`, `header__menu-open`, 'меню', 'presentation')
+        button(type="button", class="button button_sandwich header__menu-open")
+          //+image(`icons/icon__menu-sandwich.png`, `header__menu-open`, 'меню', 'presentation')
         .menu-top
           .menu-top__inner
             .menu-top__box
-              .header__menu-close
-                +image(`icons/icon__menu-close.png`, `.header__menu-close`, 'меню', 'presentation')
+              button(type="button", class="button button_close header__menu-close")
+                //+image(`icons/icon__menu-close.png`, `.header__menu-close`, 'меню', 'presentation')
               nav.menu-top__list
                 each item in menu
                   a(href=`#${item}`, class="menu-top__link")=item
