@@ -22,6 +22,9 @@
     height: 20px;
     width: 20px;
   }
+  &_pseudo{
+    background: none;
+  }
 
 }
 .button:before{
@@ -39,6 +42,12 @@
 .button_close:before{
   background: url("../images/icons/icon__menu-close.png") no-repeat;
   background-size: contain;
+}
+
+
+
+.button_pseudo:before{
+  background: none;
 }
 .button .button__text{
   position: relative;
@@ -105,5 +114,16 @@
   &:before{
     background: rgba($orange, 0.5);
   }
-
 }
+.button.button_pseudo:hover{
+  cursor: pointer;
+  background: transparent;
+}
+.button.button_pseudo:hover{
+  &:before{
+    background: transparent;
+  }
+}
+
+
+

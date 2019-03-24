@@ -2,12 +2,8 @@ section.parallax
   .parallax__inner
     include header
     .parallax__animation
-      .parallax__layer(data-speed=`0.1`)
-        +image(`parallax/parallax__layer-1.png`, `parallax__img`, 'задний план', 'presentation')
-      .parallax__layer(data-speed=`0.2`)
-        +image(`parallax/parallax__layer-2.png`, `parallax__img`, 'задний план', 'presentation')
-      .parallax__layer(data-speed=`0.3`)
-        +image(`parallax/parallax__layer-3.png`, `parallax__img`, 'задний план', 'presentation')
-      .parallax__layer(data-speed=`0.4`)
-        +image(`parallax/parallax__layer-4.png`, `parallax__img`, 'задний план', 'presentation')
+      each num in [1, 2, 3, 4]
+        .parallax__layer(data-speed=`0.${num}`)
+          +image(`parallax/parallax__layer-${num}.png`, `parallax__img`, `слой параллакса - ${num}`, 'presentation')
+
 
