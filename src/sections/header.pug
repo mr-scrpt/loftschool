@@ -3,13 +3,24 @@ header.header
     .header__topbar
       .header__logo
        | ДЛ
-      nav.header__menu.menu-top
-        -let menu = ['Главная', 'Обо мне','Навыки','Работы','Отзывы','Связаться']
-          each item in menu
-            a(href=`#${item}`, class="menu-top__link")=item
+      .header__menu
+        +image(`icons/icon__menu-sandwich.png`, `header__menu-open`, 'меню', 'presentation')
+        .menu-top
+          .menu-top__inner
+            .menu-top__box
+              .header__menu-close
+                +image(`icons/icon__menu-close.png`, `.header__menu-close`, 'меню', 'presentation')
+              nav.menu-top__list
+                each item in menu
+                  a(href=`#${item}`, class="menu-top__link")=item
+              .menu-top__bottom.soc-block_menu
+                  each val, index in soc
+                    a(href=`${val}`, class="soc-block__link")
+                      +icon(`icon__${index}`, `soc-block__icon`)
+
+
+
       .header__soc.soc-block
-        //.soc-block__inner
-        -let soc = {insta: "instagram.com", vk: "vk.com" ,gh: "github.com"}
           each val, index in soc
             a(href=`${val}`, class="soc-block__link", target="_blank")
               +icon(`icon__${index}`, `soc-block__icon`)

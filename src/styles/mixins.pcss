@@ -1,5 +1,5 @@
 @mixin desktopHd() {
-  @media screen and (max-width: $ bp-desktop-hd) {
+  @media screen and (max-width: $bp-desktop-hd) {
     @content ;
   }
 }
@@ -7,6 +7,17 @@
 @mixin desktop() {
   @media screen and (max-width: $bp-desktop) {
     @content ;
+  }
+}
+
+@mixin laptop() {
+  @media screen and (max-width: $bp-laptop) {
+    @content ;
+  }
+}
+@mixin middle() {
+  @media screen and (max-width: $bp-middle) {
+  @content ;
   }
 }
 

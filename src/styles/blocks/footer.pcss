@@ -1,15 +1,24 @@
 .footer{
   background-color: $dark;
   &__inner{
-    margin: auto;
     padding: 90px 0;
     display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px;
+    margin-right: -15px;
+    background: yellow;
   }
   &__copyright-block{
-    width: calc(33.3333% - 15px);
+    background: blue;
+    width: calc(33.3333% - 30px);
+    margin-left: 15px;
     margin-right: 15px;
     display: flex;
-    //background: yellow;
+    flex-wrap: wrap;
+    @include middle{
+      width: 100%;
+      margin-bottom: 50px;
+    }
   }
   &__copyright{
     width: 50%;
@@ -17,9 +26,15 @@
     font-size: 48px;
     line-height: 40px;
     font-weight: $font_semibold;
+    @include desktop{
+      width: 100%;
+    }
   }
   &__author{
     width: 50%;
+    @include desktop{
+      width: 100%;
+    }
   }
   &__author-name{
     text-transform: uppercase;
@@ -34,14 +49,19 @@
     line-height: 30px;
   }
   &__main-block{
-    width: calc(66.6666% - 15px);
+    background: pink;
+    width: calc(66.6666% - 30px);
     margin-left: 15px;
+    margin-right: 15px;
     display: flex;
     flex-wrap: wrap;
-    //background: pink;
+    @include middle{
+      width: 100%;
+      margin-bottom: 50px;
+    }
   }
   &__menu{
-    height: 45px;
+    //height: 45px;
     width: 100%;
     padding-bottom: 30px;
   }
@@ -50,6 +70,13 @@
     flex-direction: column;
     width: calc(50% - 15px);
     margin-right: 15px;
+    @include laptop{
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 50px;
+    }
+
+
   }
   &__text{
     line-height: 30px;
@@ -59,6 +86,10 @@
   &__quote{
     width: calc(50% - 15px);
     margin-left: 15px;
+    @include laptop{
+      width: 100%;
+      margin-left: 0;
+    }
   }
   &__quote-author{
     font-style: italic;

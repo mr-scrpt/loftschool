@@ -1,27 +1,47 @@
 .info-me{
+  position: relative;
+  z-index: 120;
   height: 100vh;
-  min-height: 1400px;
+  min-height: 700px;
   display: flex;
   align-items: center;
   justify-content: center;
-  //background: $dark;
   background: url("../images/content/bg__info-me.jpg") bottom;
-  //background-position: bottom;
+
   &__inner{
     position: relative;
     z-index: 1;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    max-width: 100%;
-  //height: 100%;
+    width: 100%;
+    background-color: pink;
+
   }
   &__visual{
-    width: 25%;
+    width: 27%;
+    background-color: yellow;
+    @include desktop{
+      width: 35%;
+    }
+    @include laptop{
+      width: 40%;
+    }
+    @include middle{
+      width: 100%;
+    }
   }
   &__descriotion{
     width: 41.6666%;
     display: flex;
     flex-direction: column;
+    background-color: blue;
+    @include laptop{
+      width: 60%;
+    }
+    @include middle{
+      width: 100%;
+    }
   }
   &__wysiwyg{
     flex-grow: 1;

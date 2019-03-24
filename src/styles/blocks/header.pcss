@@ -1,9 +1,11 @@
 .header{
-  height: 100vh;
-  min-height: 1200px;
-
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
   &__inner{
-    position: relative;
     height: 100vh;
     min-height: 650px;
     margin:auto;
@@ -15,26 +17,68 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    z-index: 80;
+    position: relative;
+    z-index: 200;
+
   }
   &__logo{
     font-size: 36px;
     font-weight: $font_extrabold;
     text-transform: uppercase;
     color: #fff;
+    order: 1;
   }
   &__menu{
     padding: 0 10px;
+    order: 2;
+    @include laptop {
+      order: 3;
+    }
+  }
+  &__menu-open{
+    display: none;
+    @include laptop {
+      display: block;
+      cursor: pointer;
+      @include ts(opacity);
+      &:hover{
+        opacity: 0.5;
+      }
+    }
+  }
+  &__menu-close{
+    display: none;
+    @include laptop {
+      display: block;
+      position: absolute;
+      top: 60px;
+      right: 50px;
+      cursor: pointer;
+      @include ts(opacity);
+      &:hover{
+        opacity: 0.5;
+      }
+    }
+  }
+  &__soc{
+    order: 3;
+    @include laptop {
+      order: 2;
+      margin-left: auto;
+      width: 250px;
+    }
   }
   &__me{
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    z-index: 0;
+    z-index: 30;
   }
   &__arrow{
     display: flex;
     justify-content: center;
+    z-index: 80;
   }
 }
