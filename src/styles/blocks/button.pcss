@@ -108,13 +108,13 @@
 
 .button.button:hover{
   cursor: pointer;
-  background: transparent;
+
 }
 .button.button:hover{
   &:before{
-    background: rgba($orange, 0.5);
   }
 }
+//Псевдо
 .button.button_pseudo:hover{
   cursor: pointer;
   background: transparent;
@@ -122,6 +122,15 @@
 .button.button_pseudo:hover{
   &:before{
     background: transparent;
+  }
+}
+//Сендтвич
+.button.button_sandwich:hover{
+  @inclusde ts(opacity);
+}
+.button.button_sandwich:hover{
+  &:before{
+    opacity: 0.7;
   }
 }
 
