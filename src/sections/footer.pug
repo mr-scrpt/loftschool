@@ -13,11 +13,11 @@ footer.footer
         .footer__motivation
           .footer__text
             | Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
-          .footer__social.soc-block.soc-block_alt
+          +social('footer__social','alt')
               each val, index in soc
                 a(href=`${val}`, class="soc-block__link")
                   +icon(`icon__${index}`, `icon icon_${index} soc-block__icon`)
         .footer__quote
-          article.footer__text
+          blockquote.blockquote.footer__text
             | Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
           .footer__quote-author Martin Golding

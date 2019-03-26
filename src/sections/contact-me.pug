@@ -1,7 +1,7 @@
 section.contact-me.section
   .section__inner
     .section__head
-      .title Связаться со мной
+      h2.title Связаться со мной
     .contact-me__content
       form(action='', method='POST').form-contact.contact-me__form
         .form-contact__inner
@@ -26,3 +26,6 @@ section.contact-me.section
             .form-contact__row
               +icon(`icon__message`, 'icon icon_form form-contact__icon')
               textarea.textarea.form-contact__textarea
+          .form-contact__box.form-contact__box_full
+              button(type="submit", class="button button_size_xl form-contact__submit")
+                .button__text Отправить

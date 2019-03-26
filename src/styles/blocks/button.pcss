@@ -1,0 +1,138 @@
+.button{
+  touch-action: manipulation;
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  color: #fff;
+  border: 0;
+  outline: 0;
+  background: $orange; // Цвет бордера
+  @include ts(background);
+  text-align: center;
+  white-space: nowrap;
+  &_sandwich{
+    background: none;
+    height: 24px;
+    width: 20px;
+  }
+  &_close{
+    background: none;
+    height: 20px;
+    width: 20px;
+  }
+  &_pseudo{
+    background: none;
+  }
+
+}
+.button:before{
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  left: 1px;
+  content: '';
+  background: $orange; //цвет фона
+}
+.button_sandwich:before{
+  background: url("../images/icons/icon__menu-sandwich.png") no-repeat;
+}
+.button_close:before{
+  background: url("../images/icons/icon__menu-close.png") no-repeat;
+  background-size: contain;
+}
+
+
+
+.button_pseudo:before{
+  background: none;
+}
+.button .button__text{
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: top;
+}
+
+/*Размеры кнопок*/
+/*S - Начало*/
+.button_size_s{
+  font-size: 13px;
+  line-height: 24px;;
+}
+
+.button_size_s .button__text{
+  margin: 0 10px
+}
+
+/*S - КОНЕЦ*/
+
+/*M - Начало*/
+.button_size_m{
+  font-size: 13px;
+  line-height: 28px;
+}
+
+.button_size_m .button__text{
+  margin: 0 13px;
+}
+/*M - КОНЕЦ*/
+
+
+/*L - Начало*/
+.button_size_l{
+  font-size: 15px;
+  line-height: 32px;
+}
+.button_size_l .button__text{
+  margin: 0 15px;
+}
+/*L - КОНЕЦ*/
+
+/*XL - Начало*/
+.button_size_xl{
+  font-size: 18px;
+  line-height: 38px;
+  font-weight: $font_bold;
+  text-transform: uppercase;
+}
+.button_size_xl .button__text{
+  margin: 12px 100px;
+}
+/*XL - КОНЕЦ*/
+/*Состояния*/
+//Стандартная кнопка
+
+.button.button:hover{
+  cursor: pointer;
+
+}
+.button.button:hover{
+  &:before{
+  }
+}
+//Псевдо
+.button.button_pseudo:hover{
+  cursor: pointer;
+  background: transparent;
+}
+.button.button_pseudo:hover{
+  &:before{
+    background: transparent;
+  }
+}
+//Сендтвич
+.button.button_sandwich:hover{
+  @inclusde ts(opacity);
+}
+.button.button_sandwich:hover{
+  &:before{
+    opacity: 0.7;
+  }
+}
+
+
+

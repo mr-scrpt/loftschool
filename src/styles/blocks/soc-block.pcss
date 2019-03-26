@@ -37,6 +37,11 @@
     }
   }
   &_menu{
+    display: none;
+    @include laptop {
+      display: flex;
+    }
+
     .soc-block__icon{
       fill: $text-color;
       @include ts(fill);

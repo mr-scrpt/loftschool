@@ -4,32 +4,28 @@ header.header
       .header__logo
        | ДЛ
       .header__menu
-        +image(`icons/icon__menu-sandwich.png`, `header__menu-open`, 'меню', 'presentation')
+        button(type="button", class="button button_sandwich header__menu-open")
         .menu-top
           .menu-top__inner
             .menu-top__box
-              .header__menu-close
-                +image(`icons/icon__menu-close.png`, `.header__menu-close`, 'меню', 'presentation')
+              button(type="button", class="button button_close header__menu-close")
               nav.menu-top__list
                 each item in menu
                   a(href=`#${item}`, class="menu-top__link")=item
-              .menu-top__bottom.soc-block_menu
-                  each val, index in soc
-                    a(href=`${val}`, class="soc-block__link")
-                      +icon(`icon__${index}`, `soc-block__icon`)
+              +social('menu-top__bottom','menu')
+              //.menu-top__bottom.soc-block_menu
+              //    each val, index in soc
+              //      a(href=`${val}`, class="soc-block__link")
+              //        +icon(`icon__${index}`, `soc-block__icon`)
 
+      +social('header__soc')
 
-
-      .header__soc.soc-block
-          each val, index in soc
-            a(href=`${val}`, class="soc-block__link", target="_blank")
-              +icon(`icon__${index}`, `soc-block__icon`)
     .header__me.me
       .me__inner
         .me__info
           .me__line Личный сайт
           .me__line веб разработчика
-        .me__name Дмитрий Лукьянов
+        h1.me__name Дмитрий Лукьянов
 
 
     .header__arrow.arrow

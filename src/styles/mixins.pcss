@@ -1,3 +1,19 @@
+//Бордер
+@mixin bdr($side, $color, $size, $border-radius) {
+  @if side{
+    border: $size solid $color;
+    @if border-radius{
+      border-radius: $border-radius;
+    }
+  }
+  @else{
+    border-$side: $size solid $color;
+    @if border-radius{
+      border-radius: $border-radius;
+    }
+  }
+}
+
 @mixin desktopHd() {
   @media screen and (max-width: $bp-desktop-hd) {
     @content ;
@@ -52,15 +68,7 @@
   }
 
 }
-//Бордер
-//@mixin bdr($side,$color,$size) {
-//  @if $side == all {
-//    border: $size solid $color;
-//  }
-//  @else{
-//    border-#{$side}: $(side) $size solid $color;
-//  }
-//}
+
 
 // Фон
 
