@@ -1,0 +1,45 @@
+script(type='text/x-template')#slider-container
+  .my-works__box
+    .my-works__slider
+      .slider
+        .slider__inner
+          .slider__main-img-box
+            .slider__media
+              .slider__minislides
+                -let slides = ['second','third','fourth','fifth']
+                each slide, num in slides
+                  if (slide == 'second')
+                    .slider__minislide.slider__minislide_active
+                      +image(`slider/slide__${slide}.jpg`, 'slider__other-img img', `Слайд ${num}`)
+                  else
+                    .slider__minislide
+                      +image(`slider/slide__${slide}.jpg`, 'slider__other-img img', `Слайд ${num}`)
+
+              .slider__ctrls
+                .slider__ctrl
+                  +icon(`icon__arrow-slider`, 'icon icon_arrow-slider slider__icon slider__icon-next')
+                .slider__ctrl
+                  +icon(`icon__arrow-slider`, 'icon icon_arrow-slider slider__icon slider__icon-prev')
+
+            +image('slider/slide__first.jpg', 'slider__main-img img', 'Главный слайд')
+          .slider__number
+            .slider__number-box 2
+
+    .my-works__about
+      .my-works__tags.tags
+        .tags__inner
+          -let tags = ['html','css3','javascript']
+          each item in tags
+            .tags__item
+              .tags__text=item
+
+      .my-works__description
+        h3.subtitle Сайт школы образования
+        blockquote.my-works__text Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
+        a.my-works__link
+          .my-works__icon.icon.icon_chain
+          span.my-works__link-text Посмотреть сайт
+
+
+script(type='text/x-template')#slider-display
+script(type='text/x-template')#slider-info
