@@ -25,6 +25,12 @@
   &_pseudo{
     background: none;
   }
+  &_slide{
+    background: $blue_dark;
+    width: 55px;
+    height: 55px;
+
+  }
 
 }
 .button:before{
@@ -44,7 +50,19 @@
   background-size: contain;
 }
 
-
+.button_slide:before{
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-color: $blue_dark;
+  @include ts(background-color);
+}
+.button_slide_prev:before{
+  background-image: svg-load('icon__arrow-slider.svg', fill=#fff, width=10px, height=10px);
+}
+.button_slide_next:before{
+  transform: rotate(180deg);
+  background-image: svg-load('icon__arrow-slider.svg', fill=#fff, width=10px, height=10px);
+}
 
 .button_pseudo:before{
   background: none;
@@ -126,11 +144,23 @@
 }
 //Сендтвич
 .button.button_sandwich:hover{
-  @inclusde ts(opacity);
+  @include ts(opacity);
 }
 .button.button_sandwich:hover{
   &:before{
     opacity: 0.7;
+  }
+}
+//Слайдер
+.button.button_sandwich:hover{
+  &:before{
+    opacity: 0.7;
+  }
+}
+
+.button_slide:hover{
+  &:before{
+    background-color: $orange;
   }
 }
 
