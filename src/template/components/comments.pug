@@ -1,24 +1,31 @@
 script(type='text/x-template')#comments-container
-  .about-me__comments.comments
-    .comments__inner
-      blockquote.blockquote.comments__item.comment
-        .comment__inner
-          p.comment__text
-            | Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-          cite.comment__author-row
-            .comment__userpic
-              +image('content/user__koval.png', 'comment__userpic-img img', 'Аватар Дмитрия')
-            .comment__author-info
-              .comment__author-name Ковальчук Дмитрий
-              .comment__office Основатель Loftschool
+  .section__inner
+    .section__head
+      h2.title.about-me__title Что обо мне говорят
+      controls(
+        @roll="rollComments"
+      )
+    .about-me__comments.comments
+      comments(
+        :comments="comments"
+      )
 
-      blockquote.blockquote.comments__item.comment
-        .comment__inner
-          p.comment__text
-            |  Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-          cite.comment__author-row
-            .comment__userpic
-              +image('content/user__koval.png', 'comment__userpic-img img', 'Аватар Владимира')
-            .comment__author-info
-              .comment__author-name Владимир Сабанцев
-              .comment__office Основатель Loftschool
+script(type='text/x-template')#comments-controls
+  .about-me__ctrls.slider
+    button(type="button" @click="$emit('roll', 'prev')").button.button_around
+      +icon(`icon__arrow-slider`, 'icon slider__icon slider__icon-prev')
+    button(type="button" @click="$emit('roll', 'next')").button.button_around
+      +icon(`icon__arrow-slider`, 'icon slider__icon slider__icon-next')
+
+script(type='text/x-template')#comments-inner
+  .comments__inner
+    blockquote.blockquote.comments__item.comment(v-for="comment in comments")
+      .comment__inner
+        p.comment__text {{comment.comment}}
+        cite.comment__author-row
+          .comment__userpic
+            +image('content/user__koval.png', 'comment__userpic-img img', 'Аватар Дмитрия')
+          .comment__author-info
+            .comment__author-name {{comment.author}}
+            .comment__office {{comment.post}}
+
