@@ -8,26 +8,4 @@ section.about-me.section
         button(type="button").button.button_around
           +icon(`icon__arrow-slider`, 'icon slider__icon slider__icon-next')
 
-    .about-me__comments.comments
-      .comments__inner
-        blockquote.blockquote.comments__item.comment
-          .comment__inner
-            p.comment__text
-              | Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-            cite.comment__author-row
-              .comment__userpic
-                +image('content/user__koval.png', 'comment__userpic-img img', 'Аватар Дмитрия')
-              .comment__author-info
-                .comment__author-name Ковальчук Дмитрий
-                .comment__office Основатель Loftschool
-
-        blockquote.blockquote.comments__item.comment
-          .comment__inner
-            p.comment__text
-              |  Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-            cite.comment__author-row
-              .comment__userpic
-                +image('content/user__koval.png', 'comment__userpic-img img', 'Аватар Владимира')
-              .comment__author-info
-                .comment__author-name Владимир Сабанцев
-                .comment__office Основатель Loftschool
+    #comments-component

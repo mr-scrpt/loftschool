@@ -6,5 +6,6 @@ if (process.env.NODE_ENV === "development") {
 import "./scripts/top-menu";
 import "./scripts/parallax";
 //import "./scripts/scroll";
-import "./scripts/skills";
-import "./scripts/works";
+import "./scripts/vue-skills";
+import "./scripts/vue-works";
+import "./scripts/vue-comments";
