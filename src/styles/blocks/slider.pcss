@@ -59,6 +59,11 @@
     @include middle{
       height: 80px
     }
+    @include desktop{
+      &:last-child{
+        display: none;
+      }
+    }
   }
   &__minislide{
     max-width: 180px;

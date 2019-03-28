@@ -18,6 +18,7 @@ module.exports = {
         ,fs.readFileSync("./src/styles/mixins.pcss", "utf-8")
       )
     }),
+
     require('postcss-mixins'),
     require('postcss-simple-vars'),
     require("postcss-nested"),
