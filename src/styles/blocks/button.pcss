@@ -29,6 +29,15 @@
     background: $blue_dark;
     width: 55px;
     height: 55px;
+  }
+  &_around{
+    background: transparent;
+    border: 1px solid #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    @include ts(border-color);
 
   }
 
@@ -41,6 +50,7 @@
   left: 1px;
   content: '';
   background: $orange; //цвет фона
+
 }
 .button_sandwich:before{
   background: url("../images/icons/icon__menu-sandwich.png") no-repeat;
@@ -67,6 +77,22 @@
 .button_pseudo:before{
   background: none;
 }
+
+.button_around:before{
+  background: transparent;
+
+}
+
+
+
+
+
+
+
+
+
+
+
 .button .button__text{
   position: relative;
   display: inline-block;
@@ -164,5 +190,8 @@
   }
 }
 
-
+//Слайдер
+.button.button_around:hover{
+  border-color: $orange;
+}
 
