@@ -8,26 +8,32 @@
   &__inner{
     height: 100vh;
     min-height: 650px;
-    max-height: 1200px;
+    max-height: 1200px;    
+    margin:auto;
+    display: flex;
+    flex-direction: column;
     @include desktop{
       height: 800px;
     }
     @include tablets{
       height: 700px;
     }
-    margin:auto;
-    display: flex;
-    flex-direction: column;
+    @include middle{
+      background: url("../images/parallax/parallax__our.jpg") no-repeat;
+      background-size: cover;
+      height: 700px;
+    }
   }
   &__topbar{
     width:100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 80;
     position: relative;
     z-index: 200;
-
+    @include phones{
+       margin-top: 50px;
+    }
   }
   &__logo{
     font-size: 36px;
@@ -35,6 +41,7 @@
     text-transform: uppercase;
     color: #fff;
     order: 1;
+
   }
   &__menu{
     padding: 0 10px;
@@ -74,6 +81,9 @@
       order: 2;
       margin-left: auto;
       width: 250px;
+    }
+    @include middle{
+      display: none;
     }
   }
   &__me{

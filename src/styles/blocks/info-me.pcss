@@ -8,9 +8,12 @@
   /*height: 100vh;
   min-height: 700px;
   max-height: 1100px;*/
-  height: 1000px;
+  min-height: 1000px;
   @include tablets{
-     height: 750px;
+    min-height: 750px;
+  }
+  @include middle{
+
   }
 
   &__inner{
@@ -23,7 +26,6 @@
 
   }
   &__visual{
-
     width: 27%;
     @include desktop{
       width: 35%;
@@ -44,6 +46,9 @@
     }
     @include middle{
       width: 100%;
+    }
+    @include phones {
+      margin-bottom: 150px;
     }
   }
   &__wysiwyg{

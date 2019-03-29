@@ -30,6 +30,12 @@
     width: 55px;
     height: 55px;
   }
+  &_slide-prev{
+    margin-right: 10px;
+  }
+  &_slide-next{
+    margin-left: 10px;
+  }
   &_around{
     background: transparent;
     border: 1px solid #fff;
@@ -50,6 +56,8 @@
   left: 1px;
   content: '';
   background: $orange; //цвет фона
+  @include ts(background);
+
 
 }
 .button_sandwich:before{
@@ -82,14 +90,6 @@
   background: transparent;
 
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -145,6 +145,9 @@
 }
 .button_size_xl .button__text{
   padding: 20px 110px;
+  @include phones{
+    padding: 20px 80px;
+  }
 }
 /*XL - КОНЕЦ*/
 /*Состояния*/
@@ -153,9 +156,11 @@
 .button.button:hover{
   cursor: pointer;
 
+
 }
 .button.button:hover{
   &:before{
+    background: color($orange lightness(40%));
   }
 }
 //Псевдо

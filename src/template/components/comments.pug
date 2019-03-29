@@ -3,9 +3,9 @@ script(type='text/x-template')#comments-container
     .section__head
       h2.title.about-me__title Что обо мне говорят
       .about-me__ctrls.slider
-        button(type="button").button.button_around.slider__prev
+        button(type="button").button.button_around.button_slide-prev
           +icon(`icon__arrow-slider`, 'icon slider__icon slider__icon-prev')
-        button(type="button").button.button_around.slider__next
+        button(type="button").button.button_around.button_slide-next
           +icon(`icon__arrow-slider`, 'icon slider__icon slider__icon-next')
     .about-me__comments.comments
       swiper(:options="swiperOption" ref="mySwiper").comments__inner

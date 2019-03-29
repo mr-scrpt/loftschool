@@ -20,6 +20,7 @@ module.exports = {
     }),
 
     require('postcss-mixins'),
+    require("postcss-color-function"),
     require('postcss-simple-vars'),
     require("postcss-nested"),
     require("postcss-rgb"),

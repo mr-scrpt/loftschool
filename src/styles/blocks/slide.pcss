@@ -1,3 +1,12 @@
 .slide{
   display: flex;
+  @include middle {
+    display: none;
+  }
+  &__prev{
+    margin-right: 10px;
+  }
+  &__next{
+    margin-left: 10px;
+  }
 }

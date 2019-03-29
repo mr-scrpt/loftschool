@@ -18,6 +18,13 @@ new Vue({
         }
         ,loop: true
         ,slidesPerView: 2
+        ,breakpoints: {
+          // when window width is <= 320px
+          640: {
+            slidesPerView: 1
+
+          }
+        }
       }
     }
   }
