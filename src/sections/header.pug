@@ -12,13 +12,9 @@ header.header
               nav.menu-top__list
                 each item in menu
                   a(href=`#${item}`, class="menu-top__link")=item
-              +social('menu-top__bottom','menu')
-              //.menu-top__bottom.soc-block_menu
-              //    each val, index in soc
-              //      a(href=`${val}`, class="soc-block__link")
-              //        +icon(`icon__${index}`, `soc-block__icon`)
+              +social('menu-top__info','menu')
 
-      +social('header__soc')
+      +social('header__soc', 'header')
 
     .header__me.me
       .me__inner

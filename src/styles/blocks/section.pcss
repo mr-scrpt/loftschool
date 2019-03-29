@@ -3,16 +3,26 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    padding-bottom: 150px;
+    padding-bottom: 40px;
     width: 66.6666%;
     z-index: 2;
+    @include desktop {
+      width: 90%;
+    }
     @include laptop {
       width: 100%;
+    }
+    @include tablets {
+      padding-bottom: 10px;
     }
   }
   &__head{
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 100px;
+    margin-bottom: 30px;
+    align-items: center;
+    @include tablets {
+      justify-content: center;
+    }
   }
 }

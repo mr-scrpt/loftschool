@@ -5,7 +5,6 @@ window.addEventListener('DOMContentLoaded', (e)=>{
     , container = document.querySelector('.menu-top__inner');
 
   open.addEventListener('click', (e)=>{
-    console.log('dddd');
     if(!container.classList.contains('menu-top__inner-show')){
       container.classList.add('menu-top__inner-show');
     }

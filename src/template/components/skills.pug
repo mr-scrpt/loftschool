@@ -8,7 +8,7 @@ script(type="text/x-template")#skills-list
 
 script(type="text/x-template")#skills-row
     .skills__row
-      .skills__title {{skill.skillsGroup}}
+      h3.skills__title {{skill.skillsGroup}}
       .skills__box(v-for="(skillPercent, skillName) in skill.skills")
         skill(
         :skillName="skillName",
@@ -17,16 +17,16 @@ script(type="text/x-template")#skills-row
 
 script(type="text/x-template")#skill
   .skills__item
-    svg(viewBox="0 0 144 144")
+    svg(viewBox="0 0 150 150")
       circle(
-      r="65"
+      r="63"
       cx="50%"
       cy="50%"
       fill="none"
       class="svg-circle svg-circle_first"
       )
       circle(
-      r="65"
+      r="63"
       cx="50%"
       cy="50%"
       class="svg-circle svg-circle_second"

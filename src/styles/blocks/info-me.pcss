@@ -1,12 +1,20 @@
 .info-me{
   position: relative;
   z-index: 120;
-  height: 100vh;
-  min-height: 700px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: url("../images/content/bg__info-me.jpg") bottom;
+  /*height: 100vh;
+  min-height: 700px;
+  max-height: 1100px;*/
+  min-height: 1000px;
+  @include tablets{
+    min-height: 750px;
+  }
+  @include middle{
+
+  }
 
   &__inner{
     position: relative;
@@ -15,6 +23,7 @@
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
+
   }
   &__visual{
     width: 27%;
@@ -37,6 +46,9 @@
     }
     @include middle{
       width: 100%;
+    }
+    @include phones {
+      margin-bottom: 150px;
     }
   }
   &__wysiwyg{
@@ -69,6 +81,10 @@
     height: 200px;
     border-radius: 50%;
     overflow: hidden;
+    @include tablets{
+      width: 170px;
+      height: 170px;
+    }
   }
   &__table{
     width:100%

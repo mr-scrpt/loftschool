@@ -11,10 +11,13 @@
     margin-bottom: 50px;
     margin-left: 15px;
     margin-right: 15px;
-    &_half{
+    &_input{
       width: calc(50% - 30px);
+      @include middle{
+        width: calc(100% - 30px);
+      }
     }
-    &_full{
+    &_line{
       width: calc(100% - 30px);
     }
   }
@@ -48,4 +51,8 @@
     line-height: 36px;
     outline: none;
   }
+  &__submit{
+    margin: auto;
+  }
+
 }

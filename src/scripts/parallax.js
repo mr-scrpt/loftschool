@@ -1,10 +1,10 @@
-window.addEventListener('DOMContentLoaded', (e)=>{
+window.addEventListener('DOMContentLoaded', e => {
   const
     parallax = document.querySelector('.parallax__animation'),
     layers = parallax.children;
 
   function moveLayerDependensOnScroll(wScroll) {
-    Array.from(layers).forEach(layer =>{
+    Array.from(layers).forEach(layer => {
       const divider = layer.dataset.speed;
       const strafe = wScroll * divider / 15;
 
@@ -12,7 +12,7 @@ window.addEventListener('DOMContentLoaded', (e)=>{
     })
   }
 
-  window.addEventListener("scroll",e=>{
+  window.addEventListener("scroll", e => {
     const wScroll = window.pageYOffset;
     moveLayerDependensOnScroll(wScroll);
   })

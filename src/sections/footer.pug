@@ -17,7 +17,7 @@ footer.footer
               each val, index in soc
                 a(href=`${val}`, class="soc-block__link")
                   +icon(`icon__${index}`, `icon icon_${index} soc-block__icon`)
-        .footer__quote
-          blockquote.blockquote.footer__text
+        blockquote.blockquote.footer__quote
+          .footer__text
             | Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
-          .footer__quote-author Martin Golding
+          cite.footer__quote-author Martin Golding

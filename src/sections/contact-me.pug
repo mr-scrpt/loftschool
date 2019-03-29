@@ -5,7 +5,7 @@ section.contact-me.section
     .contact-me__content
       form(action='', method='POST').form-contact.contact-me__form
         .form-contact__inner
-          .form-contact__box.form-contact__box_half
+          .form-contact__box.form-contact__box_input
             label(for="name", class="label").form-contact__label Введите ваше имя
             .form-contact__row
               +icon(`icon__name`, 'icon icon_form form-contact__icon')
@@ -13,7 +13,7 @@ section.contact-me.section
                 span.input__box
                   input(placeholder="Имя", name="name" id="name").input__control
 
-          .form-contact__box.form-contact__box_half
+          .form-contact__box.form-contact__box_input
             label(for="email", class="label").form-contact__label Введите ваш email
             .form-contact__row
               +icon(`icon__name`, 'icon icon_form form-contact__icon')
@@ -21,11 +21,11 @@ section.contact-me.section
                 span.input__box
                   input(placeholder="Имя", name="name" id="email").input__control
 
-          .form-contact__box.form-contact__box_full
+          .form-contact__box.form-contact__box_line
             label(for="email", class="label").form-contact__label Введите ваш email
             .form-contact__row
               +icon(`icon__message`, 'icon icon_form form-contact__icon')
               textarea.textarea.form-contact__textarea
-          .form-contact__box.form-contact__box_full
+          .form-contact__box.form-contact__box_line
               button(type="submit", class="button button_size_xl form-contact__submit")
                 .button__text Отправить

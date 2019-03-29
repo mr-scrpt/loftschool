@@ -1,0 +1,41 @@
+script(type='text/x-template')#comments-container
+  .section__inner
+    .section__head
+      h2.title.about-me__title Что обо мне говорят
+      .about-me__ctrls.slider
+        button(type="button").button.button_around.button_slide-prev
+          +icon(`icon__arrow-slider`, 'icon slider__icon slider__icon-prev')
+        button(type="button").button.button_around.button_slide-next
+          +icon(`icon__arrow-slider`, 'icon slider__icon slider__icon-next')
+    .about-me__comments.comments
+      swiper(:options="swiperOption" ref="mySwiper").comments__inner
+        swiper-slide.comments__item.comment(v-for="comment in comments" :key="comment.id")
+          blockquote.blockquote.comment__inner
+            p.comment__text {{comment.comment}}
+            cite.comment__author-row
+              .comment__userpic
+                img(:src="comment.photo" class="comment__userpic-img img" :alt="'Аватар пользовтеля: ' + comment.author")
+              .comment__author-info
+                .comment__author-name {{comment.author}}
+                .comment__office {{comment.post}}
+
+//script(type='text/x-template')#comments-controls
+//  .about-me__ctrls.slider
+//    button(type="button" @click="$emit('roll', 'prev')").button.button_around
+//      +icon(`icon__arrow-slider`, 'icon slider__icon slider__icon-prev')
+//    button(type="button" @click="$emit('roll', 'next')").button.button_around
+//      +icon(`icon__arrow-slider`, 'icon slider__icon slider__icon-next')
+//
+//script(type='text/x-template')#comments-inner
+//  flickity.comments__inner
+//    blockquote.blockquote.comments__item.comment(v-for="comment in comments" :key="comment.id")
+//      .comment__inner
+//        p.comment__text {{comment.comment}}
+//        cite.comment__author-row
+//          .comment__userpic
+//            img(:src="comment.photo" class="comment__userpic-img img" :alt="'Аватар пользовтеля: ' + comment.author")
+//
+//          .comment__author-info
+//            .comment__author-name {{comment.author}}
+//            .comment__office {{comment.post}}
+

@@ -25,6 +25,27 @@
   &_pseudo{
     background: none;
   }
+  &_slide{
+    background: $blue_dark;
+    width: 55px;
+    height: 55px;
+  }
+  &_slide-prev{
+    margin-right: 10px;
+  }
+  &_slide-next{
+    margin-left: 10px;
+  }
+  &_around{
+    background: transparent;
+    border: 1px solid #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    @include ts(border-color);
+
+  }
 
 }
 .button:before{
@@ -35,6 +56,9 @@
   left: 1px;
   content: '';
   background: $orange; //цвет фона
+  @include ts(background);
+
+
 }
 .button_sandwich:before{
   background: url("../images/icons/icon__menu-sandwich.png") no-repeat;
@@ -44,11 +68,31 @@
   background-size: contain;
 }
 
-
+.button_slide:before{
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-color: $blue_dark;
+  @include ts(background-color);
+}
+.button_slide_prev:before{
+  background-image: svg-load('icon__arrow-slider.svg', fill=#fff, width=10px, height=10px);
+}
+.button_slide_next:before{
+  transform: rotate(180deg);
+  background-image: svg-load('icon__arrow-slider.svg', fill=#fff, width=10px, height=10px);
+}
 
 .button_pseudo:before{
   background: none;
 }
+
+.button_around:before{
+  background: transparent;
+
+}
+
+
+
 .button .button__text{
   position: relative;
   display: inline-block;
@@ -100,7 +144,10 @@
   text-transform: uppercase;
 }
 .button_size_xl .button__text{
-  margin: 12px 100px;
+  padding: 20px 110px;
+  @include phones{
+    padding: 20px 80px;
+  }
 }
 /*XL - КОНЕЦ*/
 /*Состояния*/
@@ -109,9 +156,11 @@
 .button.button:hover{
   cursor: pointer;
 
+
 }
 .button.button:hover{
   &:before{
+    background: color($orange lightness(40%));
   }
 }
 //Псевдо
@@ -126,13 +175,28 @@
 }
 //Сендтвич
 .button.button_sandwich:hover{
-  @inclusde ts(opacity);
+  @include ts(opacity);
 }
 .button.button_sandwich:hover{
   &:before{
     opacity: 0.7;
   }
 }
+//Слайдер
+.button.button_sandwich:hover{
+  &:before{
+    opacity: 0.7;
+  }
+}
 
+.button_slide:hover{
+  &:before{
+    background-color: $orange;
+  }
+}
 
+//Слайдер
+.button.button_around:hover{
+  border-color: $orange;
+}
 
