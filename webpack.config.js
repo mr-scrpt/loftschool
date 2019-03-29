@@ -89,6 +89,19 @@ module.exports = (env, argv) => {
     ]
   };
 
+  const gcmql = {
+    test: /\.css$/,
+    use: [
+      "style-loader",
+      {
+        loader: "css-loader"
+
+      },
+      {
+        loader: "group-css-media-queries-loader"
+      }
+    ]
+  };
   const config = {
     entry: {
       main: "./src/main.js",
@@ -101,7 +114,7 @@ module.exports = (env, argv) => {
       chunkFilename: "[chunkhash].js"
     },
     module: {
-      rules: [pcss, vue, js, files, svg, pug]
+      rules: [gcmql,pcss,vue, js, files, svg, pug]
     },
     resolve: {
       alias: {

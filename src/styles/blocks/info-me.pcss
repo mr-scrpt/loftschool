@@ -9,6 +9,9 @@
   min-height: 700px;
   max-height: 1100px;*/
   height: 1000px;
+  @include tablets{
+     height: 750px;
+  }
 
   &__inner{
     position: relative;
@@ -73,6 +76,10 @@
     height: 200px;
     border-radius: 50%;
     overflow: hidden;
+    @include tablets{
+      width: 170px;
+      height: 170px;
+    }
   }
   &__table{
     width:100%

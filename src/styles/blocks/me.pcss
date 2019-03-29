@@ -2,6 +2,9 @@
   &__inner{
     display: flex;
     max-width: 640px;
+    @include tablets{
+      flex-wrap: wrap;
+    }
   }
   &__info{
     font-size: 18px;
@@ -9,6 +12,10 @@
     @include to(#fff,.4);
     padding-right: 30px;
     min-width: 170px;
+    @include tablets{
+      width: 100%;
+      text-align: center;
+    }
   }
   &__name{
     color: #fff;
@@ -17,5 +24,10 @@
     line-height: 60px;
     padding: 0 0 0 30px;
     margin: 0;
+    @include tablets{
+      width: 100%;
+      text-align: center;
+      font-size: 48px;
+    }
   }
 }

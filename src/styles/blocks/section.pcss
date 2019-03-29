@@ -12,11 +12,17 @@
     @include laptop {
       width: 100%;
     }
+    @include tablets {
+      padding-bottom: 10px;
+    }
   }
   &__head{
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 30px;
     align-items: center;
+    @include tablets {
+      justify-content: center;
+    }
   }
 }

@@ -12,6 +12,9 @@
     @include desktop{
       height: 800px;
     }
+    @include tablets{
+      height: 700px;
+    }
     margin:auto;
     display: flex;
     flex-direction: column;
@@ -79,10 +82,17 @@
     justify-content: center;
     align-items: center;
     z-index: 30;
+    @include tablets{
+      align-items: start;
+      margin-top: 170px;
+    }
   }
   &__arrow{
     display: flex;
     justify-content: center;
     z-index: 200;
+    @include tablets{
+      display: none;
+    }
   }
 }
