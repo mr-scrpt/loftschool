@@ -156,13 +156,14 @@
 .button.button:hover{
   cursor: pointer;
 
-
 }
 .button.button:hover{
   &:before{
-    background: color($orange lightness(40%));
+   background: color($orange lightness(40%));
   }
 }
+
+
 //Псевдо
 .button.button_pseudo:hover{
   cursor: pointer;
@@ -175,19 +176,22 @@
 }
 //Сендтвич
 .button.button_sandwich:hover{
-  @include ts(opacity);
-}
-.button.button_sandwich:hover{
   &:before{
     opacity: 0.7;
+    background: url("../images/icons/icon__menu-sandwich.png") no-repeat;
   }
 }
+
+.button.button_close:hover{
+  &:before{
+    opacity: 0.7;
+    background: url("../images/icons/icon__menu-close.png") no-repeat;
+    background-size: contain;
+  }
+}
+
+
 //Слайдер
-.button.button_sandwich:hover{
-  &:before{
-    opacity: 0.7;
-  }
-}
 
 .button_slide:hover{
   &:before{

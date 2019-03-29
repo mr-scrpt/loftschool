@@ -4,6 +4,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 import "./scripts/top-menu";
+import "./scripts/form-focus";
 import "./scripts/parallax";
 //import "./scripts/scroll";
 import "./scripts/vue-skills";
