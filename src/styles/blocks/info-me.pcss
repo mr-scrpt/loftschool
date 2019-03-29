@@ -1,27 +1,55 @@
 .info-me{
-  height: 100vh;
-  min-height: 1400px;
+  position: relative;
+  z-index: 120;
   display: flex;
   align-items: center;
   justify-content: center;
-  //background: $dark;
   background: url("../images/content/bg__info-me.jpg") bottom;
-  //background-position: bottom;
+  /*height: 100vh;
+  min-height: 700px;
+  max-height: 1100px;*/
+  min-height: 1000px;
+  @include tablets{
+    min-height: 750px;
+  }
+  @include middle{
+
+  }
+
   &__inner{
     position: relative;
     z-index: 1;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    max-width: 100%;
-  //height: 100%;
+    width: 100%;
+
   }
   &__visual{
-    width: 25%;
+    width: 27%;
+    @include desktop{
+      width: 35%;
+    }
+    @include laptop{
+      width: 40%;
+    }
+    @include middle{
+      width: 100%;
+    }
   }
   &__descriotion{
     width: 41.6666%;
     display: flex;
     flex-direction: column;
+    @include laptop{
+      width: 60%;
+    }
+    @include middle{
+      width: 100%;
+    }
+    @include phones {
+      margin-bottom: 150px;
+    }
   }
   &__wysiwyg{
     flex-grow: 1;
@@ -44,8 +72,6 @@
       font-size: 48px;
       line-height: 0;
       @include to(red,.3);
-
-
     }
   }
   &__user-img{
@@ -55,10 +81,12 @@
     height: 200px;
     border-radius: 50%;
     overflow: hidden;
-
+    @include tablets{
+      width: 170px;
+      height: 170px;
+    }
   }
   &__table{
     width:100%
   }
-
 }

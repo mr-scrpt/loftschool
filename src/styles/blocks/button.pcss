@@ -1,0 +1,202 @@
+.button{
+  touch-action: manipulation;
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  color: #fff;
+  border: 0;
+  outline: 0;
+  background: $orange; // Цвет бордера
+  @include ts(background);
+  text-align: center;
+  white-space: nowrap;
+  &_sandwich{
+    background: none;
+    height: 24px;
+    width: 20px;
+  }
+  &_close{
+    background: none;
+    height: 20px;
+    width: 20px;
+  }
+  &_pseudo{
+    background: none;
+  }
+  &_slide{
+    background: $blue_dark;
+    width: 55px;
+    height: 55px;
+  }
+  &_slide-prev{
+    margin-right: 10px;
+  }
+  &_slide-next{
+    margin-left: 10px;
+  }
+  &_around{
+    background: transparent;
+    border: 1px solid #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    @include ts(border-color);
+
+  }
+
+}
+.button:before{
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  left: 1px;
+  content: '';
+  background: $orange; //цвет фона
+  @include ts(background);
+
+
+}
+.button_sandwich:before{
+  background: url("../images/icons/icon__menu-sandwich.png") no-repeat;
+}
+.button_close:before{
+  background: url("../images/icons/icon__menu-close.png") no-repeat;
+  background-size: contain;
+}
+
+.button_slide:before{
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-color: $blue_dark;
+  @include ts(background-color);
+}
+.button_slide_prev:before{
+  background-image: svg-load('icon__arrow-slider.svg', fill=#fff, width=10px, height=10px);
+}
+.button_slide_next:before{
+  transform: rotate(180deg);
+  background-image: svg-load('icon__arrow-slider.svg', fill=#fff, width=10px, height=10px);
+}
+
+.button_pseudo:before{
+  background: none;
+}
+
+.button_around:before{
+  background: transparent;
+
+}
+
+
+
+.button .button__text{
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: top;
+}
+
+/*Размеры кнопок*/
+/*S - Начало*/
+.button_size_s{
+  font-size: 13px;
+  line-height: 24px;;
+}
+
+.button_size_s .button__text{
+  margin: 0 10px
+}
+
+/*S - КОНЕЦ*/
+
+/*M - Начало*/
+.button_size_m{
+  font-size: 13px;
+  line-height: 28px;
+}
+
+.button_size_m .button__text{
+  margin: 0 13px;
+}
+/*M - КОНЕЦ*/
+
+
+/*L - Начало*/
+.button_size_l{
+  font-size: 15px;
+  line-height: 32px;
+}
+.button_size_l .button__text{
+  margin: 0 15px;
+}
+/*L - КОНЕЦ*/
+
+/*XL - Начало*/
+.button_size_xl{
+  font-size: 18px;
+  line-height: 38px;
+  font-weight: $font_bold;
+  text-transform: uppercase;
+}
+.button_size_xl .button__text{
+  padding: 20px 110px;
+  @include phones{
+    padding: 20px 80px;
+  }
+}
+/*XL - КОНЕЦ*/
+/*Состояния*/
+//Стандартная кнопка
+
+.button.button:hover{
+  cursor: pointer;
+
+
+}
+.button.button:hover{
+  &:before{
+    background: color($orange lightness(40%));
+  }
+}
+//Псевдо
+.button.button_pseudo:hover{
+  cursor: pointer;
+  background: transparent;
+}
+.button.button_pseudo:hover{
+  &:before{
+    background: transparent;
+  }
+}
+//Сендтвич
+.button.button_sandwich:hover{
+  @include ts(opacity);
+}
+.button.button_sandwich:hover{
+  &:before{
+    opacity: 0.7;
+  }
+}
+//Слайдер
+.button.button_sandwich:hover{
+  &:before{
+    opacity: 0.7;
+  }
+}
+
+.button_slide:hover{
+  &:before{
+    background-color: $orange;
+  }
+}
+
+//Слайдер
+.button.button_around:hover{
+  border-color: $orange;
+}
+

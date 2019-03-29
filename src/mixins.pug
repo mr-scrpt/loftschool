@@ -3,8 +3,35 @@ mixin icon(name, className)
   svg(class=className viewBox=icon.viewBox preserveAspectRatio="none")
     use(xlink:href=icon.url)
 
-mixin image(path, className, role)
-  if !role
-    img(src=require(`images/${path}`) class=className)
+
+mixin image(path, className, description, attrRole)
+  if role
+    img(src=require(`images/${path}`) class=className alt=description role= attrRole)
   else
-    img(src=require(`images/${path}`) class=className, role=`${role}`)
+    img(src=require(`images/${path}`) class=className alt=description)
+
+//Миксин для социалок
+mixin social(elem,modify)
+  -let soc = {insta: "instagram.com", vk: "vk.com" ,gh: "github.com"}
+  if(modify === undefined)
+    if(elem == "")
+      div(class=`soc-block`)
+        each val, index in soc
+          a(href=`${val}`, class="soc-block__link", target="_blank")
+            +icon(`icon__${index}`, `soc-block__icon`)
+    else
+      div(class=`soc-block ${elem}`)
+        each val, index in soc
+          a(href=`${val}`, class="soc-block__link", target="_blank")
+            +icon(`icon__${index}`, `soc-block__icon`)
+  else if(elem == "")
+    div(class=`soc-block soc-block_${modify}`)
+      each val, index in soc
+        a(href=`${val}`, class="soc-block__link", target="_blank")
+          +icon(`icon__${index}`, `soc-block__icon`)
+  else
+    div(class=`soc-block soc-block_${modify} ${elem}`)
+      each val, index in soc
+        a(href=`${val}`, class="soc-block__link", target="_blank")
+          +icon(`icon__${index}`, `soc-block__icon`)
+

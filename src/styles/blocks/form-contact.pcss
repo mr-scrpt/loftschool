@@ -1,18 +1,24 @@
 .form-contact{
-  display: flex;
-  flex-wrap: wrap;
+  &__inner{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px;
+    margin-right: -15px;
+  }
   &__box{
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 50px;
-    &_half{
-      width: calc(50% - 50px);
-      padding-right: 50px;
-      //background-color: pink;
+    margin-left: 15px;
+    margin-right: 15px;
+    &_input{
+      width: calc(50% - 30px);
+      @include middle{
+        width: calc(100% - 30px);
+      }
     }
-    &_full{
-      width: calc(100% - 50px);
-      padding-right: 50px;
+    &_line{
+      width: calc(100% - 30px);
     }
   }
   &__label{
@@ -29,20 +35,24 @@
   &__icon{
     padding: 3px;
     fill: rgba(#fff, .3);
-    width: 28px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     margin-right: 16px;
+    box-sizing: border-box;
   }
   &__textarea{
     background: transparent;
     border: none;
-    width: calc(100% - 60px);
+    width: calc(100% - 55px);
     resize: none;
     color: #fff;
     font-weight: $font_bold;
     font-size: 18px;
     line-height: 36px;
     outline: none;
+  }
+  &__submit{
+    margin: auto;
   }
 
 }

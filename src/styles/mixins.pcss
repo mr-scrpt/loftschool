@@ -1,5 +1,28 @@
+//Бордер
+@mixin bdr($side, $color, $size, $border-radius) {
+  @if side{
+    border: $size solid $color;
+    @if border-radius{
+      border-radius: $border-radius;
+    }
+  }
+  @else{
+    border-$side: $size solid $color;
+    @if border-radius{
+      border-radius: $border-radius;
+    }
+  }
+}
+//Плейсхолдеры
+//@define-placeholder section-height {
+//   height: 100vh;
+//   min-height: 700px;
+//   max-height: 1100px;
+//}
+
+
 @mixin desktopHd() {
-  @media screen and (max-width: $ bp-desktop-hd) {
+  @media screen and (max-width: $bp-desktop-hd) {
     @content ;
   }
 }
@@ -7,6 +30,17 @@
 @mixin desktop() {
   @media screen and (max-width: $bp-desktop) {
     @content ;
+  }
+}
+
+@mixin laptop() {
+  @media screen and (max-width: $bp-laptop) {
+    @content ;
+  }
+}
+@mixin middle() {
+  @media screen and (max-width: $bp-middle) {
+  @content ;
   }
 }
 
@@ -41,15 +75,7 @@
   }
 
 }
-//Бордер
-//@mixin bdr($side,$color,$size) {
-//  @if $side == all {
-//    border: $size solid $color;
-//  }
-//  @else{
-//    border-#{$side}: $(side) $size solid $color;
-//  }
-//}
+
 
 // Фон
 

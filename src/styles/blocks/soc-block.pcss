@@ -1,6 +1,23 @@
 .soc-block{
   display: flex;
   align-items: center;
+  &__link{
+    margin-right: 40px;
+    display: block;
+    width: 30px;
+    height: 30px;
+    &:last-child{
+      margin-right: 0;
+    }
+  }
+  &__icon{
+    fill: rgba(#fff, .3);
+    @include ts(fill);
+    &:hover{
+      fill: $orange
+    }
+  }
+
   &_alt{
     .soc-block__link{
       margin-right: 20px;
@@ -12,28 +29,28 @@
     }
     .soc-block__icon{
       position: absolute;
-      width: 20px;
-      height: 20px;
+      width: 25px;
+      height: 25px;
       left: 50%;
       top: 50%;
       transform: translate(-50%,-50%);
     }
   }
-  &__link{
-    margin-right: 40px;
-    display: block;
-
-    &:last-child{
-      margin-right: 0;
-    }
+  &_header{
+    display: none;
   }
-  &__icon{
-    fill: rgba(#fff, .3);
-    @include ts(fill);
-    width: 30px;
-    height: 30px;
-    &:hover{
-      fill: $orange
+  &_menu{
+    display: none;
+    @include laptop {
+      display: flex;
+    }
+
+    .soc-block__icon{
+      fill: $text-color;
+      @include ts(fill);
+      &:hover{
+        fill: $orange
+      }
     }
   }
 

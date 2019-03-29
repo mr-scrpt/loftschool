@@ -3,22 +3,25 @@ header.header
     .header__topbar
       .header__logo
        | ДЛ
-      nav.header__menu.menu-top
-        -let menu = ['Главная', 'Обо мне','Навыки','Работы','Отзывы','Связаться']
-          each item in menu
-            a(href=`#${item}`, class="menu-top__link")=item
-      .header__soc.soc-block
-        //.soc-block__inner
-        -let soc = {insta: "instagram.com", vk: "vk.com" ,gh: "github.com"}
-          each val, index in soc
-            a(href=`${val}`, class="soc-block__link", target="_blank")
-              +icon(`icon__${index}`, `soc-block__icon`)
+      .header__menu
+        button(type="button", class="button button_sandwich header__menu-open")
+        .menu-top
+          .menu-top__inner
+            .menu-top__box
+              button(type="button", class="button button_close header__menu-close")
+              nav.menu-top__list
+                each item in menu
+                  a(href=`#${item}`, class="menu-top__link")=item
+              +social('menu-top__info','menu')
+
+      +social('header__soc', 'header')
+
     .header__me.me
       .me__inner
         .me__info
           .me__line Личный сайт
           .me__line веб разработчика
-        .me__name Дмитрий Лукьянов
+        h1.me__name Дмитрий Лукьянов
 
 
     .header__arrow.arrow

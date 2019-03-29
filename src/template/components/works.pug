@@ -1,0 +1,79 @@
+//общий контейнер слайдера и информации
+script(type='text/x-template')#slider-container
+  .my-works__box
+    display-slider(
+        :works="works"
+        :currentWork="currentWork"
+        :currentIndex="currentIndex"
+        @slide="handelSlide"
+        @changeSlide="changeSlide"
+
+      )
+    info-slider(
+      :currentWork="currentWork"
+    )
+
+
+//обвертка слайдера
+script(type='text/x-template')#slider-display
+  .my-works__slider.slider
+    .slider__inner
+      .slider__main-img-box
+        img(:src="currentWork.photo" class="slider__main-img img")
+        .slider__media
+          thumbs-slider(
+            :works="works"
+            :currentWork="currentWork"
+            @changeSlide="clickSlide => $emit('changeSlide', clickSlide)"
+          )
+          btns-slider(
+            @slide="dir => $emit('slide', dir)"
+
+          )
+      .slider__number
+        .slider__number-box {{currentIndex + 1}}
+
+// Миниатюры
+script(type='text/x-template')#slider-thumbs
+  .slide
+    .slider__minislides.slide__one(
+        v-for="work in works"
+        :key="work.id"
+        :src="work.photo"
+        :class="{slider__minislide_active: currentWork.id == work.id}"
+        @click="$emit('changeSlide', work.id)"
+    )
+      img.slider__other-img.img(
+        :src="work.photo"
+      )
+
+
+
+
+//кнопки управления слайдером
+script(type='text/x-template')#slider-btns
+  .slider__ctrls
+    button(type="button" @click="$emit('slide','next')").button.button_slide.button_slide_next
+    button(type="button" @click="$emit('slide','prev')").button.button_slide.button_slide_prev
+
+
+//инфо-блок
+script(type='text/x-template')#slider-info
+  .my-works__about
+    tags(
+      :tagsArr="tagsArr"
+    )
+
+    .my-works__description
+      h3.subtitle {{currentWork.title}}
+      blockquote.blockquote.my-works__text {{currentWork.desc}}
+      a(:href="currentWork.link" target="_blank").my-works__link
+        .my-works__icon.icon.icon_chain
+        span.my-works__link-text Посмотреть сайт
+
+//Теги
+script(type='text/x-template')#slider-tags
+  .my-works__tags.tags
+    .tags__inner
+      .tags__item(v-for="tag in tagsArr")
+        .tags__text {{tag}}
