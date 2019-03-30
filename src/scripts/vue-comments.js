@@ -13,8 +13,8 @@ new Vue({
       comments: []
       ,swiperOption: {
         navigation: {
-          nextEl: '.slider__next'
-          ,prevEl: '.slider__prev'
+          nextEl: '.button_slide-next'
+          ,prevEl: '.button_slide-prev'
         }
         ,loop: true
         ,slidesPerView: 2
