@@ -159,7 +159,7 @@
 }
 .button.button:hover{
   &:before{
-   background: color($orange lightness(40%));
+   background-color: color($orange lightness(40%));
   }
 }
 
@@ -200,6 +200,11 @@
 }
 
 //Слайдер
+.button.button_around:hover{
+  &:before {
+    background-color: transparent;
+  }
+}
 .button.button_around:hover{
   border-color: $orange;
 }

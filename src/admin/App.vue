@@ -3,7 +3,6 @@
     header.header
     section.content
 </template>
-
 <style lang="postcss">
 .page{
   position: relative;
