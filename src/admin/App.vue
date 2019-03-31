@@ -18,25 +18,35 @@
         header.content__head
           .content__title Блок "Обо мне"
           button.button.button_size_l
-            .button__text.content__add Добавить группу
+            .button__text.add-plus Добавить группу
 
         .content__body
           .content__tile.tile.editor
             .tile__inner
               .tile__header.tile__enter-block
-                span.input.input--size-l.tile__enter.tile__input-box
+                span.input.input--size-l.tile__input-box
                   span.input__box
                     input(placeholder="Название группы").input__control
-                  .tile__function
-                    .editor__accept
-                    .editor__decline
-                .tile__body
+                .tile__function
+                  .editor__accept
+                    button.button.button_size_l
+                      img(src="../images/admin/icon__accept.png").button__icon.icon-accept.editor__icon
+                  .editor__decline
+                    button.button.button_size_l
+                      img(src="../images/admin/icon__decline.png").button__icon.icon-decline.editor__icon
+              .tile__body
 
-                .tile__footer
-                  .editor__add-row
-                    input.editor__add-name
-                    input.editor__add-value
-                    button.editor__add-button
+              .tile__footer
+                .editor__add-row
+                  span.input.input--size-l.tile__input-box.editor__add-name
+                    span.input__box
+                      input(placeholder="новый навык").input__control
+
+                  span.input.input--size-l.tile__input-box.input_percent.editor__add-value
+                    span.input__box
+                      input(placeholder="100").input__control
+
+                  button.button.editor__add-button.add-plus.add-plus_big
 
 
 
@@ -74,6 +84,7 @@
     background: #fff;
     touch-action: manipulation;
     padding: 5px 0;
+    box-sizing: border-box;
     &:before{
       position: absolute;
       top: 1px;
@@ -82,6 +93,16 @@
       left: 1px ;
       content: '';
       background: #fff;
+    }
+    &_percent{
+      padding-right: 22px;
+      :after{
+        position: absolute;
+        opacity: .7;
+        content: "%";
+        width: 20px;
+        right: 0;
+      }
     }
     &.input__box{
       position: relative;
@@ -99,9 +120,9 @@
       border: 0;
       outline: none;
       background: none;
-    }
-    &_focus{
-      border-bottom: 1px solid #000;
+      &::placeholder{
+        opacity: .5;
+      }
     }
   }
   .button{
@@ -278,7 +299,7 @@
     font-size: 21px;
     font-weight: $font_bold;
   }
-  .content__add{
+  .add-plus{
     color: $blue;
     padding: 0 60px;
     position: relative;
@@ -296,7 +317,17 @@
       text-align: center;
       border-radius: 50%;
       left: 30px;
-      background: linear-gradient(bottom right, $blue_dark, $blue);;
+      background: linear-gradient(bottom right, $blue_dark, $blue);
+    }
+    &_big{
+      height: 40px;
+      &:before{
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        left: auto;
+        right: 0;
+      }
     }
     &:hover{
       color: $orange;
@@ -318,20 +349,67 @@
     box-shadow: 4px 3px 20px rgba(0, 0, 0, 0.07);
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 75px 1fr 80px;
+    grid-template-rows: 55px 1fr 80px;
     grid-template-areas:
             "tile-header"
             "tile-body"
             "tile-footer"
   ;
   }
+
   .tile__header{
     grid-area: tile-header;
+    border-bottom: 1px solid rgba(#000, .15);
+  }
+  .tile__enter-block{
+    display: flex;
+  }
+  .tile__input-box{
+    width: 75%;
+  }
+
+  .tile__function{
+
+    width: 25%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .icon-accept{
+    width: 14px;
+    height: 12px;
+  }
+  .icon-decline{
+    width: 14px;
+    height: 12px;
+  }
+  .editor__icon{
+    padding-left: 20px;
   }
   .tile__body{
     grid-area: tile-body;
   }
   .tile__footer{
     grid-area: tile-footer;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
   }
+  .editor__add-row{
+    width: 90%;
+    display: flex;
+    align-items: center;
+  }
+  .editor__add-name{
+    width: 60%;
+
+  }
+  .editor__add-value{
+    width: 20%;
+
+  }
+  .editor__add-button{
+    width: 20%;
+
+  }
+
 </style>
