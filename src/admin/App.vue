@@ -19,23 +19,41 @@
           .content__title Блок "Обо мне"
           button.button.button_size_l
             .button__text.add-plus Добавить группу
-
         .content__body
-          .content__tile.tile.editor
+
+
+
+
+          // Секция ===========================
+          .tile.content__tile.editor
             .tile__inner
               .tile__header.tile__enter-block
                 span.input.input--size-l.tile__input-box
                   span.input__box
                     input(placeholder="Название группы").input__control
-                .tile__function
+                .editor__function
                   .editor__accept
                     button.button.button_size_l
-                      img(src="../images/admin/icon__accept.png").button__icon.icon-accept.editor__icon
+                      img(src="../images/admin/icon__accept.png").button__icon.editor__icon
                   .editor__decline
                     button.button.button_size_l
-                      img(src="../images/admin/icon__decline.png").button__icon.icon-decline.editor__icon
+                      img(src="../images/admin/icon__decline.png").button__icon.editor__icon
               .tile__body
+                .editor__row
+                  span.input.input--size-l.tile__input-box.editor__name
+                    span.input__box
+                      input(placeholder="Название группы" value="Git" disabled).input__control
+                  span.input.input--size-l.tile__input-box.input_percent.editor__value
+                    span.input__box
+                      input(placeholder="Название группы" value="70" disabled).input__control
 
+                  .editor__function
+                    .editor__edit
+                      button.button.button_size_l
+                        img(src="../images/admin/icon__pencil.png").button__icon.editor__icon
+                    .editor__delete
+                      button.button.button_size_l
+                        img(src="../images/admin/icon__trash.png").button__icon.editor__icon
               .tile__footer
                 .editor__add-row
                   span.input.input--size-l.tile__input-box.editor__add-name
@@ -47,6 +65,9 @@
                       input(placeholder="100").input__control
 
                   button.button.editor__add-button.add-plus.add-plus_big
+        // Секция КОНЕЦ ===========================
+
+
 
 
 
@@ -365,28 +386,24 @@
     display: flex;
   }
   .tile__input-box{
-    width: 75%;
+    width: calc(100% - 80px);
   }
 
-  .tile__function{
-
-    width: 25%;
+  .editor__function{
+    width: 80px;
     display: flex;
     justify-content: flex-end;
-  }
-  .icon-accept{
-    width: 14px;
-    height: 12px;
-  }
-  .icon-decline{
-    width: 14px;
-    height: 12px;
+    background-color: yellow;
   }
   .editor__icon{
+    width: 14px;
+    height: 12px;
     padding-left: 20px;
   }
+
   .tile__body{
     grid-area: tile-body;
+    padding-bottom: 45px;
   }
   .tile__footer{
     grid-area: tile-footer;
@@ -400,16 +417,28 @@
     align-items: center;
   }
   .editor__add-name{
-    width: 60%;
+    width: 70%;
 
   }
   .editor__add-value{
-    width: 20%;
-
+    width: 30%;
   }
   .editor__add-button{
     width: 20%;
-
+  }
+  .editor__row{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: yellow;
+  }
+  .editor__name{
+    width: calc(70% - 40px);
+    background-color: pink;
+  }
+  .editor__value{
+    width: calc(30% - 40px);
+    background-color: green;
   }
 
 </style>
