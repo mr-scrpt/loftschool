@@ -1,0 +1,38 @@
+// Секция ===========================
+.tile.content__tile.editor
+  .tile__inner
+    .tile__header.tile__enter-block
+      span.input.input--size-l.tile__input-box
+        span.input__box
+          input(placeholder="Название группы").input__control
+      .editor__function
+        .editor__accept
+          button.button.button_size_l
+            img(src="../images/admin/icon__accept.png").button__icon.editor__icon
+        .editor__decline
+          button.button.button_size_l
+            img(src="../images/admin/icon__decline.png").button__icon.editor__icon
+    .tile__body
+      //Один ряд
+      include tile-row
+      include tile-row
+      include tile-row_active
+      include tile-row
+      //Один ряд КОНЕЦ
+
+
+
+    .tile__footer
+      .editor__add-row
+        span.input.input--size-l.tile__input-box.editor__add-name
+          span.input__box
+            input(placeholder="новый навык").input__control
+
+        span.input.input--size-l.tile__input-box.input_percent.editor__add-value.editor__percent
+          span.input__box
+            input(placeholder="100").input__control
+
+        span.editor__add-footer
+          button.button
+            .icon.icon_add-button.icon_add-button_big
+      // Секция КОНЕЦ ===========================

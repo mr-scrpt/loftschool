@@ -21,76 +21,13 @@
             .button__icon.icon.icon_add-button
             .button__text Добавить группу
         .content__body
-
-
-
-
-          // Секция ===========================
-          .tile.content__tile.editor
-            .tile__inner
-              .tile__header.tile__enter-block
-                span.input.input--size-l.tile__input-box
-                  span.input__box
-                    input(placeholder="Название группы").input__control
-                .editor__function
-                  .editor__accept
-                    button.button.button_size_l
-                      img(src="../images/admin/icon__accept.png").button__icon.editor__icon
-                  .editor__decline
-                    button.button.button_size_l
-                      img(src="../images/admin/icon__decline.png").button__icon.editor__icon
-              .tile__body
-                .editor__row
-                  span.input.input--size-l.tile__input-box.editor__name
-                    span.input__box
-                      input(placeholder="Название группы" value="Git" disabled).input__control
-                  span.input.input--size-l.tile__input-box.input_percent.editor__value.editor__percent
-                    span.input__box
-                      input(placeholder="Название группы" value="70" disabled).input__control
-
-                  .editor__function
-                    .editor__edit
-                      button.button.button_size_l
-                        img(src="../images/admin/icon__pencil.png").button__icon.editor__icon
-                    .editor__delete
-                      button.button.button_size_l
-                        img(src="../images/admin/icon__trash.png").button__icon.editor__icon
-              .tile__footer
-                .editor__add-row
-                  span.input.input--size-l.tile__input-box.editor__add-name
-                    span.input__box
-                      input(placeholder="новый навык").input__control
-
-                  span.input.input--size-l.tile__input-box.input_percent.editor__add-value.editor__percent
-                    span.input__box
-                      input(placeholder="100").input__control
-
-                  span.editor__add-footer
-                    button.button
-                      .icon.icon_add-button.icon_add-button_big
-        // Секция КОНЕЦ ===========================
-
-
-
-
-
+          include section/tile-about_group
 
 </template>
 
 <style lang="postcss">
-  //Анимация
-  @mixin ts($obj, $obj2:"empty", $obj3:"empty") {
-    @if $obj3 != "empty" {
-      transition: $obj $th, $obj2 $th, $obj3 $th;
-    }
-    @if $obj2 != "empty" {
-      transition: $obj $th, $obj2 $th;
-    }
-    @else {
-      transition: $obj $th;
-    }
+  @import "../styles/mixins.pcss";
 
-  }
   .img {
     font: 0/0 a;
     border: 0;
@@ -238,11 +175,15 @@
             "content"
   ;}
   .page__container{
-    width: 1200px;
+    max-width: 1200px;
     height: 100%;
     margin: 0 auto;
     padding-left: 60px;
     padding-right: 60px;
+    @include desktop{
+      padding-left: 20px;
+      padding-right: 20px;
+    }
   }
   .header{
     grid-area: header;
@@ -284,6 +225,7 @@
   .menu-tab{
     grid-area: nav;
     background: #fff;
+    width: 100%;
   }
 
   .menu-tab__link{
@@ -316,13 +258,27 @@
             "content-header"
             "content-body"
   ;}
+  .content__tile{
+    background-color: pink;
+    display: flex;
+    flex-direction: column;
+
+  }
   .content__head{
     grid-area: content-header;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    @include tablets{
+      width: 100%;
+    }
   }
   .content__head-add{
     padding: 0 50px;
+    @include tablets{
+      width: 100%;
+      padding: 0;
+    }
   }
   .content__title{
     font-size: 21px;
@@ -335,8 +291,12 @@
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 30px;
     grid-row-gap: 30px;
+    @include laptop{
+      grid-template-columns: 1fr;
+    }
   }
   .tile__inner{
+    height: 100%;
     padding: 20px;
     background: #fff;
     box-shadow: 4px 3px 20px rgba(0, 0, 0, 0.07);
@@ -461,6 +421,7 @@
           line-height: 40px;
           left: auto;
           right: 0;
+          font-size: 24px;
         }
       }
     }
