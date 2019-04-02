@@ -17,8 +17,9 @@
       .page__container.content__inner
         header.content__head
           .content__title Блок "Обо мне"
-          button.button.button_size_l
-            .button__text.add-plus Добавить группу
+          button.button.button_flex.button_size_l.content__head-add
+            .button__icon.icon.icon_add-button
+            .button__text Добавить группу
         .content__body
 
 
@@ -43,7 +44,7 @@
                   span.input.input--size-l.tile__input-box.editor__name
                     span.input__box
                       input(placeholder="Название группы" value="Git" disabled).input__control
-                  span.input.input--size-l.tile__input-box.input_percent.editor__value
+                  span.input.input--size-l.tile__input-box.input_percent.editor__value.editor__percent
                     span.input__box
                       input(placeholder="Название группы" value="70" disabled).input__control
 
@@ -60,11 +61,13 @@
                     span.input__box
                       input(placeholder="новый навык").input__control
 
-                  span.input.input--size-l.tile__input-box.input_percent.editor__add-value
+                  span.input.input--size-l.tile__input-box.input_percent.editor__add-value.editor__percent
                     span.input__box
                       input(placeholder="100").input__control
 
-                  button.button.editor__add-button.add-plus.add-plus_big
+                  span.editor__add-footer
+                    button.button
+                      .icon.icon_add-button.icon_add-button_big
         // Секция КОНЕЦ ===========================
 
 
@@ -159,8 +162,10 @@
     background: none; // Цвет бордера
     text-align: center;
     white-space: nowrap;
-
-
+    &_flex{
+      display: flex;
+      align-items: center;
+    }
   }
   .button:before{
     position: absolute;
@@ -316,47 +321,14 @@
     display: flex;
     align-items: center;
   }
+  .content__head-add{
+    padding: 0 50px;
+  }
   .content__title{
     font-size: 21px;
     font-weight: $font_bold;
   }
-  .add-plus{
-    color: $blue;
-    padding: 0 60px;
-    position: relative;
-    @include ts(color);
-    &:before{
-      position: absolute;
-      content: "+";
-      color: #fff;
-      @include ts(color);
-      width: 20px;
-      height: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-      line-height: 20px;
-      text-align: center;
-      border-radius: 50%;
-      left: 30px;
-      background: linear-gradient(bottom right, $blue_dark, $blue);
-    }
-    &_big{
-      height: 40px;
-      &:before{
-        width: 40px;
-        height: 40px;
-        line-height: 40px;
-        left: auto;
-        right: 0;
-      }
-    }
-    &:hover{
-      color: $orange;
-      &:before{
-        color: $orange;
-      }
-    }
-  }
+
   .content__body{
     grid-area: content-body;
     display: grid;
@@ -399,6 +371,7 @@
     width: 14px;
     height: 12px;
     padding-left: 20px;
+
   }
 
   .tile__body{
@@ -417,14 +390,17 @@
     align-items: center;
   }
   .editor__add-name{
-    width: 70%;
+    width: calc(100% - 160px);
 
   }
-  .editor__add-value{
-    width: 30%;
-  }
-  .editor__add-button{
-    width: 20%;
+  /*.editor__add-value{*/
+    /*width: 80px;*/
+  /*}*/
+  .editor__add-footer{
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
   }
   .editor__row{
     width: 100%;
@@ -433,12 +409,62 @@
     background-color: yellow;
   }
   .editor__name{
-    width: calc(70% - 40px);
+    width: calc(100% - 160px);
     background-color: pink;
   }
   .editor__value{
     width: calc(30% - 40px);
     background-color: green;
+  }
+  .editor__percent{
+    width: calc(80px);
+  }
+
+
+
+  .icon{
+    &_add-button {
+      color: $blue;
+      box-sizing: border-box;
+      position: relative;
+    //@include ts(color); width: 20px;
+      width: 20px;
+      height: 20px;
+
+      &:before {
+        position: absolute;
+        content: "+";
+        color: #fff;
+        @include ts(color);
+        width: 20px;
+        height: 20px;
+        top: 0;
+        left: 0;
+        //transform: translate(-50%, -50%);
+        line-height: 20px;
+        text-align: center;
+        border-radius: 50%;
+        background: linear-gradient(bottom right, $blue_dark, $blue);
+      }
+
+      &:hover {
+        &:before {
+          color: $orange;
+        }
+      }
+      &_big{
+        height: 40px;
+        width: 40px;
+        &:before{
+          width: 40px;
+          height: 40px;
+          line-height: 40px;
+          left: auto;
+          right: 0;
+        }
+      }
+    }
+
   }
 
 </style>
