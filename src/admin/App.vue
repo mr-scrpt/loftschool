@@ -13,8 +13,8 @@
         a(href="#").menu-tab__link.menu-tab__link_active Обо мне
         a(href="#").menu-tab__link Работы
         a(href="#").menu-tab__link Отзывы
-    include section/section_about-me.pug
-    //-include section/section_my-works.pug
+    //-include section/section_about-me.pug
+    include section/section_my-works.pug
 
 </template>
 
@@ -22,6 +22,7 @@
 
   @import "../styles/mixins.pcss";
   @import "./style/img.pcss";
+  @import "./style/textarea.pcss";
   @import "./style/input.pcss";
   @import "./style/button.pcss";
   @import "./style/page.pcss";
@@ -33,6 +34,8 @@
   @import "./style/tile.pcss";
   @import "./style/editor.pcss";
   @import "./style/icon.pcss";
+  @import "./style/img-loader.pcss";
+  @import "./style/tags.pcss";
 
   html{
     height: 100%;

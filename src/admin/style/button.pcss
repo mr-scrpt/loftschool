@@ -16,6 +16,7 @@
     display: flex;
     align-items: center;
   }
+
 }
 .button:before{
   position: absolute;
@@ -27,6 +28,14 @@
   background: none; //цвет фона
 }
 
+.button_rainbow:before{
+  background: linear-gradient(bottom right, $blue_dark, $blue);
+  border-radius: 24px;
+}
+.button_wide{
+  padding-left:40px;
+  padding-right:40px;
+}
 .button{
   & .button__text{
     position: relative;
@@ -35,17 +44,34 @@
     text-overflow: ellipsis;
     vertical-align: top;
     color: $blue;
+    @include ts(color);
   }
+}
 
+.button_rainbow{
+  & .button__text{
+    color: #fff;
+    @include ts(color);
+  }
 }
 
 
-/*L - Начало*/
-.button_size_l{
+/*M - Начало*/
+.button_size_m{
   font-size: 15px;
   line-height: 32px;
 }
-.button_size_l .button__text{
+.button_size_m .button__text{
+  margin: 0 15px;
+}
+/*M - КОНЕЦ*/
+
+/*L - Начало*/
+.button_size_m{
+  font-size: 16px;
+  line-height: 32px;
+}
+.button_size_m .button__text{
   margin: 0 15px;
 }
 /*L - КОНЕЦ*/
@@ -58,12 +84,21 @@
   text-transform: uppercase;
 }
 .button_size_xl .button__text{
-  padding: 20px 110px;
+  padding: 5px 20px;
 }
 /*XL - КОНЕЦ*/
 /*Состояния*/
 //Стандартная кнопка
 
-.button.button:hover{
+.button:hover{
   cursor: pointer;
+  & .button__text {
+    color: $orange;
+  }
+}
+
+.button_rainbow:hover{
+  & .button__text{
+    color: $orange;
+  }
 }
