@@ -13,15 +13,8 @@
         a(href="#").menu-tab__link.menu-tab__link_active Обо мне
         a(href="#").menu-tab__link Работы
         a(href="#").menu-tab__link Отзывы
-    section.content
-      .page__container.content__inner
-        header.content__head
-          .content__title Блок "Обо мне"
-          button.button.button_flex.button_size_l.content__head-add
-            .button__icon.icon.icon_add-button
-            .button__text Добавить группу
-        .content__body
-          include section/tile-about_group
+    include section/section_about-me.pug
+    //-include section/section_my-works.pug
 
 </template>
 
@@ -36,6 +29,7 @@
   @import "./style/profile.pcss";
   @import "./style/menu-tab.pcss";
   @import "./style/content.pcss";
+  @import "./style/about-me.pcss";
   @import "./style/tile.pcss";
   @import "./style/editor.pcss";
   @import "./style/icon.pcss";
@@ -44,6 +38,4 @@
     height: 100%;
     width: 100%;
   }
-
-
 </style>
