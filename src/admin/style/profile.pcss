@@ -1,0 +1,27 @@
+.profile__ava-box{
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.profile__name{
+  padding: 0 20px;
+  font-size: 18px;
+  color: #fff;
+}
+.profile__title{
+  font-size: 14px;
+  color: rgba(#fff,0.7);
+}
+.profile__logout{
+  margin-left: auto;
+  margin-right: 0;
+  color: rgba(#fff,0.7);
+  border-bottom: 1px solid rgba(#fff,0.7);
+  text-decoration: none;
+  @include ts(color,border-color);
+  &:hover{
+    color: $orange;
+    border-color: $orange;
+  }
+}

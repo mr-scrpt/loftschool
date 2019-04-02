@@ -1,0 +1,50 @@
+.content{
+  grid-area: content;
+  background: url("../images/admin/bg__content.jpg") no-repeat;
+  background-size: cover;
+}
+.content__inner{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 120px 1fr;
+  grid-template-areas:
+          "content-header"
+          "content-body"
+;}
+.content__tile{
+  background-color: pink;
+  display: flex;
+  flex-direction: column;
+
+}
+.content__head{
+  grid-area: content-header;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  @include tablets{
+    width: 100%;
+  }
+}
+.content__head-add{
+  padding: 0 50px;
+  @include tablets{
+    width: 100%;
+    padding: 0;
+  }
+}
+.content__title{
+  font-size: 21px;
+  font-weight: $font_bold;
+}
+
+.content__body{
+  grid-area: content-body;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+  @include laptop{
+    grid-template-columns: 1fr;
+  }
+}

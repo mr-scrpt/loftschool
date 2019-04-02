@@ -1,0 +1,35 @@
+.tile__inner{
+  height: 100%;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 4px 3px 20px rgba(0, 0, 0, 0.07);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 55px 1fr 80px;
+  grid-template-areas:
+          "tile-header"
+          "tile-body"
+          "tile-footer"
+;
+}
+
+.tile__header{
+  grid-area: tile-header;
+  border-bottom: 1px solid rgba(#000, .15);
+}
+.tile__enter-block{
+  display: flex;
+}
+.tile__input-box{
+  width: calc(100% - 80px);
+}
+.tile__body{
+  grid-area: tile-body;
+  padding-bottom: 45px;
+}
+.tile__footer{
+  grid-area: tile-footer;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
