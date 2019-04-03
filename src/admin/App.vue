@@ -31,6 +31,8 @@
   @import "./style/menu-tab.pcss";
   @import "./style/content.pcss";
   @import "./style/about-me.pcss";
+  @import "./style/my-work.pcss";
+  @import "./style/new-work.pcss";
   @import "./style/tile.pcss";
   @import "./style/editor.pcss";
   @import "./style/icon.pcss";

@@ -7,9 +7,16 @@
     align-items: center;
     justify-content: center;
     padding: 100px 50px;
+    @include laptop{
+      padding: 80px 20px;
+    }
   }
   &__box{
-    width: 250px;
+    max-width: 250px;
+    @include phones{
+      max-width: 200px;
+    }
+
   }
   &__text{
     width: 100%;

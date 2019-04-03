@@ -1,10 +1,15 @@
 .editor__function{
   width: 80px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
   &_alt{
     width: 100%;
     padding: 40px 0;
+    background: red;
+    @include phones{
+      justify-content: center;
+    }
   }
 }
 .editor__icon{
@@ -70,4 +75,7 @@
 }
 .editor__cancel{
   margin: 0 30px;
+  @include phones{
+    margin: 0 10px;
+  }
 }

@@ -12,6 +12,9 @@
 .profile__title{
   font-size: 14px;
   color: rgba(#fff,0.7);
+  @include phones{
+    display: none;
+  }
 }
 .profile__logout{
   margin-left: auto;
@@ -23,5 +26,8 @@
   &:hover{
     color: $orange;
     border-color: $orange;
+  }
+  @include phones{
+    width: 100%;
   }
 }
