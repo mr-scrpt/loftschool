@@ -23,6 +23,14 @@
     color: #fff;
     border: 2px solid #fff;
     box-sizing: border-box;
+    @include ts(color,border-color);
+  }
+  &:hover{
+    &:before{
+      border-color: $orange;
+      color: $orange;
+    }
+
   }
 }
 .new-work__title{

@@ -6,7 +6,6 @@
   &_alt{
     width: 100%;
     padding: 40px 0;
-    background: red;
     @include phones{
       justify-content: center;
     }
@@ -22,6 +21,7 @@
   width: 90%;
   display: flex;
   align-items: center;
+
 }
 .editor__add-name{
   width: calc(100% - 160px);
@@ -41,6 +41,13 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  &_half {
+    width: calc(50% - 30px);
+  }
+  &_cell{
+    margin-right: 15px;
+    margin-left: 15px;
+  }
 }
 .editor__name{
   width: calc(100% - 160px);

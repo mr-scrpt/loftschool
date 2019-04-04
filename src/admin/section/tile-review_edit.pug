@@ -1,0 +1,47 @@
+// Секция ===========================
+.tile.content__tile.editor.my-work__full
+  .tile__inner.tile__inner_simply
+    .tile__header Редактирование отзыва
+    .tile__body.tile__body_half
+      .tile__ava-add
+        .ava-loader
+          .ava-loader__inner
+            .ava-loader__image-box
+              img(src="../images/admin/ava__stock.png").ava-loader__img
+            .ava-loader__button
+              button.button.button_size_m
+                .button__text Добавить фото
+      .tile__review-add
+        .tile__review-inner
+          //Одно поле с лэйблом
+          .editor__row.editor__row_half.editor__row_cell
+            label.label.editor__label-full Имя автора
+            span.input.input--size-l.editor__input-full
+              span.input__box
+                input(placeholder="Название группы" value="Git").input__control
+          //Одно поле с лэйблом КОНЕЦ
+
+          //Одно поле с лэйблом
+          .editor__row.editor__row_half.editor__row_cell
+            label.label.editor__label-full Титул Автора
+            span.input.input--size-l.editor__input-full
+              span.input__box
+                input(placeholder="Название группы" value="Git").input__control
+          //Одно поле с лэйблом КОНЕЦ
+
+          //Одно поле с лэйблом
+          .editor__row.editor__row_cell
+            label.label.editor__label-full Описание
+            textarea(rows='3').textarea.editor__textarea-full
+          //Одно поле с лэйблом КОНЕЦ
+
+          //Одно поле с лэйблом
+          .editor__row.editor__row_cell
+            .editor__function.editor__function_alt
+              button.button.button_size_m.editor__cancel
+                .button__text Отмена
+              button.button.button_rainbow.button_size_xl
+                .button__text СОХРАНИТЬ
+
+          //Одно поле с лэйблом КОНЕЦ
+        // Секция КОНЕЦ ===========================

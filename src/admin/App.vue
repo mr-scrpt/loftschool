@@ -8,20 +8,23 @@
           .profile__name Дмитрий Лукьянов
           .profile__title Панель администратора
           a(href="#").profile__logout Выйти
-    section.page__container.menu-tab
-      nav.menu-tab__inner
+    section.menu-tab
+      nav.menu-tab__inner.page__container
         a(href="#").menu-tab__link.menu-tab__link_active Обо мне
         a(href="#").menu-tab__link Работы
         a(href="#").menu-tab__link Отзывы
     //-include section/section_about-me.pug
-    include section/section_my-works.pug
+    //-include section/section_my-works-editor
+    include section/section_reviews-editor.pug
 
 </template>
 
 <style lang="postcss">
 
   @import "../styles/mixins.pcss";
+  @import "./style/blockquote.pcss";
   @import "./style/img.pcss";
+  @import "./style/cite.pcss";
   @import "./style/textarea.pcss";
   @import "./style/input.pcss";
   @import "./style/button.pcss";
@@ -38,6 +41,7 @@
   @import "./style/icon.pcss";
   @import "./style/img-loader.pcss";
   @import "./style/tags.pcss";
+  @import "./style/ava-loader.pcss";
 
   html{
     height: 100%;
