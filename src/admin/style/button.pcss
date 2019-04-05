@@ -17,8 +17,15 @@
     display: flex;
     align-items: center;
   }
-
+  &_close{
+    background: none;
+    height: 20px;
+    width: 20px;
+  }
 }
+
+
+
 .button:before{
   position: absolute;
   top: 1px;
@@ -32,6 +39,11 @@
 .button_rainbow:before{
   background: linear-gradient(bottom right, $gradient_blue-dark, $gradient_blue-light);
   border-radius: 24px;
+}
+
+.button_close:before{
+  background: url("../images/icons/icon__menu-close.png") no-repeat;
+  background-size: contain;
 }
 .button_wide{
   padding-left:40px;
@@ -101,5 +113,13 @@
 .button_rainbow:hover{
   & .button__text{
     color: $orange;
+  }
+}
+
+.button.button_close:hover{
+  &:before{
+    opacity: 0.7;
+    background: url("../images/icons/icon__menu-close.png") no-repeat;
+    background-size: contain;
   }
 }

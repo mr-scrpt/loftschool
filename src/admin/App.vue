@@ -15,7 +15,8 @@
         a(href="#").menu-tab__link Отзывы
     //-include section/section_about-me.pug
     //-include section/section_my-works-editor
-    include section/section_reviews-editor.pug
+    //-include section/section_reviews-editor.pug
+    include section/section_login-popup.pug
 
 </template>
 
@@ -42,6 +43,8 @@
   @import "./style/img-loader.pcss";
   @import "./style/tags.pcss";
   @import "./style/ava-loader.pcss";
+  @import "./style/popup.pcss";
+  @import "./style/login.pcss";
 
   html{
     height: 100%;
