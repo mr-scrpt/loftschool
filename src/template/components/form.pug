@@ -1,6 +1,6 @@
 script(type='text/x-template')#comments-form-tpl
   form(action='', method='POST' ref="form").form-contact.contact-me__form
-    .message.message_alert(ref="alertMessage") Следующее поля не заполнены {{validField}}
+    .message.message_alert(ref="alertMessage") Обязательные поля не заполнены
     .form-contact__inner
       .form-contact__box.form-contact__box_input
         label(for="name", class="label").form-contact__label Введите ваше имя
@@ -8,7 +8,7 @@ script(type='text/x-template')#comments-form-tpl
           +icon(`icon__name`, 'icon icon_form form-contact__icon')
           span.input.input_size_xl.input_width-full
             span.input__box
-              input(placeholder="Имя", name="name" id="name").input__control.form-contact__control
+              input(placeholder="Имя", name="name" id="name" ref="input-name").input__control.form-contact__control
 
       .form-contact__box.form-contact__box_input
         label(for="email", class="label").form-contact__label Введите ваш email
@@ -16,13 +16,13 @@ script(type='text/x-template')#comments-form-tpl
           +icon(`icon__name`, 'icon icon_form form-contact__icon')
           span.input.input_size_xl.input_width-full
             span.input__box
-              input(placeholder="Почта", name="name" id="email").input__control.form-contact__control
+              input(placeholder="Почта", name="email" id="email" ref="input-email").input__control.form-contact__control
 
       .form-contact__box.form-contact__box_line
         label(for="email", class="label").form-contact__label Введите ваш email
         .form-contact__row
           +icon(`icon__message`, 'icon icon_form form-contact__icon')
-          textarea(placeholder="Сообщение").textarea.form-contact__textarea.form-contact__control
+          textarea(placeholder="Сообщение" ref="textarea-message").textarea.form-contact__textarea.form-contact__control
       .form-contact__box.form-contact__box_line
-        button(type="submit", class="button button_size_xl form-contact__submit" @click.prevent="checkForm($refs.form)")
+        button(type="submit", class="button button_size_xl form-contact__submit" @click.prevent="validEmptyFields")
           .button__text Отправить
