@@ -30,6 +30,7 @@ new Vue({
       fieldEmptyName: false,
       fieldEmptyEmail: false,
       fieldEmptyMessage: false
+
     }
   },
   props:{
@@ -41,7 +42,9 @@ new Vue({
     // Вспомогательный метод - отправляет запрос на сервер, принимает урл, объект данных и метод отправки
     sendXHR(url, data, method) {
       axios[method](url, data)
-        .then((response) => {})
+        .then((response) => {
+          this.formData = {}; // Чистим объект после отправки, что бы отчистить данные в полях формы
+        })
         .catch((error) => {
           console.log(error)
         })
@@ -62,11 +65,30 @@ new Vue({
         this.errorMessage = this.errorMessageArr.join(', ');
       }
     },*/
+    // Дополнительный метод - проверяет поля на заполненость
+    checkEmptyField(form){
+      let fields = Array.from(form).filter(item => {
+        return item.tagName == "INPUT" || item.tagName == "TEXTAREA";
+      });
+      fields.forEach(item =>{
+        if (item.value === ""){
+          if(!item.classList.contains('form__field-empty')){
+            item.classList.add('form__field-empty')
+          }
+        }else {
+          if(item.classList.contains('form__field-empty')){
+            item.classList.remove('form__field-empty')
+          }
+        }
+      })
+    },
     // Основной метод - валидирует поля формы, вызывается при нажатии на submit
     checkForm(){
+      this.checkEmptyField(this.$refs.appForm);
       // Проверка полей на заполненость
       if(this.formData.name && this.formData.email && this.formData.message){
         this.sendXHR('/testURL',this.formData, 'post' );
+
       }else{
         // Отчищаем массив в котором могут содержаться данные об ошибках
         this.errorMessageArr = [];
@@ -75,15 +97,15 @@ new Vue({
          // Проверяем каждое поле и заносим ошибку в массив
          if(!this.formData.name){
            this.errorMessageArr.push('Введите ваше имя');
-           this.fieldEmptyName = true;
+           //this.fieldEmptyName = true;
          }
          if(!this.formData.email){
            this.errorMessageArr.push('Введите вашу почту');
-           this.fieldEmptyEmail = true;
+           //this.fieldEmptyEmail = true;
          }
          if(!this.formData.message){
            this.errorMessageArr.push('Введите ваше сообщение');
-           this.fieldEmptyMessage = true;
+           //this.fieldEmptyMessage = true;
          }
          // Джоиним массив ошибок в строку, что бы удобно ее вывести в сообщении, через запятые
          this.errorMessage = this.errorMessageArr.join(', ');

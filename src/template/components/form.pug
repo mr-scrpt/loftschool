@@ -1,5 +1,5 @@
 script(type='text/x-template')#comments-form-tpl
-  form(action='', method='POST').form-contact.contact-me__form
+  form(action='' method='POST' ref="appForm").form-contact.contact-me__form
     error-message(
       :errorMessage="errorMessage"
       v-if="isEmpty"
