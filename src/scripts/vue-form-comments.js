@@ -21,6 +21,7 @@ new Vue({
       name: "",
       email: "",
       message: "",
+      data: {},
       isError: false,
       errorMessageArr: [], //Массив, который содержет сообщения об ошибках
       errorMessage: "", //Строка для вывода всех активных ошибок
@@ -47,6 +48,10 @@ new Vue({
     checkForm(){
       // Проверка полей на заполненость
       if(this.name && this.email && this.message){
+        this.data.name = this.name;
+        this.data.email = this.email;
+        this.data.message = this.message;
+        this.sendXHR('/testURL',this.data, 'post' );
 
       }else{
         // Отчищаем массив в котором могут содержаться данные об ошибках
