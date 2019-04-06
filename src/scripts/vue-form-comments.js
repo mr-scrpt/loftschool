@@ -23,9 +23,8 @@ new Vue({
         email: "",
         message: ""
       },
-
+      isEmpty: false,
       data: {},
-      isError: false,
       errorMessageArr: [], //Массив, который содержет сообщения об ошибках
       errorMessage: "", //Строка для вывода всех активных ошибок
       fieldEmptyName: false,
@@ -47,20 +46,32 @@ new Vue({
           console.log(error)
         })
     },
+
+    /*testMethod(obj){
+      let flag = true;
+      this.errorMessageArr = [];
+      for(let key in obj){
+        if (!obj[key]) {
+          flag = false;
+          this.errorMessageArr.push(`Поле ${key} пусто`);
+        }
+      }
+      if(flag){
+        console.log('Успех');
+      }else {
+        this.errorMessage = this.errorMessageArr.join(', ');
+      }
+    },*/
     // Основной метод - валидирует поля формы, вызывается при нажатии на submit
     checkForm(){
       // Проверка полей на заполненость
       if(this.formData.name && this.formData.email && this.formData.message){
-        // this.data.name = this.name;
-        // this.data.email = this.email;
-        // this.data.message = this.message;
         this.sendXHR('/testURL',this.formData, 'post' );
-
       }else{
         // Отчищаем массив в котором могут содержаться данные об ошибках
         this.errorMessageArr = [];
         // Меняем флаг
-        this.isError = true;
+        this.isEmpty = true;
          // Проверяем каждое поле и заносим ошибку в массив
          if(!this.formData.name){
            this.errorMessageArr.push('Введите ваше имя');

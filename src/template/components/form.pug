@@ -2,6 +2,7 @@ script(type='text/x-template')#comments-form-tpl
   form(action='', method='POST').form-contact.contact-me__form
     error-message(
       :errorMessage="errorMessage"
+      v-if="isEmpty"
     )
     .form-contact__inner
       .form-contact__box.form-contact__box_input
