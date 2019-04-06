@@ -68,7 +68,7 @@ new Vue({
            this.fieldEmptyEmail = true;
          }
          if(!this.message){
-           this.errorMessageArr.push('Введите вашу почту');
+           this.errorMessageArr.push('Введите ваше сообщение');
            this.fieldEmptyMessage = true;
          }
          // Джоиним массив ошибок в строку, что бы удобно ее вывести в сообщении, через запятые
