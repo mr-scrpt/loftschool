@@ -25,6 +25,6 @@ header.header
 
 
     .header__arrow.arrow
-      .arrow__scroll
-        span.arrow__text Скролл
-        +icon(`icon__arrow-down`, 'icon arrow__icon')
+      button(type="button", class="button button_size_l button_pseudo button_scroll")
+        +icon(`icon__arrow-down`, 'icon button__icon arrow__icon')
+        span.button__text Скролл
