@@ -9,13 +9,13 @@
             .img-loader__box
               .img-loader__text Перетащити или загрузите для загрузки изображения
               .img-loader__button
-                button.button.button_rainbow.button_size_xl
+                button(type="submit").button.button_rainbow.button_size_xl
                   .button__text ЗАГРУЗИТЬ
       .tile__content-add
         //Одно поле с лэйблом
         .editor__row
           label.label.editor__label-full Название
-          span.input.input--size-l.editor__input-full
+          span.input.input--size-l.editor__input-full.input_active
             span.input__box
               input(placeholder="Название группы" value="Git").input__control
         //Одно поле с лэйблом КОНЕЦ
@@ -23,7 +23,7 @@
         //Одно поле с лэйблом
         .editor__row
           label.label.editor__label-full Ссылка
-          span.input.input--size-l.editor__input-full
+          span.input.input--size-l.editor__input-full.input_active
             span.input__box
               input(placeholder="Название группы" value="Git").input__control
         //Одно поле с лэйблом КОНЕЦ
@@ -37,7 +37,7 @@
         //Одно поле с лэйблом
         .editor__row
           label.label.editor__label-full Добавление тэга
-            span.input.input--size-l.editor__input-full
+            span.input.input--size-l.editor__input-full.input_active
               span.input__box
                 input(placeholder="Название группы" value="Jquery, Vue.js, HTML5").input__control
           .editor__tags.tags
@@ -52,9 +52,9 @@
                 .tags__text HTML5
                 img(src="../images/admin/icon__cross.png").tags__icon.icon.icon_cross
           .editor__function.editor__function_alt
-            button.button.button_size_m.editor__cancel
+            button(type="button").button.button_size_m.editor__cancel
               .button__text Отмена
-            button.button.button_rainbow.button_size_xl
+            button(type="submit").button.button_rainbow.button_size_xl
               .button__text СОХРАНИТЬ
 
         //Одно поле с лэйблом КОНЕЦ

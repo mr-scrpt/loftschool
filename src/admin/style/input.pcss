@@ -13,12 +13,16 @@
     left: 1px ;
     content: '';
     background: #fff;
-    border-bottom: 1px solid $text-color;
-    padding: 20px 0;
+
+  }
+  &_active{
+    &:before{
+      border-bottom: 1px solid $text-color;
+    }
   }
   &_percent{
     padding-right: 22px;
-    :after{
+    &:after{
       position: absolute;
       opacity: .7;
       content: "%";
@@ -47,6 +51,7 @@
     }
   }
 }
+
 .input .icon{
   position: absolute;
   width: 30px;

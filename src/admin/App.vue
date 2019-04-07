@@ -7,7 +7,8 @@
             img(src="../images/content/user__me.jpg").profile__ava-img.img
           .profile__name Дмитрий Лукьянов
           .profile__title Панель администратора
-          a(href="#").profile__logout Выйти
+          a(href="#").profile__logout
+            .profile__logout-text Выйти
     section.menu-tab
       nav.menu-tab__inner.page__container
         a(href="#").menu-tab__link.menu-tab__link_active Обо мне
@@ -51,3 +52,14 @@
     width: 100%;
   }
 </style>
+
+<script>
+export default {
+  name: 'app',
+  data(){
+    return{
+      msg: "Тестовый текст"
+    }
+  }
+}
+</script>

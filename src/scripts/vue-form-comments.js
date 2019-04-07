@@ -49,22 +49,6 @@ new Vue({
           console.log(error)
         })
     },
-
-    /*testMethod(obj){
-      let flag = true;
-      this.errorMessageArr = [];
-      for(let key in obj){
-        if (!obj[key]) {
-          flag = false;
-          this.errorMessageArr.push(`Поле ${key} пусто`);
-        }
-      }
-      if(flag){
-        console.log('Успех');
-      }else {
-        this.errorMessage = this.errorMessageArr.join(', ');
-      }
-    },*/
     // Дополнительный метод - проверяет поля на заполненость
     checkEmptyField(form){
       let fields = Array.from(form).filter(item => {
@@ -94,21 +78,21 @@ new Vue({
         this.errorMessageArr = [];
         // Меняем флаг
         this.isEmpty = true;
-         // Проверяем каждое поле и заносим ошибку в массив
-         if(!this.formData.name){
-           this.errorMessageArr.push('Введите ваше имя');
-           //this.fieldEmptyName = true;
-         }
-         if(!this.formData.email){
-           this.errorMessageArr.push('Введите вашу почту');
-           //this.fieldEmptyEmail = true;
-         }
-         if(!this.formData.message){
-           this.errorMessageArr.push('Введите ваше сообщение');
-           //this.fieldEmptyMessage = true;
-         }
-         // Джоиним массив ошибок в строку, что бы удобно ее вывести в сообщении, через запятые
-         this.errorMessage = this.errorMessageArr.join(', ');
+        // Проверяем каждое поле и заносим ошибку в массив
+        if(!this.formData.name){
+          this.errorMessageArr.push('Введите ваше имя');
+          //this.fieldEmptyName = true;
+        }
+        if(!this.formData.email){
+          this.errorMessageArr.push('Введите вашу почту');
+          //this.fieldEmptyEmail = true;
+        }
+        if(!this.formData.message){
+          this.errorMessageArr.push('Введите ваше сообщение');
+          //this.fieldEmptyMessage = true;
+        }
+        // Джоиним массив ошибок в строку, что бы удобно ее вывести в сообщении, через запятые
+        this.errorMessage = this.errorMessageArr.join(', ');
       }
     }
   }
