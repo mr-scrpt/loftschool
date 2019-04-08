@@ -11,9 +11,15 @@
             .profile__logout-text Выйти
     section.menu-tab
       nav.menu-tab__inner.page__container
-        a(href="/").menu-tab__link.menu-tab__link_active Обо мне
-        a(href="/works").menu-tab__link Работы
-        a(href="/reviews").menu-tab__link Отзывы
+        router-link(
+          v-for="tab in tabs"
+          :data-text="tab.title"
+          :to="tab.href"
+          exact-active-class="menu-tab__link_active"
+        ).menu-tab__link {{tab.title}}
+        //router-link(:to="/").menu-tab__link.menu-tab__link_active Обо мне
+        //router-link(:to="/works").menu-tab__link Работы
+        //router-link(:to="/reviews").menu-tab__link Отзывы
       router-view
     //-include section/section_about-me.pug
     //-include section/section_my-works-editor
@@ -59,7 +65,11 @@ export default {
   name: 'app',
   data(){
     return{
-      msg: "Тестовый текст"
+      tabs: [
+        { title: "Обо мне", href: "/" },
+        { title: "Отзывы", href: "/reviews" },
+        { title: "Работы", href: "/works" }
+      ]
     }
   }
 }
