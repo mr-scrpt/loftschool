@@ -1,0 +1,9 @@
+<template lang="pug">
+  section.content.my-works
+    .page__container.content__inner
+      header.content__head
+        .content__title Блок "Отзывы"
+      .content__body.my-work__grid
+        //include tile-review_edit
+        //include tile-review_tall
+</template>
