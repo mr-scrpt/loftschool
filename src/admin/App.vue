@@ -14,10 +14,10 @@
         a(href="#").menu-tab__link.menu-tab__link_active Обо мне
         a(href="#").menu-tab__link Работы
         a(href="#").menu-tab__link Отзывы
-    //-include section/section_about-me.pug
+    include section/section_about-me.pug
     //-include section/section_my-works-editor
     //-include section/section_reviews-editor.pug
-    include section/section_login-popup.pug
+    //-include section/section_login-popup.pug
 
 </template>
 
