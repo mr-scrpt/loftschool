@@ -1,0 +1,40 @@
+.new-work__inner{
+  background: linear-gradient(bottom right, $gradient_blue-dark, $gradient_blue-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.new-work__add{
+  width: 150px;
+  height: 150px;
+  position: relative;
+  margin-bottom: 20px;
+  &:before{
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    content: "+";
+    text-align: center;
+    line-height: 150px;
+    border-radius: 50%;
+    font-size: 58px;
+    color: #fff;
+    border: 2px solid #fff;
+    box-sizing: border-box;
+    @include ts(color,border-color);
+  }
+  &:hover{
+    &:before{
+      border-color: $orange;
+      color: $orange;
+    }
+
+  }
+}
+.new-work__title{
+  color: #fff;
+  font-size: 18px;
+  font-weight: $font_bold;
+}

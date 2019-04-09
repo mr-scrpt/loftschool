@@ -1,0 +1,32 @@
+.menu-tab{
+  grid-area: nav;
+  background: #fff;
+  width: 100%;
+  box-sizing: border-box;
+
+}
+.menu-tab__inner{
+ /* margin-left: -60px;
+  margin-right: -60px;
+  @include desktop{
+    margin-left: -20px;
+    margin-right: -20px;
+  }*/
+}
+.menu-tab__link{
+  display: inline-block;
+  text-decoration: none;
+  color: $text-color;
+  padding: 27px 30px;
+  border-bottom: 3px solid transparent;
+  @include ts(border-color,color);
+  &:hover{
+    border-color:$blue;
+    color: $blue;
+  }
+  &_active{
+    border-color:$blue;
+    color: $blue;
+  }
+
+}
