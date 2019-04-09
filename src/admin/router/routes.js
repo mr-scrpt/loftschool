@@ -5,15 +5,15 @@ import reviews from '../components/pages/reviews.vue';
 export default [
   {
     path: "/",
-    component: () => import("../components/pages/about.vue")
+    component: () => import("components/pages/about.vue")
   },
   {
     path: "/works",
-    component: wokrs
+    component: () => import("components/pages/works.vue")
   },
   {
     path: "/reviews",
-    component: reviews
+    component: () => import("components/pages/reviews.vue")
   }
 ];
 

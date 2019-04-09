@@ -71,7 +71,11 @@ new Vue({
       this.checkEmptyField(this.$refs.appForm);
       // Проверка полей на заполненость
       if(this.formData.name && this.formData.email && this.formData.message){
-        this.sendXHR('/testURL',this.formData, 'post' );
+        this.data.name = this.formData.name;
+        this.data.to = this.formData.email;
+        this.data.comment = this.formData.message;
+        this.data.phone = '88003000500';
+        this.sendXHR('https://webdev-api.loftschool.com/sendmail',this.data, 'post' );
 
       }else{
         // Отчищаем массив в котором могут содержаться данные об ошибках
