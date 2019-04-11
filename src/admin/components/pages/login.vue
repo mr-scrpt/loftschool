@@ -1,3 +1,4 @@
+<template lang="pug">
 .login.popup.page__popup
   .popup__inner
     .popup__box.login__inner
@@ -9,13 +10,22 @@
         span.input.input--size-l.login__input.input_active
           span.icon.input__icon.icon_user
           span.input__box
-            input(placeholder="Название группы" value="Git").input__control
+            input(
+              v-model="login"
+              type="text"
+              placeholder="Название группы"
+              ).input__control
       .login__row
         label.label.label__login Пароль
         span.input.input--size-l.login__input.input_active
           span.icon.input__icon.icon_key
           span.input__box
-            input(placeholder="Название группы" value="Git").input__control
+            input(
+              v-model="password"
+              type="text"
+              placeholder="Название группы"
+              ).input__control
       .login__row
         button(type="submit").button.button_rainbow.button_size_xl.login__button-confirm
           .button__text ОТПРАВИТЬ
+</template>

@@ -21,7 +21,11 @@
   width: 90%;
   display: flex;
   align-items: center;
-
+  &_disabled{
+    opacity: .5;
+    pointer-events: none;
+    user-select: none;
+  }
 }
 .editor__add-name{
   width: calc(100% - 160px);

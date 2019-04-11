@@ -1,7 +1,3 @@
-//import about from '../components/pages/about.vue';
-import wokrs from '../components/pages/works.vue';
-import reviews from '../components/pages/reviews.vue';
-
 export default [
   {
     path: "/",
@@ -14,6 +10,10 @@ export default [
   {
     path: "/reviews",
     component: () => import("components/pages/reviews.vue")
+  },
+  {
+    path: "/login",
+    component: () => import("components/pages/login.vue")
   }
 ];
 
