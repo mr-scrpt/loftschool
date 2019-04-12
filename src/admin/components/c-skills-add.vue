@@ -52,6 +52,14 @@
           alert(e.message);
         }
 
+      },
+      async aboutUser(){
+        try {
+          const res = await this.userInfo();
+          console.log(res);
+        }catch (e) {
+          console.log(e.message);
+        }
       }
     }
   }

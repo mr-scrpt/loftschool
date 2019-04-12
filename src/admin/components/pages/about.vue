@@ -3,6 +3,7 @@
     .page__container.content__inner
       header.content__head
         .content__title Блок "Обо мне"
+
         button(
           @click="showAddingForm = true"
           v-if="showAddingForm === false"
@@ -14,10 +15,15 @@
           v-if='showAddingForm'
           @close="closeGroup"
           )
-        skills-group(v-if='false')
+        skills-group(
+          v-for="category in categories"
+          :key="category.id"
+          :category="category"
+          )
 
 </template>
 <script>
+  import { mapActions, mapState } from "vuex";
   export default {
     components:{
       skillsAdd: ()=>import('components/c-skills-add.vue'),
@@ -28,9 +34,25 @@
         showAddingForm: false
       }
     },
+
+    computed:{
+      ...mapState('categories',{
+        categories: state=> state.categories
+      })
+    },
+
+
     methods:{
+      ...mapActions('categories', ['fetchCategories']),
       closeGroup(){
         this.showAddingForm = false;
+      }
+    },
+    created() {
+      try {
+        this.fetchCategories();
+      }catch (e) {
+        console.log(e.message);
       }
     }
 

@@ -3,9 +3,10 @@
   .tile.content__tile.editor
     .tile__inner
       .tile__header.tile__enter-block
+
         span.input.input--size-l.tile__input-box.input_active
-          span.input__box
-            input(placeholder="Название группы").input__control
+         span.input__box
+          input(placeholder="Название группы" :value="category.category" disabled).input__control
         .editor__function
           .editor__accept
             button(type="submit").button.button_size_l
@@ -46,7 +47,13 @@
               .icon.icon_add-button.icon_add-button_big
         // Секция КОНЕЦ ===========================
 </template>
-<script></script>
+<script>
+  export default {
+    props: {
+      category: Object
+    }
+  }
+</script>
 
 <style lang="postcss" scoped>
   @import "../../styles/mixins.pcss";
