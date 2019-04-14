@@ -14,22 +14,27 @@
     // Секция КОНЕЦ ===========================
 
     // Секция ===========================
-    blockquote.blockquote.tile.content__tile.my-work__tile
-      .tile__inner.tile__inner_full.tile__shadow
+    blockquote(
+      v-for="review in reviews"
+      :key="review.id"
+      ).blockquote.tile.content__tile.my-work__tile
+      .tile__inner.tile__inner_full
         .tile__main
           cite.cite.tile__author
-            img(src="../../images/content/user__koval.jpg").tile__author-ava
+            img(:src="`https://webdev-api.loftschool.com/${review.photo}`").tile__author-ava
             .tile__author-info
-              .tile__author-name Дмитрий Ковальчук
-              .tile__author-title Основатель
+              .tile__author-name {{review.author}}
+              .tile__author-title {{review.occ}}
           .tile__about
-            .tile__about-content
-              | Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+            .tile__about-content {{review.text}}
             .tile__about-function
               button(type="button").button.button_size_l.tile__edit
                 .button__text Править
                 img(src="../../images/admin/icon__pencil.png").button__icon.editor__icon
-              button(type="submit").button.button_size_l.tile__remove
+              button(
+                @click="reviewDelete(review.id)"
+                type="submit"
+                ).button.button_size_l.tile__remove
                 .button__text Удалить
                 img(src="../../images/admin/icon__cross.png").button__icon.editor__icon
     // Секция КОНЕЦ ===========================
@@ -40,8 +45,35 @@
 </template>
 
 <script>
+  import { mapActions, mapState } from "vuex";
   export default {
-    name: "c-review-all"
+    name: "c-review-all",
+    props:{
+    },
+    computed:{
+      ...mapState('reviews',{
+        reviews: state => state.reviews
+      })
+    },
+    methods:{
+      ...mapActions('reviews', ['fetchReview', 'removeReview']),
+      async reviewDelete(reviewId){
+        try{
+          await this.removeReview(reviewId);
+          //console.log(reviewId);
+        }catch(error){
+          alert('Ошибка удаления')
+        }
+
+      }
+    },
+    async created() {
+      try {
+        await this.fetchReview();
+      }catch (e) {
+        console.log(e.message);
+      }
+    }
   }
 </script>
 

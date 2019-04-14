@@ -59,7 +59,7 @@
                   ).button.button_size_m.editor__cancel
                   .button__text Отмена
                 button(
-                  @click="$emit('sendReview', review)"
+                  @click="addNewReview"
                   type="submit"
                   ).button.button_rainbow.button_size_xl
                   .button__text СОХРАНИТЬ
@@ -69,6 +69,7 @@
 </template>
 
 <script>
+  import { mapActions } from "vuex";
   export default {
     name: "c-reviewEditor",
     data(){
@@ -83,6 +84,7 @@
       }
     },
     methods:{
+      ...mapActions('reviews', ['addReview']),
       appendFileAndRenderPhoto(e){
         const file = e.target.files[0];
         this.review.photo = file;
@@ -96,9 +98,12 @@
         }catch(error){
           alert("Ошибка при загрузке файла")
         }
+      },
+      async addNewReview(){
+        await this.addReview(this.review);
+        this.review = {};
       }
     }
-
   }
 </script>
 

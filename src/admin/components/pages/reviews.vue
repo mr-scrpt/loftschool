@@ -8,9 +8,7 @@
         c-review-editor(
           v-if="showAddReviews"
           @addReviewClose="showAddReviews = false"
-          @sendReview="addNewReview"
           @file="item => review.photo = item"
-          v-model="review"
           )
         //include tile-review_tall
         c-review-all(
@@ -19,7 +17,7 @@
 </template>
 
 <script>
-  import { mapActions } from "vuex";
+
   export default {
     components:{
       cReviewEditor: () => import('components/c-review-editor.vue'),
@@ -30,25 +28,10 @@
     },
     data(){
       return{
-        showAddReviews: false,
-        review:{
-          photo: "",
-          author: "",
-          occ: "",
-          text: ""
-        }
-      }
-    },
-    methods:{
-      ...mapActions('review', ['addReview']),
-      async addNewReview(review){
-        await this.addReview(review);
-        review = {};
-      },
-      test(file){
-        console.log(file);
+        showAddReviews: false
       }
     }
+
   }
 </script>
 

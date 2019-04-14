@@ -27,7 +27,7 @@ export default {
         throw new Error(error.response.data.error || error.response.data.message)
       }
     },
-    async fetchSkills({commit}, skill){
+    async fetchSkills({commit}){
       try{
         const response = await this.$axios.get('/skills/126');
         commit('SET_SKILLS', response.data);
