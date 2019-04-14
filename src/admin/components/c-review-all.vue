@@ -18,7 +18,9 @@
       v-for="review in reviews"
       :key="review.id"
       ).blockquote.tile.content__tile.my-work__tile
-      .tile__inner.tile__inner_full
+      div(
+        :class="{ tile__shadow: activeReview === review.id }"
+      ).tile__inner.tile__inner_full
         .tile__main
           cite.cite.tile__author
             img(:src="`https://webdev-api.loftschool.com/${review.photo}`").tile__author-ava
@@ -28,7 +30,10 @@
           .tile__about
             .tile__about-content {{review.text}}
             .tile__about-function
-              button(type="button").button.button_size_l.tile__edit
+              button(
+                @click="$emit('reviewEdited', review.id); activeReview = review.id"
+                type="button"
+                ).button.button_size_l.tile__edit
                 .button__text Править
                 img(src="../../images/admin/icon__pencil.png").button__icon.editor__icon
               button(
@@ -48,6 +53,11 @@
   import { mapActions, mapState } from "vuex";
   export default {
     name: "c-review-all",
+    data(){
+      return{
+        activeReview: ""
+      }
+    },
     props:{
     },
     computed:{

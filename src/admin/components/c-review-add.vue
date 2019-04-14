@@ -1,7 +1,7 @@
 <template lang="pug">
   .tile.content__tile.editor.my-work__full
     .tile__inner.tile__inner_simply
-      .tile__header Редактирование отзыва
+      .tile__header Добавление отзыва
       .tile__body.tile__body_half
         .tile__ava-add
           .ava-loader

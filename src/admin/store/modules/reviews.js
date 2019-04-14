@@ -15,6 +15,11 @@ export default {
       state.reviews = reviews;
     }
   },
+  getters:{
+    getCommentById: state => id =>{
+      return state.reviews.find(review => review.id === id);
+    }
+  },
   actions:{
     async addReview({commit}, review){
       try{
@@ -43,6 +48,10 @@ export default {
     async removeReview({commit}, reviewsId){
       const response = await this.$axios.delete(`/reviews/${reviewsId}`);
       commit('REMOVE_REVIEWS', reviewsId);
+      return response;
+    },
+    async editReview({commit}, reviewsId){
+      const response = await this.$axios.post(`/reviews/${reviewsId}`);
       return response;
     }
   }

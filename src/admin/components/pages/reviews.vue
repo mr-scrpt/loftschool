@@ -4,15 +4,20 @@
       header.content__head
         .content__title Блок "Отзывы"
       .content__body.my-work__grid
-        //include tile-review_edit
-        c-review-editor(
+        c-review-add(
           v-if="showAddReviews"
           @addReviewClose="showAddReviews = false"
           @file="item => review.photo = item"
           )
-        //include tile-review_tall
+        c-review-edit(
+          v-if="showEditReviews"
+          @addReviewClose="showEditReviews = false"
+          @file="item => review.photo = item"
+          :editReviewId="editReviewId"
+        )
         c-review-all(
-          @addReviewOpen="showAddReviews = true"
+          @addReviewOpen="showAddReviews = true; showEditReviews = false"
+          @reviewEdited="reviewEdited"
         )
 </template>
 
@@ -20,7 +25,8 @@
 
   export default {
     components:{
-      cReviewEditor: () => import('components/c-review-editor.vue'),
+      cReviewAdd: () => import('components/c-review-add.vue'),
+      cReviewEdit: () => import('components/c-review-edit.vue'),
       cReviewAll: () => import('components/c-review-all.vue')
     },
     props:{
@@ -28,7 +34,16 @@
     },
     data(){
       return{
-        showAddReviews: false
+        showAddReviews: false,
+        showEditReviews: false,
+        editReviewId: ""
+      }
+    },
+    methods:{
+      async reviewEdited(reviewId){
+        this.showAddReviews = false;
+        this.showEditReviews = true;
+        this.editReviewId = reviewId;
       }
     }
 
