@@ -51,7 +51,6 @@
         }catch (e) {
           alert(e.message);
         }
-
       },
       async aboutUser(){
         try {
@@ -213,7 +212,7 @@
       //transform: translate(-50%, -50%); line-height: 20px;
         text-align: center;
         border-radius: 50%;
-        background: linear-gradient(bottom right, $gradient_blue-dark, $gradient_blue-light);
+        background: linear-gradient(to top left, $gradient_blue-dark, $gradient_blue-light);
       }
 
       &:hover {

@@ -1,73 +1,76 @@
 <template lang="pug">
-  .tile.content__tile.editor
-    .tile__inner
-      .tile__header.tile__enter-block
-        span.input.input--size-l.tile__input-box.input_active
-          span.input__box
-            input(placeholder="Название группы" :value="category.category" disabled).input__control
-        .editor__function
-          .editor__edit
-            button(type="button").button.button_size_l
-              img(src="../../images/admin/icon__pencil.png").button__icon.editor__icon
-      .tile__body
-        skillItem(
-          v-for="skill in skills"
-          :key="skill.id"
-          :skill="skill"
-          :categoryId="category.id"
-        )
-      .tile__footer
-        .editor__add-row
-          span.input.input--size-l.tile__input-box.editor__add-name.input_active
-            span.input__box
-              input(placeholder="новый навык" v-model="skill.title").input__control
+.editor__row(v-if="editMode === false")
+  span.input.input--size-l.tile__input-box.editor__name
+    span.input__box
+      input(placeholder="Название группы" :value="skill.title" disabled).input__control
+  span.input.input--size-l.tile__input-box.input_percent.editor__value.editor__percent
+    span.input__box
+      input(placeholder="Название группы" :value="skill.percent" disabled).input__control
 
-          span.input.input--size-l.tile__input-box.input_percent.editor__add-value.editor__percent.input_active
-            span.input__box
-              input(placeholder="100" v-model="skill.percent").input__control
+  .editor__function
+    .editor__edit
+      button(@click="editMode = true").button.button_size_l
+        img(src="../../images/admin/icon__pencil.png").button__icon.editor__icon
+    .editor__delete
+      button(@click="skillDel").button.button_size_l
+        img(src="../../images/admin/icon__trash.png").button__icon.editor__icon
 
-          span.editor__add-footer
-            button(type="submit"  @click="addNewSkill").button
-              .icon.icon_add-button.icon_add-button_big
-
+.editor__row(v-else)
+  span.input.input--size-l.tile__input-box.editor__name.input_active
+    span.input__box
+      input(v-model="editedSkill.title").input__control
+  span.input.input--size-l.tile__input-box.input_percent.editor__value.editor__percent.input_active
+    span.input__box
+      input(v-model="editedSkill.percent").input__control
+  .editor__function
+    .editor__edit
+      button(@click="skillEditAccept").button.button_size_l
+        img(src="../../images/admin/icon__accept.png").button__icon.editor__icon
+    .editor__delete
+      button(@click="editMode = false").button.button_size_l
+        img(src="../../images/admin/icon__decline.png").button__icon.editor__icon
 </template>
+
 <script>
   import {mapActions} from 'vuex';
   export default {
-    components:{
-      skillItem: ()=> import('components/c-skills-item.vue')
-
-    },
-    props: {
-      category: Object,
-      skills: Array
-    },
-    data(){
+    data() {
       return{
-        skill:{
-          title: "",
-          percent: "",
-          category: this.category.id
+        editMode: false,
+        editedSkill:{
+         ...this.skill
         }
       }
     },
+    props:{
+      skill: Object,
+      categoryId: Number
+    },
     methods:{
-      ...mapActions('skills', ['addSkill']),
-      async addNewSkill(){
+      ...mapActions('skills', ['deleteSkills', 'editSkills']),
+      //...mapActions('skills', ['editSkills']),
+      async skillDel(){
         try{
-            await this.addSkill(this.skill);
-            //this.skill = {}
+          await this.deleteSkills(this.skill.id);
         }catch(error){
-            console.log(error.message);
+          console.log(error.message);
         }
+
+      },
+      async skillEditAccept(){
+        try{
+          await this.editSkills(this.editedSkill);
+          this.editMode = false;
+        }catch(error){
+          console.log(error.message);
+        }
+
       }
     }
   }
 </script>
-
 <style lang="postcss" scoped>
   @import "../../styles/mixins.pcss";
-
   .input{
     position: relative;
     display: inline-block;
@@ -224,69 +227,6 @@
       }
     }
   }
-
-  .tile{
-    &__shadow{
-      opacity: .3;
-    }
-  }
-  .tile__inner{
-    height: 100%;
-    padding: 20px;
-    background: #fff;
-    box-shadow: 4px 3px 20px rgba(0, 0, 0, 0.07);
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 55px 1fr 80px;
-    grid-template-areas:
-            "tile-header"
-            "tile-body"
-            "tile-footer"
-  ;
-    &_full{
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr;
-      grid-template-areas:"tile-full";
-      padding: 0;
-    }
-
-    &_simply{
-      grid-template-rows: 55px 1fr;
-    }
-  }
-
-  .tile__header{
-    grid-area: tile-header;
-    border-bottom: 1px solid rgba(#000, .15);
-  //margin-bottom: 30px;
-  }
-  .tile__enter-block{
-    display: flex;
-    align-items: flex-start;
-  }
-  .tile__input-box{
-    width: calc(100% - 80px);
-  }
-  .tile__body{
-    grid-area: tile-body;
-    padding: 45px 0;
-    &_half{
-      display: flex;
-      flex-wrap: wrap;
-      margin-right: -15px;
-      margin-left: -15px;
-    }
-  }
-
-  .tile__footer{
-    grid-area: tile-footer;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-  }
-
-
-
   .editor__function{
     width: 80px;
     display: flex;
@@ -304,30 +244,6 @@
     width: 14px;
     height: 12px;
     padding-left: 20px;
-  }
-
-  .editor__add-row{
-    width: 90%;
-    display: flex;
-    align-items: center;
-    &_disabled{
-      opacity: .5;
-      pointer-events: none;
-      user-select: none;
-    }
-  }
-  .editor__add-name{
-    width: calc(100% - 160px);
-
-  }
-  /*.editor__add-value{*/
-  /*width: 80px;*/
-  /*}*/
-  .editor__add-footer{
-    width: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
   }
   .editor__row{
     width: 100%;
@@ -353,8 +269,4 @@
   .editor__percent{
     width: calc(80px);
   }
-
-
-
-
 </style>

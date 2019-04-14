@@ -23,7 +23,7 @@ export default {
       try {
         const response = await this.$axios.get('/categories/126');
         commit('SET_CATEGORIES', response.data.reverse());
-        return response
+        return response;
       }catch (error) {
         throw new Error(error.response.data.error || error.response.data.message)
       }
@@ -36,6 +36,7 @@ export default {
       }catch (error) {
         throw new Error(error.response.data.error || error.response.data.message)
       }
+
     }
   }
 }

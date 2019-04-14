@@ -97,7 +97,7 @@
   }
 
   .button_rainbow:before{
-    background: linear-gradient(bottom right, $gradient_blue-dark, $gradient_blue-light);
+    background: linear-gradient(to top left, $gradient_blue-dark, $gradient_blue-light);
     border-radius: 24px;
   }
 

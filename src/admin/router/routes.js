@@ -1,19 +1,32 @@
 export default [
   {
     path: "/",
-    component: () => import("components/pages/about.vue")
+    component: () => import("components/pages/about.vue"),
+    meta:{
+      title: "Блок Обо мне"
+    }
   },
   {
     path: "/works",
-    component: () => import("components/pages/works.vue")
+    component: () => import("components/pages/works.vue"),
+    meta:{
+      title: "Блок Мои работы"
+    }
   },
   {
     path: "/reviews",
-    component: () => import("components/pages/reviews.vue")
+    component: () => import("components/pages/reviews.vue"),
+    meta:{
+      title: "Блок Отзывы"
+    }
   },
   {
     path: "/login",
-    component: () => import("components/pages/login.vue")
+    component: () => import("components/pages/login.vue"),
+    meta:{
+      title: "Логин",
+      public: true
+    }
   }
 ];
 

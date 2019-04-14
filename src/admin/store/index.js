@@ -3,9 +3,15 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-import categories from './modules/categories'
+import categories from './modules/categories';
+import skills from './modules/skills';
+import user from './modules/user'
+import review from './modules/reviews'
 export default new Vuex.Store({
   modules:{
-    categories
+    categories,
+    skills,
+    review,
+    user
   }
 });

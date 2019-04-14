@@ -1,5 +1,6 @@
 <template lang="pug">
   section.content.about-me
+
     .page__container.content__inner
       header.content__head
         .content__title Блок "Обо мне"
@@ -19,6 +20,7 @@
           v-for="category in categories"
           :key="category.id"
           :category="category"
+          :skills="filterSkillsByCategoriesId(category.id)"
           )
 
 </template>
@@ -38,19 +40,32 @@
     computed:{
       ...mapState('categories',{
         categories: state=> state.categories
+      }),
+      ...mapState('skills',{
+        skills: state=> state.skills
       })
     },
 
 
     methods:{
       ...mapActions('categories', ['fetchCategories']),
+      ...mapActions('skills', ['fetchSkills']),
       closeGroup(){
         this.showAddingForm = false;
+      },
+      filterSkillsByCategoriesId(categoriesId){
+        return this.skills.filter((skill)=> skill.category === categoriesId)
       }
     },
-    created() {
+    async created() {
       try {
-        this.fetchCategories();
+        await this.fetchCategories();
+      }catch (e) {
+        console.log(e.message);
+      }
+
+      try {
+        await this.fetchSkills();
       }catch (e) {
         console.log(e.message);
       }
@@ -194,7 +209,7 @@
         line-height: 20px;
         text-align: center;
         border-radius: 50%;
-        background: linear-gradient(bottom right, $gradient_blue-dark, $gradient_blue-light);
+        background: linear-gradient(to top left, $gradient_blue-dark, $gradient_blue-light);
       }
       &:hover {
         &:before {

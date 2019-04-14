@@ -5,6 +5,7 @@
         v-for="tab in tabs"
         :data-text="tab.title"
         :to="tab.href"
+        :key="tab.title"
         exact-active-class="menu-tab__link_active"
       ).menu-tab__link {{tab.title}}
 </template>
