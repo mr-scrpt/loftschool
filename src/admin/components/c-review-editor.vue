@@ -24,9 +24,9 @@
               span.input.input--size-l.editor__input-full.input_active
                 span.input__box
                   input(
-                    v-model="review.author"
                     placeholder="Название группы"
-                    value=""
+                    :value="review.author"
+                    @input="$emit('input', $event.target.value)"
                     ).input__control
             //Одно поле с лэйблом КОНЕЦ
 
@@ -36,16 +36,17 @@
               span.input.input--size-l.editor__input-full.input_active
                 span.input__box
                   input(
-                    v-model="review.title"
                     placeholder="Название группы"
-                    value="Git"
                     ).input__control
             //Одно поле с лэйблом КОНЕЦ
 
             //Одно поле с лэйблом
             .editor__row.editor__row_cell
               label().label.editor__label-full Описание
-              textarea(rows='3' v-model="review.text").textarea.editor__textarea-full
+              textarea(
+                rows='3'
+
+                ).textarea.editor__textarea-full
             //Одно поле с лэйблом КОНЕЦ
 
             //Одно поле с лэйблом
@@ -71,15 +72,18 @@
     name: "c-reviewEditor",
     data(){
       return{
-        review:{
+       /* review:{
           author:"",
           title:"",
           text:"",
           photo: ""
-        },
+        },*/
 
         renderedPhotoUrl: ""
       }
+    },
+    props:{
+      review: Object
     },
     methods:{
       appendFileAndRenderPhoto(e){
