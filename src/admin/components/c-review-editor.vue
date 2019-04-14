@@ -24,9 +24,8 @@
               span.input.input--size-l.editor__input-full.input_active
                 span.input__box
                   input(
-                    placeholder="Название группы"
-                    :value="review.author"
-                    @input="$emit('input', $event.target.value)"
+                    placeholder="Ваше имя"
+                    v-model="review.author"
                     ).input__control
             //Одно поле с лэйблом КОНЕЦ
 
@@ -36,16 +35,18 @@
               span.input.input--size-l.editor__input-full.input_active
                 span.input__box
                   input(
-                    placeholder="Название группы"
-                    ).input__control
+                    placeholder="Ваша должность"
+                    v-model="review.title"
+                  ).input__control
             //Одно поле с лэйблом КОНЕЦ
 
             //Одно поле с лэйблом
             .editor__row.editor__row_cell
-              label().label.editor__label-full Описание
+              label.label.editor__label-full Описание
               textarea(
+                placeholder="Текст вашего комментария"
+                v-model="review.text"
                 rows='3'
-
                 ).textarea.editor__textarea-full
             //Одно поле с лэйблом КОНЕЦ
 
@@ -72,18 +73,14 @@
     name: "c-reviewEditor",
     data(){
       return{
-       /* review:{
+        review:{
           author:"",
           title:"",
           text:"",
           photo: ""
-        },*/
-
+        },
         renderedPhotoUrl: ""
       }
-    },
-    props:{
-      review: Object
     },
     methods:{
       appendFileAndRenderPhoto(e){

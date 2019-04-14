@@ -42,8 +42,8 @@
     methods:{
       ...mapActions('review', ['addReview']),
       async addNewReview(review){
-        //console.log(this.review);
-        //await this.addReview(review);
+        await this.addReview(review);
+        review = {};
       },
       test(file){
         console.log(file);
