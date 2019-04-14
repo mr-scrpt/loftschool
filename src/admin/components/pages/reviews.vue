@@ -9,7 +9,7 @@
           v-if="showAddReviews"
           @addReviewClose="showAddReviews = false"
           @sendReview="addNewReview"
-          @file="test"
+          @file="item => review.photo = item"
           )
         //include tile-review_tall
         c-review-all(
@@ -30,19 +30,19 @@
     data(){
       return{
         showAddReviews: false,
-        review:{
+        /*review:{
           photo: "",
-          author: "Я",
-          occ: "Самый Главный",
-          text: "Тело отзыва"
-
-        }
+          author: "",
+          occ: "",
+          text: ""
+        }*/
       }
     },
     methods:{
       ...mapActions('review', ['addReview']),
-      async addNewReview(){
-        await this.addReview(this.review);
+      async addNewReview(review){
+        //console.log(this.review);
+        await this.addReview(review);
       },
       test(file){
         console.log(file);

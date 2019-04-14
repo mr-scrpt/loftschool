@@ -11,7 +11,8 @@
                 type="file"
                 ).page__hidden
               .ava-loader__image-box
-                img(src="../../images/admin/ava__stock.png").ava-loader__img
+                img(src="../../images/admin/ava__stock.png" v-if="!renderedPhotoUrl").ava-loader__img.img
+                img(:src="renderedPhotoUrl" v-else).ava-loader__img.img
               .ava-loader__button
                 button(type="submit").button.button_size_m
                   .button__text Добавить фото
@@ -22,7 +23,11 @@
               label.label.editor__label-full Имя автора
               span.input.input--size-l.editor__input-full.input_active
                 span.input__box
-                  input(placeholder="Название группы" value="Git").input__control
+                  input(
+                    v-model="review.author"
+                    placeholder="Название группы"
+                    value=""
+                    ).input__control
             //Одно поле с лэйблом КОНЕЦ
 
             //Одно поле с лэйблом
@@ -30,13 +35,17 @@
               label.label.editor__label-full Титул Автора
               span.input.input--size-l.editor__input-full.input_active
                 span.input__box
-                  input(placeholder="Название группы" value="Git").input__control
+                  input(
+                    v-model="review.title"
+                    placeholder="Название группы"
+                    value="Git"
+                    ).input__control
             //Одно поле с лэйблом КОНЕЦ
 
             //Одно поле с лэйблом
             .editor__row.editor__row_cell
-              label.label.editor__label-full Описание
-              textarea(rows='3').textarea.editor__textarea-full
+              label().label.editor__label-full Описание
+              textarea(rows='3' v-model="review.text").textarea.editor__textarea-full
             //Одно поле с лэйблом КОНЕЦ
 
             //Одно поле с лэйблом
@@ -48,7 +57,7 @@
                   ).button.button_size_m.editor__cancel
                   .button__text Отмена
                 button(
-                  @click="$emit('sendReview')"
+                  @click="$emit('sendReview', review)"
                   type="submit"
                   ).button.button_rainbow.button_size_xl
                   .button__text СОХРАНИТЬ
@@ -62,15 +71,30 @@
     name: "c-reviewEditor",
     data(){
       return{
-        photo: "",
+        review:{
+          author:"",
+          title:"",
+          text:"",
+          photo: ""
+        },
+
         renderedPhotoUrl: ""
       }
     },
     methods:{
       appendFileAndRenderPhoto(e){
         const file = e.target.files[0];
-        this.photo = file;
-        this.$emit('file', file);
+        this.review.photo = file;
+        //this.$emit('file', file);
+        const reader = new FileReader();
+        try{
+          reader.readAsDataURL(file);
+          reader.onload = ()=>{
+            this.renderedPhotoUrl = reader.result;
+          }
+        }catch(error){
+          alert("Ошибка при загрузке файла")
+        }
       }
     }
 
@@ -219,6 +243,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
   }
 
   .button_rainbow:hover{
@@ -403,7 +428,12 @@
     background-color: #fff;
     display: flex;
     flex-direction: column;
-
+  }
+  .img {
+    font: 0/0 a;
+    border: 0;
+    max-width: 100%;
+    height: auto
   }
 
 </style>
