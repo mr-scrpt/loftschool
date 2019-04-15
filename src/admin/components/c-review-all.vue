@@ -18,7 +18,7 @@
       v-for="review in reviews"
       :key="review.id"
       ).blockquote.tile.content__tile.my-work__tile
-      div().tile__inner.tile__inner_full
+      div(:class="{ tile__shadow: activeReview === review.id }").tile__inner.tile__inner_full
         .tile__main
           cite.cite.tile__author
             img(:src="`https://webdev-api.loftschool.com/${review.photo}`").tile__author-ava
@@ -28,8 +28,9 @@
           .tile__about
             .tile__about-content {{review.text}}
             .tile__about-function
+              //button(@click="activeReview(review)")
               button(
-                @click="$emit('editReviewOpen', review)"
+                @click="editReview(review)"
                 type="button"
                 ).button.button_size_l.tile__edit
                 .button__text Править
@@ -49,7 +50,7 @@
     name: "c-review-all",
     data(){
       return{
-        //editedReview: {}
+        activeReview: ""
       }
     },
     props:{
@@ -68,6 +69,10 @@
         }catch(error){
           alert('Ошибка удаления')
         }
+      },
+      editReview(review){
+        this.$emit('editReviewOpen', review);
+        this.activeReview = review.id;
       }
     },
     async created() {
