@@ -12,6 +12,7 @@
         c-review-edit(
           v-if="Object.keys(editedReview).length !== 0"
           :editedReview="editedReview"
+          @closeEditor="editedReviewClose"
           @file="item => review.photo = item"
         )
         c-review-all(
@@ -47,6 +48,9 @@
       },
       async editedReviewOpen(review){
         this.editedReview = review;
+      },
+      editedReviewClose(){
+        this.editedReview = {};
       }
     }
 

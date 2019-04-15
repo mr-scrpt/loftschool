@@ -13,6 +13,9 @@ export default {
     },
     SET_REVIEWS:(state, reviews)=>{
       state.reviews = reviews;
+    },
+    EDIT_REVIEWS:(state, reviewsEdited)=>{
+      state.reviews =  state.reviews.map(review => review.id === reviewsEdited.id ? reviewsEdited : review)
     }
   },
   getters:{
@@ -52,6 +55,7 @@ export default {
     },
     async editReview({commit}, reviews){
       const response = await this.$axios.post(`/reviews/${reviews.id}`, reviews);
+      commit('EDIT_REVIEWS', reviews);
       return response;
     }
   }
