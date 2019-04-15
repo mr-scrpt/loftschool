@@ -1,6 +1,5 @@
 <template lang="pug">
   .tile.content__tile.editor.my-work__full
-    pre {{review}}
     .tile__inner.tile__inner_simply
       .tile__header Редактирование отзыва
       .tile__body.tile__body_half
@@ -37,7 +36,7 @@
                 span.input__box
                   input(
                     placeholder="Ваша должность"
-                    v-model="editedReview.occ"
+                    v-model="review.occ"
                   ).input__control
             //Одно поле с лэйблом КОНЕЦ
 
@@ -46,7 +45,7 @@
               label.label.editor__label-full Описание
               textarea(
                 placeholder="Текст вашего комментария"
-                v-model="editedReview.text"
+                v-model="review.text"
                 rows='3'
                 ).textarea.editor__textarea-full
             //Одно поле с лэйблом КОНЕЦ

@@ -43,11 +43,13 @@
 
     },
     methods:{
-      async addReviewOpen(){
-
+      addReviewOpen(){
+        this.showAddReviews = true;
+        this.editedReview = {};
       },
       async editedReviewOpen(review){
         this.editedReview = review;
+        this.showAddReviews = false;
       },
       editedReviewClose(){
         this.editedReview = {};
