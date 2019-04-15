@@ -50,8 +50,8 @@ export default {
       commit('REMOVE_REVIEWS', reviewsId);
       return response;
     },
-    async editReview({commit}, reviewsId){
-      const response = await this.$axios.post(`/reviews/${reviewsId}`);
+    async editReview({commit}, reviews){
+      const response = await this.$axios.post(`/reviews/${reviews.id}`, reviews);
       return response;
     }
   }

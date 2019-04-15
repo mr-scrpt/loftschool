@@ -1,5 +1,6 @@
 <template lang="pug">
   .tile.content__tile.editor.my-work__full
+    pre {{review}}
     .tile__inner.tile__inner_simply
       .tile__header Редактирование отзыва
       .tile__body.tile__body_half
@@ -11,8 +12,8 @@
                 type="file"
                 ).page__hidden
               .ava-loader__image-box
-                img(src="../../images/admin/ava__stock.png" v-if="!activeReview.photo").ava-loader__img.img
-                img(:src="`https://webdev-api.loftschool.com/${activeReview.photo}`" v-else).ava-loader__img.img
+                img(src="../../images/admin/ava__stock.png" v-if="!review.photo").ava-loader__img.img
+                img(:src="`https://webdev-api.loftschool.com/${review.photo}`" v-else).ava-loader__img.img
               .ava-loader__button
                 button(type="submit").button.button_size_m
                   .button__text Добавить фото
@@ -25,7 +26,7 @@
                 span.input__box
                   input(
                     placeholder="Ваше имя"
-                    v-model="activeReview.author"
+                    v-model="review.author"
                     ).input__control
             //Одно поле с лэйблом КОНЕЦ
 
@@ -36,7 +37,7 @@
                 span.input__box
                   input(
                     placeholder="Ваша должность"
-                    v-model="activeReview.occ"
+                    v-model="editedReview.occ"
                   ).input__control
             //Одно поле с лэйблом КОНЕЦ
 
@@ -45,7 +46,7 @@
               label.label.editor__label-full Описание
               textarea(
                 placeholder="Текст вашего комментария"
-                v-model="activeReview.text"
+                v-model="editedReview.text"
                 rows='3'
                 ).textarea.editor__textarea-full
             //Одно поле с лэйблом КОНЕЦ
@@ -59,8 +60,8 @@
                   ).button.button_size_m.editor__cancel
                   .button__text Отмена
                 button(
-
-                  type="submit"
+                  @click="sendEditedReview"
+                  type="button"
                   ).button.button_rainbow.button_size_xl
                   .button__text СОХРАНИТЬ
 
@@ -72,25 +73,18 @@
   import { mapActions,  mapGetters, mapState } from "vuex";
   export default {
     name: "c-reviewEditor",
+    props:{
+      editedReview: Object
+    },
     data(){
       return{
-        review:{
-          author:"",
-          title:"",
-          text:"",
-          photo: ""
-        },
         renderedPhotoUrl: ""
       }
     },
-    props:{
-      editReviewId: Number
-
-    },
     computed:{
-      ...mapGetters('reviews', ['getCommentById']),
-      activeReview(){
-        return this.getCommentById(this.editReviewId);
+      //...mapGetters('reviews', ['getCommentById']),
+      review(){
+        return {...this.editedReview};
       }
     },
     methods:{
@@ -109,14 +103,12 @@
           alert("Ошибка при загрузке файла")
         }
       },
-      async editReview(){
-        console.log(this.activeReview);
-        // await this.editReview(this.review);
-        // this.review = {};
+      async sendEditedReview(){
+        this.editReview(this.review);
       }
     },
-    async created() {
-      this.editReview();
+    created() {
+
     }
   }
 </script>

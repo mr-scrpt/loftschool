@@ -10,14 +10,13 @@
           @file="item => review.photo = item"
           )
         c-review-edit(
-          v-if="showEditReviews"
-          @addReviewClose="showEditReviews = false"
+          v-if="Object.keys(editedReview).length !== 0"
+          :editedReview="editedReview"
           @file="item => review.photo = item"
-          :editReviewId="editReviewId"
         )
         c-review-all(
-          @addReviewOpen="showAddReviews = true; showEditReviews = false"
-          @reviewEdited="reviewEdited"
+          @editReviewOpen="editedReviewOpen"
+          @addReviewOpen="addReviewOpen"
         )
 </template>
 
@@ -35,15 +34,19 @@
     data(){
       return{
         showAddReviews: false,
-        showEditReviews: false,
-        editReviewId: ""
+        editedReview: {},
+        //editedReviewShow: false
       }
     },
+    computed:{
+
+    },
     methods:{
-      async reviewEdited(reviewId){
-        this.showAddReviews = false;
-        this.showEditReviews = true;
-        this.editReviewId = reviewId;
+      async addReviewOpen(){
+
+      },
+      async editedReviewOpen(review){
+        this.editedReview = review;
       }
     }
 
