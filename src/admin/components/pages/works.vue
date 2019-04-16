@@ -4,17 +4,18 @@
       header.content__head
         .content__title Блок "Обо мне"
       .content__body.my-work__grid
-        c-works-edit(
-          v-if="false"
-          @addWorksClose="showAddWorks = false"
-          )
-
         c-works-add(
           v-if="showAddWorks"
           @addWorksClose="showAddWorks = false"
-          )
+        )
+        c-works-edit(
+          v-if="Object.keys(editedWork).length !== 0"
+          :editedWork="editedWork"
+          @closeEditor="editedWorkClose"
+        )
         c-works-all(
           @addWorkOpen="addWorkOpen"
+          @editWorkOpen="editedWorkOpen"
         )
 </template>
 <script>
@@ -27,13 +28,22 @@
     data(){
       return{
         showAddWorks:false,
-        editedWorks: {}
+        editedWork: {}
       }
     },
     methods:{
       addWorkOpen(){
         this.showAddWorks = true;
+        this.editedWork = {};
       },
+      editedWorkOpen(work){
+        this.editedWork = work;
+        console.log('2222');
+        this.showAddWorks = false;
+      },
+      editedWorkClose(){
+        this.editedWork = {};
+      }
     }
   }
 </script>

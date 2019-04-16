@@ -1,5 +1,6 @@
 <template lang="pug">
   .tile.content__tile.editor.my-work__full
+    pre {{tags}}
     .tile__inner.tile__inner_simply
       .tile__header Добавление новой работы работы
       .tile__body.tile__body_half
@@ -49,15 +50,9 @@
                   input(placeholder="Jquery, Vue.js, HTML5" value="" v-model="work.techs").input__control
             .editor__tags.tags
               .tags__inner
-                .tags__item
-                  .tags__text Jquery
-                  img(src="../../images/admin/icon__cross.png").tags__icon.icon.icon_cross
-                .tags__item
-                  .tags__text Vue.js
-                  img(src="../../images/admin/icon__cross.png").tags__icon.icon.icon_cross
-                .tags__item
-                  .tags__text HTML5
-                  img(src="../../images/admin/icon__cross.png").tags__icon.icon.icon_cross
+                .tags__item(v-for="tag in tags" v-if="tag")
+                  .tags__text {{tag}}
+
             .editor__function.editor__function_alt
               button(
                 @click="$emit('addWorksClose')"
@@ -85,6 +80,12 @@
           description: ""
         },
         renderedPhotoUrl: ""
+
+      }
+    },
+    computed:{
+      tags(){
+        return this.work.techs.split(',');
       }
     },
     methods:{
@@ -104,6 +105,11 @@
       },
       async addNewWorks(){
         await this.addWork(this.work);
+      },
+      test(tag){
+        console.log(this.tags);
+        this.tags.splice(this.tags.indexOf(tag), 1);
+        console.log(tag);
       }
     }
   }

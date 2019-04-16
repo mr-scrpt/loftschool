@@ -7,7 +7,6 @@
         c-review-add(
           v-if="showAddReviews"
           @addReviewClose="showAddReviews = false"
-          @file="item => review.photo = item"
           )
         c-review-edit(
           v-if="Object.keys(editedReview).length !== 0"
@@ -35,7 +34,6 @@
       return{
         showAddReviews: false,
         editedReview: {},
-        //editedReviewShow: false
       }
     },
     computed:{

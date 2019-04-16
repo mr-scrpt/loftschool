@@ -1,23 +1,29 @@
 <template lang="pug">
   .tile.content__tile.editor.my-work__full
+    pre {{tags}}
     .tile__inner.tile__inner_simply
       .tile__header Редактирование работы
       .tile__body.tile__body_half
         .tile__img-add
           .img-loader
             .img-loader__inner
-              .img-loader__box
+              label(v-if="!work.photo").img-loader__box
+                input(
+                  @change="appendFileAndRenderPhoto"
+                  type="file"
+                ).page__hidden
                 .img-loader__text Перетащити или загрузите для загрузки изображения
                 .img-loader__button
                   button(type="submit").button.button_rainbow.button_size_xl
                     .button__text ЗАГРУЗИТЬ
+              img(:src="`https://webdev-api.loftschool.com/${work.photo}`" v-else).img
         .tile__content-add
           //Одно поле с лэйблом
           .editor__row
             label.label.editor__label-full Название
             span.input.input--size-l.editor__input-full.input_active
               span.input__box
-                input(placeholder="Название группы" value="Git").input__control
+                input(placeholder="Название группы" v-model="work.title").input__control
           //Одно поле с лэйблом КОНЕЦ
 
           //Одно поле с лэйблом
@@ -25,13 +31,13 @@
             label.label.editor__label-full Ссылка
             span.input.input--size-l.editor__input-full.input_active
               span.input__box
-                input(placeholder="Название группы" value="Git").input__control
+                input(placeholder="Название группы" v-model="work.link").input__control
           //Одно поле с лэйблом КОНЕЦ
 
           //Одно поле с лэйблом
           .editor__row
             label.label.editor__label-full Описание
-            textarea(rows='4').textarea.editor__textarea-full
+            textarea(rows='4' v-model="work.description").textarea.editor__textarea-full
           //Одно поле с лэйблом КОНЕЦ
 
           //Одно поле с лэйблом
@@ -39,37 +45,59 @@
             label.label.editor__label-full Добавление тэга
               span.input.input--size-l.editor__input-full.input_active
                 span.input__box
-                  input(placeholder="Название группы" value="Jquery, Vue.js, HTML5").input__control
+                  input(placeholder="Название группы" v-model="work.techs").input__control
             .editor__tags.tags
-              .tags__inner
-                .tags__item
-                  .tags__text Jquery
-                  img(src="../../images/admin/icon__cross.png").tags__icon.icon.icon_cross
-                .tags__item
-                  .tags__text Vue.js
-                  img(src="../../images/admin/icon__cross.png").tags__icon.icon.icon_cross
-                .tags__item
-                  .tags__text HTML5
-                  img(src="../../images/admin/icon__cross.png").tags__icon.icon.icon_cross
+              .tags__inner {{work.techs}}
+                .tags__item(v-for="tag in tags")
+                  .tags__text {{tag}}
             .editor__function.editor__function_alt
               button(
-
                 type="button"
+
                 ).button.button_size_m.editor__cancel
                 .button__text Отмена
-              button(type="submit").button.button_rainbow.button_size_xl
+              button(
+                @click="sendEditedWork"
+                type="submit"
+                ).button.button_rainbow.button_size_xl
                 .button__text СОХРАНИТЬ
 </template>
 
 <script>
+  import { mapActions} from "vuex";
   export default {
-    name: "c-works-add"
+    name: "c-works-add",
+    data(){
+
+    },
+    props:{
+      editedWork: Object
+    },
+    computed:{
+      work(){
+        return {...this.editedWork};
+      },
+      tags(){
+        return this.work.techs.split(',');
+      }
+    },
+    methods:{
+      ...mapActions('works', ['editWork']),
+      sendEditedWork(){
+        this.editWork(this.work);
+      }
+    }
   }
 </script>
 
 <style lang="postcss" scoped>
   @import "../../styles/mixins.pcss";
-
+  .img {
+    font: 0/0 a;
+    border: 0;
+    max-width: 100%;
+    height: auto
+  }
   .input{
     position: relative;
     display: inline-block;

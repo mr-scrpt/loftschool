@@ -9,6 +9,13 @@ export default {
     },
     SET_WORK(state, works){
       state.works = works;
+    },
+    REMOVE_WORK: (state, delWork)=>{
+      //state.reviews.push(reviews);
+      state.works = state.works.filter(work=> work.id !== delWork);
+    },
+    EDIT_WORK:(state, workEdited)=>{
+      state.works = state.works.map(work => work.id === workEdited.id ? workEdited : work)
     }
   },
   actions:{
@@ -37,6 +44,16 @@ export default {
         throw new Error(error.response.data.error || error.response.data.message)
       }
     },
+    async removeWorks({commit}, workId){
+      const response = await this.$axios.delete(`/works/${workId}`);
+      commit('REMOVE_WORK', workId);
+      return response;
+    },
+    async editWork({commit}, work){
+      const response = await this.$axios.post(`/works/${work.id}`, work);
+      commit('EDIT_WORK', work);
+      return response;
+    }
 
 
   }

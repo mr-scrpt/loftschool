@@ -19,7 +19,7 @@
       v-for="work in works"
       :key="work.id"
     ).content__tile.my-work__tile
-      .tile__inner.tile__inner_full
+      div(:class="{ tile__shadow: activeWork === work.id }").tile__inner.tile__inner_full
         .tile__main
           .tile__visual
             img(:src="`https://webdev-api.loftschool.com/${work.photo}`").tile__img.img
@@ -36,10 +36,16 @@
             .tile__about-content {{work.description}}
             .tile__about-link {{work.link}}
             .tile__about-function
-              button(type="button").button.button_size_l.tile__edit
+              button(
+                @click="editWork(work)"
+                type="button"
+                ).button.button_size_l.tile__edit
                 .button__text Править
                 img(src="../../images/admin/icon__pencil.png").button__icon.editor__icon
-              button(type="button").button.button_size_l.tile__remove
+              button(
+                @click="workDelete(work.id)"
+                type="button"
+                ).button.button_size_l.tile__remove
                 .button__text Удалить
                 img(src="../../images/admin/icon__cross.png").button__icon.editor__icon
     // Секция КОНЕЦ ===========================
@@ -49,6 +55,11 @@
   import { mapActions, mapState } from "vuex";
   export default {
     name: "c-works-add",
+    data(){
+      return{
+        activeWork: ""
+      }
+    },
     computed:{
       ...mapState('works',{
         works: state => state.works
@@ -56,6 +67,17 @@
     },
     methods:{
       ...mapActions('works', ['fetchWorks', 'removeWorks']),
+      async workDelete(worksId){
+        try{
+          await this.removeWorks(worksId);
+        }catch(error){
+          alert('Ошибка удаления')
+        }
+      },
+      editWork(work){
+        this.$emit('editWorkOpen', work);
+        this.activeWork = work.id;
+      }
     },
     async created(){
       try {
