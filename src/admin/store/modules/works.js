@@ -5,7 +5,7 @@ export default {
   },
   mutations:{
     ADD_WORK:(state, work)=>{
-      state.work.push(work)
+      state.works.push(work)
     },
     SET_WORK(state, works){
       state.works = works;

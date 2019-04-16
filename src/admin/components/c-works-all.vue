@@ -25,16 +25,13 @@
             img(:src="`https://webdev-api.loftschool.com/${work.photo}`").tile__img.img
             .tags.tile__tags
               .tags__inner
-                .tags__item
-                  .tags__text Jquery
-                .tags__item
-                  .tags__text Vue.js
-                .tags__item
-                  .tags__text HTML5
+                div(v-for="tag in work.techs.split(',')").tags__item
+                  .tags__text {{tag}}
+
           .tile__about
             .tile__about-title {{work.title}}
             .tile__about-content {{work.description}}
-            .tile__about-link {{work.link}}
+            a(:href="work.link").tile__about-link {{work.link}}
             .tile__about-function
               button(
                 @click="editWork(work)"
@@ -361,9 +358,14 @@
     line-height: 30px;
   }
   .tile__about-link{
+    text-decoration: none;
     color: $blue;
     font-weight: $font_semibold;
     padding-bottom: 40px;
+    @include ts(color);
+    &:hover{
+      color: $orange;
+    }
   }
   .tile__about-function{
     margin-top: auto;

@@ -32,11 +32,21 @@ export default {
     async userInfo(state){
       try {
         const response = await this.$axios.get('/user');
-        console.log(response);
         return response
       }catch (error) {
         throw new Error(error.response.data.error || error.response.data.message)
       }
+    },
+    async changeCategoryName(state, category){
+      try{
+        const data = {title: category.category};
+        const response = await this.$axios.post(`/categories/${category.id}`, data);
+
+        return response;
+      }catch(error){
+
+      }
+
 
     }
   }

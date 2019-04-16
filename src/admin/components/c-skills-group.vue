@@ -1,14 +1,35 @@
 <template lang="pug">
   .tile.content__tile.editor
     .tile__inner
-      .tile__header.tile__enter-block
+      div(v-if="editModeGroupName === false").tile__header.tile__enter-block
         span.input.input--size-l.tile__input-box.input_active
           span.input__box
             input(placeholder="Название группы" :value="category.category" disabled).input__control
         .editor__function
           .editor__edit
-            button(type="button").button.button_size_l
+            button(
+              @click="editModeGroupName = true"
+              type="button"
+            ).button.button_size_l
               img(src="../../images/admin/icon__pencil.png").button__icon.editor__icon
+
+      div(v-else).tile__header.tile__enter-block
+        span.input.input--size-l.tile__input-box.input_active
+          span.input__box
+            input(placeholder="Название группы" v-model="category.category").input__control
+        .editor__function
+          .editor__accept
+            button(
+              @click="changeGroupName(category)"
+              type="submit"
+              ).button.button_size_l
+              img(src="../../images/admin/icon__accept.png").button__icon.editor__icon
+          .editor__decline
+            button(
+              @click="editModeGroupName = false"
+              type="button"
+              ).button.button_size_l
+              img(src="../../images/admin/icon__decline.png").button__icon.editor__icon
       .tile__body
         skillItem(
           v-for="skill in skills"
@@ -48,11 +69,13 @@
           title: "",
           percent: "",
           category: this.category.id
-        }
+        },
+        editModeGroupName: false
       }
     },
     methods:{
       ...mapActions('skills', ['addSkill']),
+      ...mapActions('categories', ['changeCategoryName']),
       async addNewSkill(){
         try{
             await this.addSkill(this.skill);
@@ -60,6 +83,11 @@
         }catch(error){
             console.log(error.message);
         }
+      },
+      async changeGroupName(category){
+        //console.log(category.category);
+        this.changeCategoryName(category);
+        this.editModeGroupName = false;
       }
     }
   }

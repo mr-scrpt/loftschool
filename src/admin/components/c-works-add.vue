@@ -1,6 +1,5 @@
 <template lang="pug">
   .tile.content__tile.editor.my-work__full
-    pre {{tags}}
     .tile__inner.tile__inner_simply
       .tile__header Добавление новой работы работы
       .tile__body.tile__body_half
@@ -105,11 +104,6 @@
       },
       async addNewWorks(){
         await this.addWork(this.work);
-      },
-      test(tag){
-        console.log(this.tags);
-        this.tags.splice(this.tags.indexOf(tag), 1);
-        console.log(tag);
       }
     }
   }

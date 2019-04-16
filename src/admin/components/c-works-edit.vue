@@ -1,6 +1,6 @@
 <template lang="pug">
   .tile.content__tile.editor.my-work__full
-    pre {{tags}}
+    pre {{work}}
     .tile__inner.tile__inner_simply
       .tile__header Редактирование работы
       .tile__body.tile__body_half
@@ -47,8 +47,8 @@
                 span.input__box
                   input(placeholder="Название группы" v-model="work.techs").input__control
             .editor__tags.tags
-              .tags__inner {{work.techs}}
-                .tags__item(v-for="tag in tags")
+              .tags__inner
+                .tags__item(v-for="tag in tags" v-if="tag")
                   .tags__text {{tag}}
             .editor__function.editor__function_alt
               button(
@@ -68,15 +68,14 @@
   export default {
     name: "c-works-add",
     data(){
-
+      return{
+        work: {...this.editedWork}
+      }
     },
     props:{
       editedWork: Object
     },
     computed:{
-      work(){
-        return {...this.editedWork};
-      },
       tags(){
         return this.work.techs.split(',');
       }
