@@ -45,7 +45,7 @@ new Vue({
   },
   data(){
     return{
-      skills:{},
+      skills:[],
       categories:{}
     }
   },

@@ -22,7 +22,6 @@
 </template>
 
 <script>
-
   export default {
     components:{
       cReviewAdd: () => import('components/c-review-add.vue'),

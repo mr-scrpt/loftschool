@@ -302,4 +302,33 @@
   width: calc(33% - 30px);
   margin: 0 15px;
 }
+
+
+.tags{
+  &__inner{
+    display: flex;
+    flex-wrap: wrap;
+    @include laptop{
+      justify-content: center;
+    }
+
+  }
+  &__item{
+    @include bgc(#f1f5f9);
+    font-size: 13px;
+    font-weight: $font_semibold;
+    padding: 5px 1px;
+    margin: 0 6px 4px 0;
+    border-radius: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  .tags__text{
+  //@include bgc(green);
+    line-height: 15px;
+    padding: 2px 10px;
+  }
+
+}
 </style>
