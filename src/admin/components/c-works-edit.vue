@@ -52,7 +52,10 @@
                   .tags__text HTML5
                   img(src="../../images/admin/icon__cross.png").tags__icon.icon.icon_cross
             .editor__function.editor__function_alt
-              button(type="button").button.button_size_m.editor__cancel
+              button(
+
+                type="button"
+                ).button.button_size_m.editor__cancel
                 .button__text Отмена
               button(type="submit").button.button_rainbow.button_size_xl
                 .button__text СОХРАНИТЬ

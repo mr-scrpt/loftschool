@@ -4,9 +4,18 @@
       header.content__head
         .content__title Блок "Обо мне"
       .content__body.my-work__grid
-        c-works-edit
-        c-works-item
-        c-works-all
+        c-works-edit(
+          v-if="false"
+          @addWorksClose="showAddWorks = false"
+          )
+
+        c-works-add(
+          v-if="showAddWorks"
+          @addWorksClose="showAddWorks = false"
+          )
+        c-works-all(
+          @addWorkOpen="addWorkOpen"
+        )
 </template>
 <script>
   export default {
@@ -14,6 +23,17 @@
       cWorksEdit: ()=> import('components/c-works-edit.vue'),
       cWorksAdd: ()=> import('components/c-works-add.vue'),
       cWorksAll: ()=> import('components/c-works-all.vue')
+    },
+    data(){
+      return{
+        showAddWorks:false,
+        editedWorks: {}
+      }
+    },
+    methods:{
+      addWorkOpen(){
+        this.showAddWorks = true;
+      },
     }
   }
 </script>

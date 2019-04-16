@@ -1,21 +1,28 @@
 <template lang="pug">
+
   .my-work__rewiev
     // Секция ===========================
     .tile.content__tile.my-work__tile
       .tile__inner.tile__inner_full
         .tile__main.new-work
           .new-work__inner
-            button(type="button").button.new-work__add
+            button(
+              @click="$emit('addWorkOpen', 'true')"
+              type="button"
+              ).button.new-work__add
             .new-work__title Добавить работу
 
     // Секция КОНЕЦ ===========================
 
     // Секция ===========================
-    .tile.content__tile.my-work__tile
-      .tile__inner.tile__inner_full.tile__shadow
+    .tile(
+      v-for="work in works"
+      :key="work.id"
+    ).content__tile.my-work__tile
+      .tile__inner.tile__inner_full
         .tile__main
           .tile__visual
-            img(src="../../images/test/work_1.jpg").tile__img.img
+            img(:src="`https://webdev-api.loftschool.com/${work.photo}`").tile__img.img
             .tags.tile__tags
               .tags__inner
                 .tags__item
@@ -25,108 +32,40 @@
                 .tags__item
                   .tags__text HTML5
           .tile__about
-            .tile__about-title Сайт школы образования
-            .tile__about-content
-              | Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-            .tile__about-link http://loftschool.ru
+            .tile__about-title {{work.title}}
+            .tile__about-content {{work.description}}
+            .tile__about-link {{work.link}}
             .tile__about-function
               button(type="button").button.button_size_l.tile__edit
                 .button__text Править
                 img(src="../../images/admin/icon__pencil.png").button__icon.editor__icon
               button(type="button").button.button_size_l.tile__remove
-                .button__text Удалить
-                img(src="../../images/admin/icon__cross.png").button__icon.editor__icon
-    // Секция КОНЕЦ ===========================
-
-    // Секция ===========================
-    .tile.content__tile.my-work__tile
-      .tile__inner.tile__inner_full
-        .tile__main
-          .tile__visual
-            img(src="../../images/test/work_2.jpg").tile__img.img
-            .tags.tile__tags
-              .tags__inner
-                .tags__item
-                  .tags__text Jquery
-                .tags__item
-                  .tags__text Vue.js
-                .tags__item
-                  .tags__text HTML5
-          .tile__about
-            .tile__about-title Сайт школы образования
-            .tile__about-content
-              | Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-            .tile__about-link http://loftschool.ru
-            .tile__about-function
-              button(type="button").button.button_size_l.tile__edit
-                .button__text Править
-                img(src="../../images/admin/icon__pencil.png").button__icon.editor__icon
-              button(type="button").button.button_size_l.tile__remove
-                .button__text Удалить
-                img(src="../../images/admin/icon__cross.png").button__icon.editor__icon
-    // Секция КОНЕЦ ===========================
-
-    // Секция ===========================
-    .tile.content__tile.my-work__tile
-      .tile__inner.tile__inner_full
-        .tile__main
-          .tile__visual
-            img(src="../../images/test/work_1.jpg").tile__img.img
-            .tags.tile__tags
-              .tags__inner
-                .tags__item
-                  .tags__text Jquery
-                .tags__item
-                  .tags__text Vue.js
-                .tags__item
-                  .tags__text HTML5
-          .tile__about
-            .tile__about-title Сайт школы образования
-            .tile__about-content
-              | Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-            .tile__about-link http://loftschool.ru
-            .tile__about-function
-              button.button.button_size_l.tile__edit
-                .button__text Править
-                img(src="../../images/admin/icon__pencil.png").button__icon.editor__icon
-              button.button.button_size_l.tile__remove
-                .button__text Удалить
-                img(src="../../images/admin/icon__cross.png").button__icon.editor__icon
-    // Секция КОНЕЦ ===========================// Секция КОНЕЦ ===========================
-
-    // Секция ===========================
-    .tile.content__tile.my-work__tile
-      .tile__inner.tile__inner_full
-        .tile__main
-          .tile__visual
-            img(src="../../images/test/work_1.jpg").tile__img.img
-            .tags.tile__tags
-              .tags__inner
-                .tags__item
-                  .tags__text Jquery
-                .tags__item
-                  .tags__text Vue.js
-                .tags__item
-                  .tags__text HTML5
-          .tile__about
-            .tile__about-title Сайт школы образования
-            .tile__about-content
-              | Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-            .tile__about-link http://loftschool.ru
-            .tile__about-function
-              button.button.button_size_l.tile__edit
-                .button__text Править
-                img(src="../../images/admin/icon__pencil.png").button__icon.editor__icon
-              button.button.button_size_l.tile__remove
                 .button__text Удалить
                 img(src="../../images/admin/icon__cross.png").button__icon.editor__icon
     // Секция КОНЕЦ ===========================
 </template>
 
 <script>
+  import { mapActions, mapState } from "vuex";
   export default {
-    name: "c-works-add"
+    name: "c-works-add",
+    computed:{
+      ...mapState('works',{
+        works: state => state.works
+      })
+    },
+    methods:{
+      ...mapActions('works', ['fetchWorks', 'removeWorks']),
+    },
+    async created(){
+      try {
+        await this.fetchWorks();
+      }catch (e) {
+        console.log(e.message);
+      }
+    }
   }
+
 </script>
 
 <style lang="postcss" scoped>
@@ -462,6 +401,34 @@
   }
   .tile__author-title{
     color: rgba($text-color, .7);
+  }
+
+  .tags{
+    &__inner{
+      display: flex;
+      flex-wrap: wrap;
+      @include laptop{
+        justify-content: center;
+      }
+
+    }
+    &__item{
+      @include bgc(#f1f5f9);
+      font-size: 13px;
+      font-weight: $font_semibold;
+      padding: 5px 1px;
+      margin: 0 6px 4px 0;
+      border-radius: 15px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+    .tags__text{
+    //@include bgc(green);
+      line-height: 15px;
+      padding: 2px 10px;
+    }
+
   }
 
   .new-work__inner{
