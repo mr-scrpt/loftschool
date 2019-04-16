@@ -3,6 +3,7 @@ script(type='text/x-template')#slider-container
   .my-works__box
     display-slider(
         :works="works"
+        :ready="ready"
         :currentWork="currentWork"
         :currentIndex="currentIndex"
         @slide="handelSlide"
@@ -19,12 +20,12 @@ script(type='text/x-template')#slider-display
   .my-works__slider.slider
     .slider__inner
       .slider__main-img-box
-        img(:src="currentWork.photo" class="slider__main-img img")
+        img(:src="currentWork.photo" class="slider__main-img img" v-if="ready")
         .slider__media
           thumbs-slider(
             :works="works"
             :currentWork="currentWork"
-            @changeSlide="clickSlide => $emit('changeSlide', clickSlide)"
+            @press="press"
           )
           btns-slider(
             @slide="dir => $emit('slide', dir)"
@@ -40,14 +41,13 @@ script(type='text/x-template')#slider-thumbs
         v-for="work in works"
         :key="work.id"
         :src="work.photo"
+        :ready="ready"
         :class="{slider__minislide_active: currentWork.id == work.id}"
-        @click="$emit('changeSlide', work.id)"
+        @click="$emit('press', work)"
     )
       img.slider__other-img.img(
         :src="work.photo"
       )
-
-
 
 
 //кнопки управления слайдером
@@ -59,14 +59,13 @@ script(type='text/x-template')#slider-btns
 
 //инфо-блок
 script(type='text/x-template')#slider-info
-  .my-works__about
+  div(v-if="ready").my-works__about
     tags(
       :tagsArr="tagsArr"
     )
-
-    .my-works__description
+    .my-works__description 3232
       h3.subtitle {{currentWork.title}}
-      blockquote.blockquote.my-works__text {{currentWork.desc}}
+      blockquote.blockquote.my-works__text {{currentWork.description}}
       a(:href="currentWork.link" target="_blank").my-works__link
         .my-works__icon.icon.icon_chain
         span.my-works__link-text Посмотреть сайт

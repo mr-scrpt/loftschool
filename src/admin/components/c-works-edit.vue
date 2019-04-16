@@ -1,6 +1,5 @@
 <template lang="pug">
   .tile.content__tile.editor.my-work__full
-    pre {{work}}
     .tile__inner.tile__inner_simply
       .tile__header Редактирование работы
       .tile__body.tile__body_half
@@ -53,7 +52,7 @@
             .editor__function.editor__function_alt
               button(
                 type="button"
-
+                @click="$emit('closeEditor')"
                 ).button.button_size_m.editor__cancel
                 .button__text Отмена
               button(

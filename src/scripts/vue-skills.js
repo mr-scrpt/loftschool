@@ -18,7 +18,6 @@ const skill = {
       );
       const percent = (dashArray / 100) * (100 - this.skillPercent);
       circle.style.strokeDashoffset = percent;
-      console.log(dashArray)
     }
   },
   mounted() {
@@ -70,9 +69,7 @@ new Vue({
   async created(){
     const cat = await this.fetchCategories();
     this.categories = cat.data;
-    console.log(this.categories);
     const skills = await this.fetchSkills();
     this.skills = skills.data;
-    console.log(this.skills);
   }
 });

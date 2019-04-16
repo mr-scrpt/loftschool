@@ -54,7 +54,7 @@
             .editor__row.editor__row_cell
               .editor__function.editor__function_alt
                 button(
-                  @click="$emit('closeEditor')"
+                  @click="$emit('closeEditForm')"
                   type="button"
                   ).button.button_size_m.editor__cancel
                   .button__text Отмена
@@ -104,6 +104,7 @@
       },
       async sendEditedReview(){
         this.editReview(this.review);
+        this.$emit('closeEditForm');
       }
     },
     created() {

@@ -6,12 +6,12 @@
       .content__body.my-work__grid
         c-review-add(
           v-if="showAddReviews"
-          @addReviewClose="showAddReviews = false"
+          @closeAddForm="showAddReviews = false"
           )
         c-review-edit(
           v-if="Object.keys(editedReview).length !== 0"
           :editedReview="editedReview"
-          @closeEditor="editedReviewClose"
+          @closeEditForm="editedReviewClose"
           @file="item => review.photo = item"
         )
         c-review-all(
@@ -28,12 +28,14 @@
       cReviewAll: () => import('components/c-review-all.vue')
     },
     props:{
-      file: File
+      file: File,
+
     },
     data(){
       return{
         showAddReviews: false,
         editedReview: {},
+        activeReview: ''
       }
     },
     computed:{

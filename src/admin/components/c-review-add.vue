@@ -54,7 +54,7 @@
             .editor__row.editor__row_cell
               .editor__function.editor__function_alt
                 button(
-                  @click="$emit('addReviewClose')"
+                  @click="$emit('closeAddForm')"
                   type="button"
                   ).button.button_size_m.editor__cancel
                   .button__text Отмена
@@ -101,6 +101,7 @@
       },
       async addNewReview(){
         await this.addReview(this.review);
+        this.$emit('closeAddForm');
         this.review = {};
       }
     }
