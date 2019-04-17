@@ -6,7 +6,7 @@
         .tile__main.new-work
           .new-work__inner
             button(
-              @click="$emit('addReviewOpen', 'true')"
+              @click="$emit('addReviewOpen')"
               type="button"
               ).button.new-work__add
             .new-work__title Добавить отзыв
@@ -18,7 +18,7 @@
       v-for="review in reviews"
       :key="review.id"
       ).blockquote.tile.content__tile.my-work__tile
-      div(:class="{ tile__shadow: activeReview === review.id }").tile__inner.tile__inner_full
+      div(:class="{ tile__shadow: activeReviewId === review.id }").tile__inner.tile__inner_full
         .tile__main
           cite.cite.tile__author
             img(:src="`https://webdev-api.loftschool.com/${review.photo}`").tile__author-ava
@@ -45,7 +45,7 @@
 </template>
 
 <script>
-  import { mapActions, mapState } from "vuex";
+  import { mapActions, mapState,mapGetters } from "vuex";
   export default {
     name: "c-review-all",
     data(){
@@ -56,12 +56,18 @@
     props:{
     },
     computed:{
+      ...mapGetters('reviews', ['getActiveReviewId',]),
+      activeReviewId(){
+        return this.getActiveReviewId;
+      },
       ...mapState('reviews',{
         reviews: state => state.reviews
-      })
+      }),
+
+
     },
     methods:{
-      ...mapActions('reviews', ['fetchReview', 'removeReview']),
+      ...mapActions('reviews', ['fetchReview', 'removeReview', 'activeReviewSet','addingMode']),
       async reviewDelete(reviewId){
         try{
           await this.removeReview(reviewId);
@@ -71,8 +77,8 @@
         }
       },
       editReview(review){
-        this.$emit('editReviewOpen', review);
-        this.activeReview = review.id;
+        this.activeReviewSet(review.id);
+        this.addingMode(false);
       }
     },
     async created() {

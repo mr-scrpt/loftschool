@@ -1,7 +1,9 @@
 export default {
   namespaced: true,
   state:{
-    reviews:[]
+    reviews:[],
+    activeReview: "",
+    addReviewMode: false
   },
   mutations:{
     ADD_REVIEWS: (state, reviews)=>{
@@ -16,11 +18,26 @@ export default {
     },
     EDIT_REVIEWS:(state, reviewsEdited)=>{
       state.reviews =  state.reviews.map(review => review.id === reviewsEdited.id ? reviewsEdited : review)
+    },
+    SET_ACTIVE_REVIEW:(state, reviewId)=>{
+      state.activeReview = reviewId;
+    },
+    DELETE_ACTIVE_REVIEW:(state)=>{
+      state.activeReview = "";
+    },
+    SET_ADDING_MODE:(state, value)=>{
+      state.addReviewMode = value;
     }
   },
   getters:{
-    getCommentById: state => id =>{
-      return state.reviews.find(review => review.id === id);
+    getReviewById: state =>{
+      return state.reviews.find(review => review.id === state.activeReview);
+    },
+    getActiveReviewId: state =>{
+      return state.activeReview;
+    },
+    getAddingMode: state =>{
+      return state.addReviewMode;
     }
   },
   actions:{
@@ -57,6 +74,15 @@ export default {
       const response = await this.$axios.post(`/reviews/${reviews.id}`, reviews);
       commit('EDIT_REVIEWS', reviews);
       return response;
+    },
+    activeReviewSet({commit}, reviewId){
+      commit('SET_ACTIVE_REVIEW', reviewId);
+    },
+    activeReviewDelete({commit}){
+      commit('DELETE_ACTIVE_REVIEW');
+    },
+    addingMode({commit}, value){
+      commit('SET_ADDING_MODE', value);
     }
   }
 }

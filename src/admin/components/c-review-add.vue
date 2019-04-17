@@ -88,7 +88,6 @@
       appendFileAndRenderPhoto(e){
         const file = e.target.files[0];
         this.review.photo = file;
-        //this.$emit('file', file);
         const reader = new FileReader();
         try{
           reader.readAsDataURL(file);
@@ -101,7 +100,7 @@
       },
       async addNewReview(){
         await this.addReview(this.review);
-        this.$emit('closeAddForm');
+        //this.$emit('closeAddForm');
         this.review = {};
       }
     }

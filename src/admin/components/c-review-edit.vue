@@ -1,5 +1,6 @@
 <template lang="pug">
   .tile.content__tile.editor.my-work__full
+    pre {{this.review.photo}}
     .tile__inner.tile__inner_simply
       .tile__header Редактирование отзыва
       .tile__body.tile__body_half
@@ -11,8 +12,9 @@
                 type="file"
                 ).page__hidden
               .ava-loader__image-box
-                img(src="../../images/admin/ava__stock.png" v-if="!review.photo").ava-loader__img.img
-                img(:src="`https://webdev-api.loftschool.com/${review.photo}`" v-else).ava-loader__img.img
+                img(:src="renderedPhotoUrl" v-if="renderedPhotoUrl").ava-loader__img.img
+                img(:src="`https://webdev-api.loftschool.com/${review.photo}`" v-else-if="review.photo").ava-loader__img.img
+                img(src="../../images/admin/ava__stock.png" v-else).ava-loader__img.img
               .ava-loader__button
                 button(type="submit").button.button_size_m
                   .button__text Добавить фото
@@ -54,7 +56,7 @@
             .editor__row.editor__row_cell
               .editor__function.editor__function_alt
                 button(
-                  @click="$emit('closeEditForm')"
+                  @click=""
                   type="button"
                   ).button.button_size_m.editor__cancel
                   .button__text Отмена
@@ -69,7 +71,7 @@
 </template>
 
 <script>
-  import { mapActions} from "vuex";
+  import { mapActions, mapGetters} from "vuex";
   export default {
     name: "c-reviewEditor",
     props:{
@@ -81,31 +83,36 @@
       }
     },
     computed:{
-      //...mapGetters('reviews', ['getCommentById']),
+      ...mapGetters('reviews', ['getReviewById']),
       review(){
-        return {...this.editedReview};
+        return {...this.getReviewById};
       }
     },
     methods:{
-      ...mapActions('reviews', ['editReview']),
+      ...mapActions('reviews', ['editReview', 'activeReviewDelete']),
       appendFileAndRenderPhoto(e){
         const file = e.target.files[0];
         this.review.photo = file;
-        //this.$emit('file', file);
         const reader = new FileReader();
         try{
           reader.readAsDataURL(file);
           reader.onload = ()=>{
             this.renderedPhotoUrl = reader.result;
+            console.log(this.review.photo);
           }
         }catch(error){
           alert("Ошибка при загрузке файла")
         }
       },
       async sendEditedReview(){
-        this.editReview(this.review);
+        await this.editReview(this.review);
         this.$emit('closeEditForm');
+        console.log(this.review.photo);
       }
+     /* closeEditForm(){
+        this.activeReviewDelete();
+      }*/
+
     },
     created() {
 

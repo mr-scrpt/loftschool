@@ -25,11 +25,6 @@ const displaySlider = {
     thumbsSlider
 
   },
-  data(){
-    return{
-
-    }
-  },
   props:{
     works: Array,
     currentWork: Object,
@@ -49,11 +44,6 @@ const displaySlider = {
         throw new Error(error.response.data.error || error.response.data.message)
       }
     }
-  },
-  async created(){
-   /* this.currentWork = this.works[0];
-    console.log(this.works[0]);*/
-
   }
 };
 const tags= {

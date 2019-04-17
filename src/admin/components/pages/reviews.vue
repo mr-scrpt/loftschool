@@ -1,26 +1,19 @@
 <template lang="pug">
   section.content.my-works
+    pre {{addingModeValue}}
     .page__container.content__inner
       header.content__head
         .content__title Блок "Отзывы"
       .content__body.my-work__grid
         c-review-add(
-          v-if="showAddReviews"
-          @closeAddForm="showAddReviews = false"
+          v-if="addingModeValue"
           )
-        c-review-edit(
-          v-if="Object.keys(editedReview).length !== 0"
-          :editedReview="editedReview"
-          @closeEditForm="editedReviewClose"
-          @file="item => review.photo = item"
-        )
-        c-review-all(
-          @editReviewOpen="editedReviewOpen"
-          @addReviewOpen="addReviewOpen"
-        )
+        c-review-edit(v-if="activeReviewId")
+        c-review-all(@addReviewOpen="addReviewOpen")
 </template>
 
 <script>
+  import { mapGetters, mapActions } from "vuex";
   export default {
     components:{
       cReviewAdd: () => import('components/c-review-add.vue'),
@@ -39,19 +32,19 @@
       }
     },
     computed:{
-
+      ...mapGetters('reviews', ['getActiveReviewId', 'getAddingMode']),
+      activeReviewId(){
+        return this.getActiveReviewId;
+      },
+      addingModeValue(){
+        return this.getAddingMode;
+      }
     },
     methods:{
+      ...mapActions('reviews', ['activeReviewDelete','addingMode','activeReviewSet']),
       addReviewOpen(){
-        this.showAddReviews = true;
-        this.editedReview = {};
-      },
-      async editedReviewOpen(review){
-        this.editedReview = review;
-        this.showAddReviews = false;
-      },
-      editedReviewClose(){
-        this.editedReview = {};
+        this.activeReviewDelete();
+        this.addingMode(true);
       }
     }
 

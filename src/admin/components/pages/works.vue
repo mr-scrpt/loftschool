@@ -1,5 +1,6 @@
 <template lang="pug">
   section.content.my-works
+    pre {{activeReviewId}}
     .page__container.content__inner
       header.content__head
         .content__title Блок "Обо мне"
@@ -9,8 +10,7 @@
           @addWorksClose="showAddWorks = false"
         )
         c-works-edit(
-          v-if="Object.keys(editedWork).length !== 0"
-          :editedWork="editedWork"
+          v-if="activeReviewId"
           @closeEditor="editedWorkClose"
         )
         c-works-all(
@@ -19,6 +19,7 @@
         )
 </template>
 <script>
+  import { mapGetters } from "vuex";
   export default {
     components:{
       cWorksEdit: ()=> import('components/c-works-edit.vue'),
@@ -29,6 +30,12 @@
       return{
         showAddWorks:false,
         editedWork: {}
+      }
+    },
+    computed:{
+      ...mapGetters('reviews', ['getActiveReviewId']),
+      activeReviewId(){
+        return this.getActiveReviewId;
       }
     },
     methods:{
