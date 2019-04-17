@@ -54,7 +54,7 @@
             .editor__row.editor__row_cell
               .editor__function.editor__function_alt
                 button(
-                  @click="$emit('closeAddForm')"
+                  @click="closeAddingForm"
                   type="button"
                   ).button.button_size_m.editor__cancel
                   .button__text Отмена
@@ -84,7 +84,7 @@
       }
     },
     methods:{
-      ...mapActions('reviews', ['addReview']),
+      ...mapActions('reviews', ['addReview', 'addingMode']),
       appendFileAndRenderPhoto(e){
         const file = e.target.files[0];
         this.review.photo = file;
@@ -100,9 +100,13 @@
       },
       async addNewReview(){
         await this.addReview(this.review);
-        //this.$emit('closeAddForm');
+        this.closeAddingForm()
         this.review = {};
+      },
+      closeAddingForm(){
+        this.addingMode(false);
       }
+
     }
   }
 </script>

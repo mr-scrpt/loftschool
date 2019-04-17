@@ -56,7 +56,7 @@
             .editor__row.editor__row_cell
               .editor__function.editor__function_alt
                 button(
-                  @click=""
+                  @click="closeEditForm"
                   type="button"
                   ).button.button_size_m.editor__cancel
                   .button__text Отмена
@@ -106,12 +106,13 @@
       },
       async sendEditedReview(){
         await this.editReview(this.review);
-        this.$emit('closeEditForm');
+        this.closeEditForm();
         console.log(this.review.photo);
-      }
-     /* closeEditForm(){
+      },
+      closeEditForm(){
+        console.log('3333333');
         this.activeReviewDelete();
-      }*/
+      }
 
     },
     created() {
