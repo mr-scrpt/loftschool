@@ -104,6 +104,7 @@
       },
       async addNewWorks(){
         await this.addWork(this.work);
+        this.$emit('closeEditor');
       }
     }
   }

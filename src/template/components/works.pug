@@ -8,10 +8,11 @@ script(type='text/x-template')#slider-container
         :currentIndex="currentIndex"
         @slide="handelSlide"
         @changeSlide="changeSlide"
-
       )
     info-slider(
       :currentWork="currentWork"
+      :ready="ready"
+      :works="works"
     )
 
 
@@ -29,7 +30,6 @@ script(type='text/x-template')#slider-display
           )
           btns-slider(
             @slide="dir => $emit('slide', dir)"
-
           )
       .slider__number
         .slider__number-box {{currentIndex + 1}}
@@ -63,7 +63,7 @@ script(type='text/x-template')#slider-info
     tags(
       :tagsArr="tagsArr"
     )
-    .my-works__description 3232
+    .my-works__description
       h3.subtitle {{currentWork.title}}
       blockquote.blockquote.my-works__text {{currentWork.description}}
       a(:href="currentWork.link" target="_blank").my-works__link

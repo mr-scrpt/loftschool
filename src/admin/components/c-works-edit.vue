@@ -83,7 +83,9 @@
       ...mapActions('works', ['editWork']),
       sendEditedWork(){
         this.editWork(this.work);
+        this.$emit('closeEditor')
       }
+
     }
   }
 </script>
