@@ -1,0 +1,41 @@
+.page{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  font: 16px / 1.42 'Open Sans', Arial, sans-serif;
+  min-width: 100%;
+  margin: 0;
+  color: #414c63;
+  background: #fff;
+}
+.page__inner{
+  min-height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 80px 80px 1fr;
+  grid-template-areas:
+          "header"
+          "nav"
+          "content"
+;}
+.page__container{
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  padding-left: 60px;
+  padding-right: 60px;
+
+  /*@include desktop{
+    padding-left: 20px;
+    padding-right: 20px;
+  }*/
+}
+.page__popup{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+}
+.page__hidden{
+  display: none;
+}
+

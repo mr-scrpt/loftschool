@@ -1,0 +1,32 @@
+.img-loader{
+  &__inner{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #dee4ed;
+    border: 1px dashed #a1a1a1;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 50px;
+    @include laptop{
+      padding: 80px 20px;
+    }
+  }
+  &__box{
+    max-width: 250px;
+    @include phones{
+      max-width: 200px;
+    }
+
+  }
+  &__text{
+    width: 100%;
+    text-align: center;
+    color: rgba($text-color, .5);
+    font-size: 18px;
+  }
+  &__button{
+    padding: 20px 0;
+    width: 100%;
+    text-align: center;
+  }
+}

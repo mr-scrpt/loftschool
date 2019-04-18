@@ -1,0 +1,93 @@
+.editor__function{
+  width: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  &_alt{
+    width: 100%;
+    padding: 40px 0;
+    @include phones{
+      justify-content: center;
+    }
+  }
+}
+.editor__icon{
+  width: 14px;
+  height: 12px;
+  padding-left: 20px;
+}
+
+.editor__add-row{
+  width: 90%;
+  display: flex;
+  align-items: center;
+  &_disabled{
+    opacity: .5;
+    pointer-events: none;
+    user-select: none;
+  }
+}
+.editor__add-name{
+  width: calc(100% - 160px);
+
+}
+/*.editor__add-value{*/
+/*width: 80px;*/
+/*}*/
+.editor__add-footer{
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.editor__row{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  &_half {
+    width: calc(50% - 30px);
+  }
+  &_cell{
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+}
+.editor__name{
+  width: calc(100% - 160px);
+
+}
+.editor__value{
+  width: calc(30% - 40px);
+
+}
+.editor__percent{
+  width: calc(80px);
+}
+.editor__label-full{
+  width: 100%;
+  font-weight: $font_semibold;
+  color: rgba($text-color, .5);
+  margin-top: 10px;
+}
+.editor__input-full{
+  width: 100%;
+  padding: 20px 0;
+}
+.editor__textarea-full{
+  width: 100%;
+  border: 1px solid #d9dbe0;
+  resize: none;
+  padding: 10px;
+  font-size: 16px;
+}
+.editor__tags{
+  padding: 10px 0;
+  width: 100%;
+}
+.editor__cancel{
+  margin: 0 30px;
+  @include phones{
+    margin: 0 10px;
+  }
+}
