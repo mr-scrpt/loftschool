@@ -21,7 +21,6 @@
     }
   }
 </script>
-
 <style lang="postcss" scoped>
   .close{
     width: 20px;
