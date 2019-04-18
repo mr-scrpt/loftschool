@@ -1,6 +1,5 @@
 <template lang="pug">
   section.content.my-works
-    pre {{addingModeValue}}
     .page__container.content__inner
       header.content__head
         .content__title Блок "Отзывы"
@@ -13,7 +12,7 @@
 </template>
 
 <script>
-  import { mapGetters, mapActions } from "vuex";
+  import { mapActions, mapState, mapMutations } from "vuex";
   export default {
     components:{
       cReviewAdd: () => import('components/c-review-add.vue'),
@@ -22,7 +21,6 @@
     },
     props:{
       file: File,
-
     },
     data(){
       return{
@@ -32,16 +30,16 @@
       }
     },
     computed:{
-      ...mapGetters('reviews', ['getActiveReviewId', 'getAddingMode']),
-      activeReviewId(){
-        return this.getActiveReviewId;
-      },
-      addingModeValue(){
-        return this.getAddingMode;
-      }
+      ...mapState('reviews', {
+        activeReviewId: state=> state.activeReview,
+        addingModeValue: state=> state.addReviewMode
+      })
     },
     methods:{
-      ...mapActions('reviews', ['activeReviewDelete','addingMode','activeReviewSet']),
+      ...mapMutations('reviews', {
+        addingMode: 'SET_ADDING_MODE',
+        activeReviewDelete: 'DELETE_ACTIVE_REVIEW'
+      }),
       addReviewOpen(){
         this.activeReviewDelete();
         this.addingMode(true);

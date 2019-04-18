@@ -5,19 +5,17 @@
       .tile__body.tile__body_half
         .tile__img-add
           .img-loader
-            .img-loader__inner
-              label(v-if="!renderedPhotoUrl").img-loader__box
+            label(v-if="!renderedPhotoUrl").img-loader__inner
+              .img-loader__box
                 input(
                   @change="appendFileAndRenderPhoto"
                   type="file"
                 ).page__hidden
                 .img-loader__text Перетащити или загрузите для загрузки изображения
                 .img-loader__button
-                  button(
-                    type="submit"
-                    ).button.button_rainbow.button_size_xl
+                  .button.button_rainbow.button_size_xl
                     .button__text ЗАГРУЗИТЬ
-              img(:src="renderedPhotoUrl" v-else).img
+            img(:src="renderedPhotoUrl" v-else).img
         .tile__content-add
           //Одно поле с лэйблом
           .editor__row
@@ -89,6 +87,7 @@
     },
     methods:{
       ...mapActions('works', ['addWork']),
+      ...mapActions('tooltip', ['ticTacTooltip']),
       appendFileAndRenderPhoto(e){
         const file = e.target.files[0];
         this.work.photo = file;
@@ -103,8 +102,20 @@
         }
       },
       async addNewWorks(){
-        await this.addWork(this.work);
-        this.$emit('closeEditor');
+        try{
+          await this.addWork(this.work);
+          this.$emit('closeEditor');
+          this.ticTacTooltip({
+            type: "success",
+            text: "Работа успешно добавлена"
+          })
+        }catch(error){
+          this.ticTacTooltip({
+            type: "error",
+            text: error.message
+          })
+        }
+
       }
     }
   }

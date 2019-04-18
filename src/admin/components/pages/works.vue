@@ -19,7 +19,7 @@
         )
 </template>
 <script>
-  import { mapGetters } from "vuex";
+  import { mapState } from "vuex";
   export default {
     components:{
       cWorksEdit: ()=> import('components/c-works-edit.vue'),
@@ -33,10 +33,11 @@
       }
     },
     computed:{
-      ...mapGetters('reviews', ['getActiveReviewId']),
-      activeReviewId(){
-        return this.getActiveReviewId;
-      }
+      ...mapState('reviews', {
+        activeReviewId: state=> state.activeReview
+      })
+
+
     },
     methods:{
       addWorkOpen(){
@@ -45,7 +46,6 @@
       },
       editedWorkOpen(work){
         this.editedWork = work;
-        console.log('2222');
         this.showAddWorks = false;
       },
       editedWorkClose(){

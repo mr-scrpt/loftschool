@@ -1,6 +1,5 @@
 <template lang="pug">
   .tile.content__tile.editor.my-work__full
-    pre {{this.review.photo}}
     .tile__inner.tile__inner_simply
       .tile__header Редактирование отзыва
       .tile__body.tile__body_half
@@ -16,8 +15,8 @@
                 img(:src="`https://webdev-api.loftschool.com/${review.photo}`" v-else-if="review.photo").ava-loader__img.img
                 img(src="../../images/admin/ava__stock.png" v-else).ava-loader__img.img
               .ava-loader__button
-                button(type="submit").button.button_size_m
-                  .button__text Добавить фото
+                div.button.button_size_m
+                    .button__text Добавить фото
         .tile__review-add
           .tile__review-inner
             //Одно поле с лэйблом
@@ -71,7 +70,7 @@
 </template>
 
 <script>
-  import { mapActions, mapGetters} from "vuex";
+  import { mapActions, mapGetters, mapMutations} from "vuex";
   export default {
     name: "c-reviewEditor",
     props:{
@@ -89,7 +88,10 @@
       }
     },
     methods:{
-      ...mapActions('reviews', ['editReview', 'activeReviewDelete']),
+      ...mapActions('reviews', ['editReview', ]),
+      ...mapMutations('reviews', {
+        activeReviewDelete: 'DELETE_ACTIVE_REVIEW'
+      }),
       appendFileAndRenderPhoto(e){
         const file = e.target.files[0];
         this.review.photo = file;
@@ -110,7 +112,6 @@
         console.log(this.review.photo);
       },
       closeEditForm(){
-        console.log('3333333');
         this.activeReviewDelete();
       }
 

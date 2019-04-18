@@ -5,8 +5,8 @@
       .tile__body.tile__body_half
         .tile__img-add
           .img-loader
-            .img-loader__inner
-              label(v-if="!work.photo").img-loader__box
+            label(v-if="!work.photo").img-loader__inner
+              .img-loader__box
                 input(
                   @change="appendFileAndRenderPhoto"
                   type="file"
@@ -15,7 +15,7 @@
                 .img-loader__button
                   button(type="submit").button.button_rainbow.button_size_xl
                     .button__text ЗАГРУЗИТЬ
-              img(:src="`https://webdev-api.loftschool.com/${work.photo}`" v-else).img
+            img(:src="`https://webdev-api.loftschool.com/${work.photo}`" v-else).img
         .tile__content-add
           //Одно поле с лэйблом
           .editor__row

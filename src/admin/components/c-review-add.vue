@@ -14,7 +14,7 @@
                 img(src="../../images/admin/ava__stock.png" v-if="!renderedPhotoUrl").ava-loader__img.img
                 img(:src="renderedPhotoUrl" v-else).ava-loader__img.img
               .ava-loader__button
-                button(type="submit").button.button_size_m
+                .button.button_size_m
                   .button__text Добавить фото
         .tile__review-add
           .tile__review-inner
@@ -69,7 +69,7 @@
 </template>
 
 <script>
-  import { mapActions } from "vuex";
+  import { mapActions, mapMutations } from "vuex";
   export default {
     name: "c-reviewEditor",
     data(){
@@ -84,7 +84,11 @@
       }
     },
     methods:{
-      ...mapActions('reviews', ['addReview', 'addingMode']),
+      ...mapActions('reviews', ['addReview']),
+      ...mapActions('tooltip', ['ticTacTooltip']),
+      ...mapMutations('reviews', {
+        addingMode: 'SET_ADDING_MODE'
+      }),
       appendFileAndRenderPhoto(e){
         const file = e.target.files[0];
         this.review.photo = file;
@@ -99,9 +103,20 @@
         }
       },
       async addNewReview(){
-        await this.addReview(this.review);
-        this.closeAddingForm()
-        this.review = {};
+        try{
+          await this.addReview(this.review);
+          this.closeAddingForm();
+          this.review = {};
+          this.ticTacTooltip({
+            type: "tooltip_success",
+            text: "Отзыв успешно добавлена"
+          })
+        }catch(error){
+          this.ticTacTooltip({
+            type: "error",
+            text: error.message
+          })
+        }
       },
       closeAddingForm(){
         this.addingMode(false);

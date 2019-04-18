@@ -45,7 +45,7 @@
 </template>
 
 <script>
-  import { mapActions, mapState,mapGetters } from "vuex";
+  import { mapActions, mapState, mapMutations} from "vuex";
   export default {
     name: "c-review-all",
     data(){
@@ -56,24 +56,34 @@
     props:{
     },
     computed:{
-      ...mapGetters('reviews', ['getActiveReviewId',]),
-      activeReviewId(){
-        return this.getActiveReviewId;
-      },
       ...mapState('reviews',{
-        reviews: state => state.reviews
+        reviews: state => state.reviews,
+        activeReviewId: state=> state.activeReview,
       }),
 
 
     },
     methods:{
-      ...mapActions('reviews', ['fetchReview', 'removeReview', 'activeReviewSet','addingMode']),
+      ...mapActions('reviews', ['fetchReview']),
+      ...mapActions('tooltip', ['ticTacTooltip']),
+      ...mapMutations('reviews', {
+        removeReview: 'REMOVE_REVIEWS',
+        addingMode: 'SET_ADDING_MODE',
+        activeReviewSet: 'SET_ACTIVE_REVIEW'
+      }),
+      ...mapActions('tooltip', ['ticTacTooltip']),
       async reviewDelete(reviewId){
         try{
           await this.removeReview(reviewId);
-          //console.log(reviewId);
+          this.ticTacTooltip({
+            type: "success",
+            text: "Работа успешно удалена"
+          })
         }catch(error){
-          alert('Ошибка удаления')
+          this.ticTacTooltip({
+            type: "error",
+            text: error.message
+          })
         }
       },
       editReview(review){

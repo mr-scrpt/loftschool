@@ -10,7 +10,6 @@ export default {
       state.reviews.push(reviews)
     },
     REMOVE_REVIEWS: (state, delreview)=>{
-      //state.reviews.push(reviews);
       state.reviews = state.reviews.filter(review=> review.id !== delreview);
     },
     SET_REVIEWS:(state, reviews)=>{
@@ -32,13 +31,8 @@ export default {
   getters:{
     getReviewById: state =>{
       return state.reviews.find(review => review.id === state.activeReview);
-    },
-    getActiveReviewId: state =>{
-      return state.activeReview;
-    },
-    getAddingMode: state =>{
-      return state.addReviewMode;
     }
+
   },
   actions:{
     async addReview({commit}, review){
@@ -48,13 +42,28 @@ export default {
         formData.append('author', review.author);
         formData.append('occ', review.title);
         formData.append('text', review.text);
-
         const response = await this.$axios.post('/reviews', formData);
         commit('ADD_REVIEWS', response.data);
         return response;
       }catch(error){
         throw new Error(error.response.data.error || error.response.data.message);
       }
+    },
+    async editReview({commit}, review){
+      try{
+        const formData = new FormData;
+        formData.append('photo', review.photo);
+        formData.append('author', review.author);
+        formData.append('occ', review.title);
+        formData.append('text', review.text);
+        const response = await this.$axios.post(`/reviews/${review.id}`, formData);
+
+        commit('EDIT_REVIEWS', response.data.review);
+        return response;
+      }catch(error){
+        throw new Error(error.response.data.error || error.response.data.message);
+      }
+
     },
     async fetchReview({commit}){
       try{
@@ -69,20 +78,6 @@ export default {
       const response = await this.$axios.delete(`/reviews/${reviewsId}`);
       commit('REMOVE_REVIEWS', reviewsId);
       return response;
-    },
-    async editReview({commit}, reviews){
-      const response = await this.$axios.post(`/reviews/${reviews.id}`, reviews);
-      commit('EDIT_REVIEWS', reviews);
-      return response;
-    },
-    activeReviewSet({commit}, reviewId){
-      commit('SET_ACTIVE_REVIEW', reviewId);
-    },
-    activeReviewDelete({commit}){
-      commit('DELETE_ACTIVE_REVIEW');
-    },
-    addingMode({commit}, value){
-      commit('SET_ADDING_MODE', value);
     }
   }
 }

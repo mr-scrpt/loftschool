@@ -3,20 +3,27 @@
       c-header
       c-menu-tab
       router-view
-      //-include section/section_about-me.pug
-      //-include section/section_my-works-editor
-      //-include section/section_reviews-editor.pug
-      //-include section/section_login-popup.pug
+      transition(name="show")
+        .page__tooltip(v-if="showed")
+          c-tooltip
 
 </template>
 
 
 <script>
+  import { mapState, mapActions, mapGetters} from "vuex";
+
   export default {
     name: 'app',
     components:{
+      cTooltip: ()=>import('components/c-tooltip.vue'),
       cMenuTab: ()=>import('components/c-menu-tab.vue'),
       cHeader: ()=>import('components/c-header.vue')
+    },
+    computed: {
+      ...mapState('tooltip', {
+        showed: state => state.showed
+      })
     },
     data(){
       return{}
@@ -25,8 +32,26 @@
 </script>
 
 <style lang="postcss" scoped>
-
   @import "../styles/mixins.pcss";
+
+  .page__tooltip{
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background: red;
+  }
+  .show-enter-active, .show-leave-active{
+    transition: transform 1s;
+  }
+  .show-enter, .show-leave-to{
+    transform: translate(-50%, 110%);
+  }
+
+
+
+
+
   /*@import "./style/blockquote.pcss";
   @import "./style/img.pcss";
   @import "./style/cite.pcss";
