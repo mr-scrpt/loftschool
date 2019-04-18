@@ -11,10 +11,10 @@ script(type='text/x-template')#comments-container
       swiper(:options="swiperOption" ref="mySwiper").comments__inner
         swiper-slide.comments__item.comment(v-for="comment in comments" :key="comment.id")
           blockquote.blockquote.comment__inner
-            p.comment__text {{comment.comment}}
+            p.comment__text {{comment.text}}
             cite.comment__author-row
               .comment__userpic
                 img(:src="comment.photo" class="comment__userpic-img img" :alt="'Аватар пользовтеля: ' + comment.author")
               .comment__author-info
                 .comment__author-name {{comment.author}}
-                .comment__office {{comment.post}}
+                .comment__office {{comment.occ}}

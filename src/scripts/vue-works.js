@@ -128,7 +128,6 @@ new Vue({
         throw new Error(error.response.data.error || error.response.data.message)
       }
     }
-
   }
   ,async created(){
     const work = await this.fetchWorks();

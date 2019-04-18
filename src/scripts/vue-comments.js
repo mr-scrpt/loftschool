@@ -1,5 +1,8 @@
 import Vue from 'vue';
 import { swiper, swiperSlide } from 'vue-awesome-swiper';
+import axios from "axios";
+
+axios.defaults.baseURL = "https://webdev-api.loftschool.com/";
 
 new Vue({
   template: '#comments-container'
@@ -27,19 +30,31 @@ new Vue({
         }
       }
     }
-  }
+  },
 
-  ,methods:{
+  methods:{
     makeArrWithReqImg(data){
       return data.map(item=>{
-          item.photo = require(`../images/content/${item.photo}`);
+          item.photo = `https://webdev-api.loftschool.com/${item.photo}`;
           return item;
-        })
+      })
+    },
+    async fetchComments(){
+      try {
+        const response = await axios.get('/reviews/126');
+        console.log(response.data);
+        return response;
+      }catch (error) {
+        throw new Error(error.response.data.error || error.response.data.message)
       }
-  }
-  ,created(){
-    const data = require('../data/comments');
-    this.comments = this.works = this.makeArrWithReqImg(data);
+    }
+  },
+  async created(){
+    //const data = require('../data/comments');
+    //this.comments = this.works = this.makeArrWithReqImg(data);
+
+    const comments = await this.fetchComments();
+    this.comments = this.makeArrWithReqImg(comments.data);
 
   }
 });
