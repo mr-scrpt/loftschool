@@ -64,10 +64,10 @@
 
     },
     methods:{
-      ...mapActions('reviews', ['fetchReview']),
+      ...mapActions('reviews', ['fetchReview', 'removeReview']),
       ...mapActions('tooltip', ['ticTacTooltip']),
       ...mapMutations('reviews', {
-        removeReview: 'REMOVE_REVIEWS',
+
         addingMode: 'SET_ADDING_MODE',
         activeReviewSet: 'SET_ACTIVE_REVIEW'
       }),
@@ -95,7 +95,10 @@
       try {
         await this.fetchReview();
       }catch (e) {
-        console.log(e.message);
+        this.ticTacTooltip({
+          type: "error",
+          text: error.message
+        })
       }
     }
   }

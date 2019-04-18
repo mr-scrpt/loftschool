@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(:class="`tooltip_${type}`").tooltip
+  div(:class="`tooltip tooltip_${type}`")
     .tooltip__inner
       .tooltip__text {{text}}
       .close(@click="closeTooltip")

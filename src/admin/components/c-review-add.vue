@@ -108,7 +108,7 @@
           this.closeAddingForm();
           this.review = {};
           this.ticTacTooltip({
-            type: "tooltip_success",
+            type: "success",
             text: "Отзыв успешно добавлена"
           })
         }catch(error){

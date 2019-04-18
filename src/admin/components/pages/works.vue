@@ -1,55 +1,35 @@
 <template lang="pug">
   section.content.my-works
-    pre {{activeReviewId}}
     .page__container.content__inner
       header.content__head
         .content__title Блок "Обо мне"
       .content__body.my-work__grid
-        c-works-add(
-          v-if="showAddWorks"
-          @addWorksClose="showAddWorks = false"
-        )
-        c-works-edit(
-          v-if="activeReviewId"
-          @closeEditor="editedWorkClose"
-        )
-        c-works-all(
-          @addWorkOpen="addWorkOpen"
-          @editWorkOpen="editedWorkOpen"
-        )
+        c-works-add(v-if="addingModeValue")
+        c-works-edit(v-if="activeWorkId")
+        c-works-all(@addWorkOpen="addWorkOpen")
 </template>
 <script>
-  import { mapState } from "vuex";
+  import { mapState, mapMutations } from "vuex";
   export default {
     components:{
       cWorksEdit: ()=> import('components/c-works-edit.vue'),
       cWorksAdd: ()=> import('components/c-works-add.vue'),
       cWorksAll: ()=> import('components/c-works-all.vue')
     },
-    data(){
-      return{
-        showAddWorks:false,
-        editedWork: {}
-      }
-    },
     computed:{
-      ...mapState('reviews', {
-        activeReviewId: state=> state.activeReview
+      ...mapState('works', {
+        activeWorkId: state=> state.activeWork,
+        addingModeValue: state=> state.addWorkMode
       })
-
-
     },
     methods:{
+      ...mapMutations('works', {
+        addingMode: 'SET_ADDING_MODE',
+        activeWorkDelete: 'DELETE_ACTIVE_WORK'
+      }),
       addWorkOpen(){
-        this.showAddWorks = true;
-        this.editedWork = {};
-      },
-      editedWorkOpen(work){
-        this.editedWork = work;
-        this.showAddWorks = false;
-      },
-      editedWorkClose(){
-        this.editedWork = {};
+        this.activeWorkDelete();
+        this.addingMode(true);
       }
     }
   }

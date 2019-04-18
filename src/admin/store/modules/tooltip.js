@@ -23,7 +23,7 @@ export default {
       dispatch('showTooltip', payload);
       setTimeout(()=>{
         dispatch('closeTooltip')
-      }, 4000);
+      }, 6000);
     }
   }
 }

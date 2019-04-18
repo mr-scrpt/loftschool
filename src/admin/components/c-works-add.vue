@@ -52,19 +52,19 @@
 
             .editor__function.editor__function_alt
               button(
-                @click="$emit('addWorksClose')"
+                @click="closeAddingForm"
                 type="button"
                 ).button.button_size_m.editor__cancel
                 .button__text Отмена
               button(
-                @click="addNewWorks"
+                @click="addNewWork"
                 type="submit"
                 ).button.button_rainbow.button_size_xl
                 .button__text ДОБАВИТЬ
 </template>
 
 <script>
-  import { mapActions } from "vuex";
+  import { mapActions, mapMutations } from "vuex";
   export default {
     name: "c-works-add",
     data(){
@@ -88,6 +88,9 @@
     methods:{
       ...mapActions('works', ['addWork']),
       ...mapActions('tooltip', ['ticTacTooltip']),
+      ...mapMutations('works', {
+        addingMode: 'SET_ADDING_MODE'
+      }),
       appendFileAndRenderPhoto(e){
         const file = e.target.files[0];
         this.work.photo = file;
@@ -101,13 +104,14 @@
           alert("Ошибка при загрузке файла")
         }
       },
-      async addNewWorks(){
+      async addNewWork(){
         try{
           await this.addWork(this.work);
-          this.$emit('closeEditor');
+          this.closeAddingForm();
+          this.work = {};
           this.ticTacTooltip({
             type: "success",
-            text: "Работа успешно добавлена"
+            text: "Отзыв успешно добавлена"
           })
         }catch(error){
           this.ticTacTooltip({
@@ -115,7 +119,10 @@
             text: error.message
           })
         }
+      },
 
+      closeAddingForm(){
+        this.addingMode(false);
       }
     }
   }

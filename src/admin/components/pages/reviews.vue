@@ -12,23 +12,23 @@
 </template>
 
 <script>
-  import { mapActions, mapState, mapMutations } from "vuex";
+  import { mapState, mapMutations } from "vuex";
   export default {
     components:{
       cReviewAdd: () => import('components/c-review-add.vue'),
       cReviewEdit: () => import('components/c-review-edit.vue'),
       cReviewAll: () => import('components/c-review-all.vue')
     },
-    props:{
+    /*props:{
       file: File,
     },
     data(){
       return{
-        showAddReviews: false,
+       showAddReviews: false,
         editedReview: {},
         activeReview: ''
       }
-    },
+    },*/
     computed:{
       ...mapState('reviews', {
         activeReviewId: state=> state.activeReview,

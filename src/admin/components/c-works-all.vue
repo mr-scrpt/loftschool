@@ -1,5 +1,4 @@
 <template lang="pug">
-
   .my-work__rewiev
     // Секция ===========================
     .tile.content__tile.my-work__tile
@@ -7,7 +6,7 @@
         .tile__main.new-work
           .new-work__inner
             button(
-              @click="$emit('addWorkOpen', 'true')"
+              @click="$emit('addWorkOpen')"
               type="button"
               ).button.new-work__add
             .new-work__title Добавить работу
@@ -19,7 +18,7 @@
       v-for="work in works"
       :key="work.id"
     ).content__tile.my-work__tile
-      div(:class="{ tile__shadow: activeWork === work.id }").tile__inner.tile__inner_full
+      div(:class="{ tile__shadow: activeWorkId === work.id }").tile__inner.tile__inner_full
         .tile__main
           .tile__visual
             img(:src="`https://webdev-api.loftschool.com/${work.photo}`").tile__img.img
@@ -49,7 +48,7 @@
 </template>
 
 <script>
-  import { mapActions, mapState } from "vuex";
+  import { mapActions, mapState, mapMutations } from "vuex";
   export default {
     name: "c-works-add",
     data(){
@@ -59,28 +58,47 @@
     },
     computed:{
       ...mapState('works',{
-        works: state => state.works
+        works: state => state.works,
+        activeWorkId: state=> state.activeWork
       })
+
     },
     methods:{
-      ...mapActions('works', ['fetchWorks', 'removeWorks']),
-      async workDelete(worksId){
+      ...mapActions('works', ['fetchWorks', 'removeWork']),
+      ...mapActions('tooltip', ['ticTacTooltip']),
+      ...mapMutations('works', {
+        addingMode: 'SET_ADDING_MODE',
+        activeWorkSet: 'SET_ACTIVE_WORK'
+      }),
+
+      async workDelete(workId){
         try{
-          await this.removeWorks(worksId);
+          await this.removeWork(workId);
+          this.ticTacTooltip({
+            type: "success",
+            text: "Работа успешно удалена"
+          })
         }catch(error){
-          alert('Ошибка удаления')
+          this.ticTacTooltip({
+            type: "error",
+            text: error.message
+          })
         }
       },
+
       editWork(work){
-        this.$emit('editWorkOpen', work);
-        this.activeWork = work.id;
+        this.activeWorkSet(work.id);
+        this.addingMode(false);
       }
     },
     async created(){
       try {
         await this.fetchWorks();
       }catch (e) {
-        console.log(e.message);
+        this.ticTacTooltip({
+          type: "error",
+          text: error.message
+        })
       }
     }
   }

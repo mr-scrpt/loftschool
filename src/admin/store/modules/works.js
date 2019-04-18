@@ -1,7 +1,9 @@
 export default {
   namespaced: true,
   state:{
-    works:[]
+    works:[],
+    activeWork: "",
+    addWorkMode: false
   },
   mutations:{
     ADD_WORK:(state, work)=>{
@@ -10,13 +12,28 @@ export default {
     SET_WORK(state, works){
       state.works = works;
     },
-    REMOVE_WORK: (state, delWork)=>{
+    /*REMOVE_WORK: (state, delWork)=>{
       //state.reviews.push(reviews);
       state.works = state.works.filter(work=> work.id !== delWork);
-    },
+    },*/
     EDIT_WORK:(state, workEdited)=>{
       state.works = state.works.map(work => work.id === workEdited.id ? workEdited : work)
-    }
+    },
+
+
+    SET_ACTIVE_WORK:(state, workId)=>{
+        state.activeWork = workId;
+    },
+    REMOVE_WORK: (state, delWork)=>{
+      state.works = state.works.filter(work=> work.id !== delWork);
+    },
+    SET_ADDING_MODE:(state, value)=>{
+      state.addWorkMode = value;
+    },
+    DELETE_ACTIVE_WORK:(state)=>{
+      state.activeWork = "";
+    },
+
   },
   actions:{
     async addWork({commit}, work){
@@ -44,16 +61,17 @@ export default {
         throw new Error(error.response.data.error || error.response.data.message)
       }
     },
-    async removeWorks({commit}, workId){
+   async removeWork({commit}, workId){
       const response = await this.$axios.delete(`/works/${workId}`);
       commit('REMOVE_WORK', workId);
       return response;
     },
+    /*
     async editWork({commit}, work){
       const response = await this.$axios.post(`/works/${work.id}`, work);
       commit('EDIT_WORK', work);
       return response;
-    }
+    }*/
 
 
   }
