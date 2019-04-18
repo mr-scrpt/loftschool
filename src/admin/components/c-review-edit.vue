@@ -88,7 +88,8 @@
       }
     },
     methods:{
-      ...mapActions('reviews', ['editReview', ]),
+      ...mapActions('reviews', ['editReview']),
+      ...mapActions('tooltip', ['ticTacTooltip']),
       ...mapMutations('reviews', {
         activeReviewDelete: 'DELETE_ACTIVE_REVIEW'
       }),
@@ -100,16 +101,26 @@
           reader.readAsDataURL(file);
           reader.onload = ()=>{
             this.renderedPhotoUrl = reader.result;
-            console.log(this.review.photo);
+
           }
         }catch(error){
           alert("Ошибка при загрузке файла")
         }
       },
       async sendEditedReview(){
-        await this.editReview(this.review);
-        this.closeEditForm();
-        console.log(this.review.photo);
+        try{
+          await this.editReview(this.review);
+          this.closeEditForm();
+          this.ticTacTooltip({
+            type: "success",
+            text: "Отзыв успешно изменен"
+          })
+        }catch(error){
+          this.ticTacTooltip({
+            type: "error",
+            text: error.message
+          })
+        }
       },
       closeEditForm(){
         this.activeReviewDelete();

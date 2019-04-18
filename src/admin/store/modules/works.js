@@ -19,8 +19,6 @@ export default {
     EDIT_WORK:(state, workEdited)=>{
       state.works = state.works.map(work => work.id === workEdited.id ? workEdited : work)
     },
-
-
     SET_ACTIVE_WORK:(state, workId)=>{
         state.activeWork = workId;
     },
@@ -33,6 +31,12 @@ export default {
     DELETE_ACTIVE_WORK:(state)=>{
       state.activeWork = "";
     },
+
+  },
+  getters:{
+    getWorkById: state =>{
+      return state.works.find(work => work.id === state.activeWork);
+    }
 
   },
   actions:{
@@ -66,12 +70,31 @@ export default {
       commit('REMOVE_WORK', workId);
       return response;
     },
-    /*
     async editWork({commit}, work){
-      const response = await this.$axios.post(`/works/${work.id}`, work);
-      commit('EDIT_WORK', work);
-      return response;
-    }*/
+
+      try{
+        const formData = new FormData;
+        formData.append('title', work.title);
+        formData.append('techs', work.techs);
+        formData.append('photo', work.photo);
+        formData.append('link', work.link);
+        formData.append('description', work.description);
+
+        const response = await this.$axios.post(`/works/${work.id}`, formData);
+
+        commit('EDIT_WORK', response.data.work);
+        return response;
+      }catch(error){
+        throw new Error(error.response.data.error || error.response.data.message);
+      }
+
+
+
+
+
+
+
+    }
 
 
   }

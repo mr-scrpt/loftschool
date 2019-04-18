@@ -5,17 +5,20 @@
       .tile__body.tile__body_half
         .tile__img-add
           .img-loader
-            label(v-if="!work.photo").img-loader__inner
-              .img-loader__box
-                input(
-                  @change="appendFileAndRenderPhoto"
-                  type="file"
-                ).page__hidden
+            label.img-loader__inner
+              input(
+                @change="appendFileAndRenderPhoto"
+                type="file"
+              ).page__hidden
+              .img-loader__box(v-if="!work.photo")
                 .img-loader__text Перетащити или загрузите для загрузки изображения
                 .img-loader__button
                   button(type="submit").button.button_rainbow.button_size_xl
                     .button__text ЗАГРУЗИТЬ
-            img(:src="`https://webdev-api.loftschool.com/${work.photo}`" v-else).img
+              img(:src="renderedPhotoUrl" v-else-if="renderedPhotoUrl").img
+              img(:src="`https://webdev-api.loftschool.com/${work.photo}`" v-else).img
+
+
         .tile__content-add
           //Одно поле с лэйблом
           .editor__row
@@ -63,27 +66,63 @@
 </template>
 
 <script>
-  import { mapActions} from "vuex";
+  import { mapActions, mapGetters, mapMutations} from "vuex";
   export default {
     name: "c-works-add",
     data(){
       return{
-        work: {...this.editedWork}
+        renderedPhotoUrl: ""
       }
     },
     props:{
       editedWork: Object
     },
     computed:{
+      ...mapGetters('works', ['getWorkById']),
+      work(){
+        return {...this.getWorkById};
+      },
       tags(){
         return this.work.techs.split(',');
       }
     },
     methods:{
       ...mapActions('works', ['editWork']),
-      sendEditedWork(){
-        this.editWork(this.work);
-        this.$emit('closeEditor')
+      ...mapActions('tooltip', ['ticTacTooltip']),
+      ...mapMutations('works', {
+        activeWorkDelete: 'DELETE_ACTIVE_WORK'
+      }),
+      appendFileAndRenderPhoto(e){
+        const file = e.target.files[0];
+        this.work.photo = file;
+        const reader = new FileReader();
+        try{
+          reader.readAsDataURL(file);
+          reader.onload = ()=>{
+            this.renderedPhotoUrl = reader.result;
+          }
+        }catch(error){
+          alert("Ошибка при загрузке файла")
+        }
+      },
+      async sendEditedWork(){
+        try{
+          await this.editWork(this.work);
+          this.closeEditForm();
+          this.ticTacTooltip({
+            type: "success",
+            text: "Работа успешно изменена"
+          })
+        }catch(error){
+          this.ticTacTooltip({
+            type: "error",
+            text: error.message
+          })
+        }
+
+      },
+      closeEditForm(){
+        this.activeWorkDelete();
       }
 
     }
