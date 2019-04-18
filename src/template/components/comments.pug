@@ -14,7 +14,7 @@ script(type='text/x-template')#comments-container
             p.comment__text {{comment.text}}
             cite.comment__author-row
               .comment__userpic
-                img(:src="comment.photo" class="comment__userpic-img img" :alt="'Аватар пользовтеля: ' + comment.author")
+                img(:src="comment.photo" class="img comment__userpic-img" :alt="'Аватар пользовтеля: ' + comment.author")
               .comment__author-info
                 .comment__author-name {{comment.author}}
                 .comment__office {{comment.occ}}

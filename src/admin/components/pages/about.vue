@@ -12,10 +12,11 @@
           .button__icon.icon.icon_add-button
           .button__text Добавить группу
       .content__body.about-me__grid
-        skills-add(
-          v-if='showAddingForm'
-          @close="closeGroup"
-          )
+        transition(name="fade")
+          skills-add(
+            v-if='showAddingForm'
+            @close="closeGroup"
+            )
         skills-group(
           v-for="category in categories"
           :key="category.id"
@@ -217,6 +218,12 @@
         }
       }
     }
+  }
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .7s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+    opacity: 0;
   }
 
 </style>

@@ -4,8 +4,11 @@
       header.content__head
         .content__title Блок "Обо мне"
       .content__body.my-work__grid
+      transition(name="fade")
         c-works-add(v-if="addingModeValue")
+      transition(name="fade")
         c-works-edit(v-if="activeWorkId")
+      transition(name="fade")
         c-works-all(@addWorkOpen="addWorkOpen")
 </template>
 <script>
@@ -88,6 +91,11 @@
         grid-template-rows: 1fr;
       }
     }
-
+  }
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .7s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+    opacity: 0;
   }
 </style>

@@ -4,11 +4,14 @@
       header.content__head
         .content__title Блок "Отзывы"
       .content__body.my-work__grid
-        c-review-add(
-          v-if="addingModeValue"
-          )
-        c-review-edit(v-if="activeReviewId")
-        c-review-all(@addReviewOpen="addReviewOpen")
+        transition(name="fade")
+          c-review-add(
+            v-if="addingModeValue"
+            )
+        transition(name="fade")
+          c-review-edit(v-if="activeReviewId")
+        transition(name="fade")
+          c-review-all(@addReviewOpen="addReviewOpen")
 </template>
 
 <script>
@@ -101,5 +104,12 @@
   .content__title{
     font-size: 21px;
     font-weight: $font_bold;
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .7s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+    opacity: 0;
   }
 </style>

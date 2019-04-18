@@ -21,7 +21,8 @@ script(type='text/x-template')#slider-display
   .my-works__slider.slider
     .slider__inner
       .slider__main-img-box
-        img(:src="currentWork.photo" class="slider__main-img img" v-if="ready")
+        transition(name="fade")
+          img(:src="currentWork.photo" class="slider__main-img img" v-if="ready")
         .slider__media
           thumbs-slider(
             :works="works"
@@ -66,7 +67,7 @@ script(type='text/x-template')#slider-info
     .my-works__description
       h3.subtitle {{currentWork.title}}
       blockquote.blockquote.my-works__text {{currentWork.description}}
-      a(:href="currentWork.link" target="_blank").my-works__link
+      a(:href="`//${currentWork.link}`" target="_blank").my-works__link
         .my-works__icon.icon.icon_chain
         span.my-works__link-text Посмотреть сайт
 
