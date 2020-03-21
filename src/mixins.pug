@@ -12,26 +12,26 @@ mixin image(path, className, description, attrRole)
 
 //Миксин для социалок
 mixin social(elem,modify)
-  -let soc = {insta: "instagram.com", vk: "vk.com" ,gh: "github.com"}
+  //-let soc = {insta: "instagram.com", vk: "vk.com" ,gh: "github.com"}
   if(modify === undefined)
     if(elem == "")
       div(class=`soc-block`)
         each val, index in soc
-          a(href=`${val}`, class="soc-block__link", target="_blank")
+          a(href=`${soc[index]}`, class="soc-block__link", target="_blank")
             +icon(`icon__${index}`, `soc-block__icon`)
     else
       div(class=`soc-block ${elem}`)
         each val, index in soc
-          a(href=`${val}`, class="soc-block__link", target="_blank")
+          a(href=`${soc[index]}`, class="soc-block__link", target="_blank")
             +icon(`icon__${index}`, `soc-block__icon`)
   else if(elem == "")
     div(class=`soc-block soc-block_${modify}`)
       each val, index in soc
-        a(href=`${val}`, class="soc-block__link", target="_blank")
+        a(href=`${soc[index]}`, class="soc-block__link", target="_blank")
           +icon(`icon__${index}`, `soc-block__icon`)
   else
     div(class=`soc-block soc-block_${modify} ${elem}`)
       each val, index in soc
-        a(href=`${val}`, class="soc-block__link", target="_blank")
+        a(href=`${soc[index]}`, class="soc-block__link", target="_blank")
           +icon(`icon__${index}`, `soc-block__icon`)
 

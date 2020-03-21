@@ -10,8 +10,8 @@ header.header
             .menu-top__box
               button(type="button", class="button button_close header__menu-close button_close")
               nav.menu-top__list
-                each item in menu
-                  a(href=`#${item}`, class="menu-top__link")=item
+                each item in menu                  
+                  a(href=`#${item.to}`, class="menu-top__link")=item.name
               +social('menu-top__info','menu')
 
       +social('header__soc', 'header')
@@ -25,6 +25,7 @@ header.header
 
 
     .header__arrow.arrow
-      button(type="button", class="button button_size_l button_pseudo button_scroll")
+      //button(type="button", class="button button_size_l button_pseudo button_scroll")
+      a(href="#about-me", class="button button_size_l button_pseudo button_scroll")
         +icon(`icon__arrow-down`, 'icon button__icon arrow__icon')
         span.button__text Скролл
