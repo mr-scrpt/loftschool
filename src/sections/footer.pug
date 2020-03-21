@@ -9,10 +9,11 @@ footer.footer
       .footer__main-block
         nav.footer__menu.menu-footer
           each item in menu
-            a(href=`#${item}`, class="menu-footer__link")=item
+            a(href=`#${item.to}`, class="menu-footer__link")=item.name
+            
         .footer__motivation
           .footer__text
-            | Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
+            | Сделано на совесть - зделано навека!
           +social('footer__social','alt')
               each val, index in soc
                 a(href=`${val}`, class="soc-block__link")

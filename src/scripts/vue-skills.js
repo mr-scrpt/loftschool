@@ -1,22 +1,23 @@
-import Vue from 'vue';
-import axios from 'axios';
-
+import Vue from "vue";
+import axios from "axios";
 
 axios.defaults.baseURL = "https://webdev-api.loftschool.com/";
 
 const skill = {
   template: "#skill",
-  props:{
+  props: {
     skillName: String,
     skillPercent: Number
   },
-  methods:{
-    drawColoredCricle(){
-      const circle = this.$refs['circle-color'];
-      const dashArray =parseInt(
-        getComputedStyle(circle).getPropertyValue('stroke-dasharray')
+  methods: {
+    drawColoredCricle() {
+      const circle = this.$refs["circle-color"];
+      const dashArray = parseInt(
+        getComputedStyle(circle).getPropertyValue("stroke-dasharray")
       );
+
       const percent = (dashArray / 100) * (100 - this.skillPercent);
+
       circle.style.strokeDashoffset = percent;
     }
   },
@@ -26,11 +27,11 @@ const skill = {
 };
 
 const skillsRow = {
-  template: "#skills-row"
-  ,components: {
+  template: "#skills-row",
+  components: {
     skill
-  }
-  ,props:{
+  },
+  props: {
     skills: Array,
     category: Object
   }
@@ -42,31 +43,35 @@ new Vue({
   components: {
     skillsRow
   },
-  data(){
-    return{
-      skills:[],
-      categories:{}
+  data() {
+    return {
+      skills: [],
+      categories: {}
+    };
+  },
+  methods: {
+    async fetchCategories() {
+      try {
+        const response = await axios.get("/categories/126");
+        return response;
+      } catch (error) {
+        throw new Error(
+          error.response.data.error || error.response.data.message
+        );
+      }
+    },
+    async fetchSkills() {
+      try {
+        const response = await axios.get("/skills/126");
+        return response;
+      } catch (error) {
+        throw new Error(
+          error.response.data.error || error.response.data.message
+        );
+      }
     }
   },
-  methods:{
-    async fetchCategories(){
-      try {
-        const response = await axios.get('/categories/126');
-        return response;
-      }catch (error) {
-        throw new Error(error.response.data.error || error.response.data.message)
-      }
-    },
-    async fetchSkills(){
-      try {
-        const response = await axios.get('/skills/126');
-        return response;
-      }catch (error) {
-        throw new Error(error.response.data.error || error.response.data.message)
-      }
-    },
-  },
-  async created(){
+  async created() {
     const cat = await this.fetchCategories();
     this.categories = cat.data;
     const skills = await this.fetchSkills();
