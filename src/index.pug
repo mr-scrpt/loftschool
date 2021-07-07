@@ -1,6 +1,8 @@
 include mixins
--let menu = ['Главная', 'Обо мне','Навыки','Работы','Отзывы','Связаться']
--let soc = {insta: "instagram.com", vk: "vk.com" ,gh: "github.com"}
+//- -let menu = ['Главная', 'Обо мне','Навыки','Работы','Отзывы','Связаться']
+
+-let menu = [{ name: 'Главная', 'to': 'main'},{ name: 'Обо мне', to: 'about-me'},{ name: 'Навыки', to: 'my-skills'},{ name: 'Работы', to: 'my-works'},{ name: 'Отзывы', to: 'my-rewievs'},{ name: 'Связаться', to: 'connect-with-me'},]
+-let soc = {insta: "//www.instagram.com/dolcegabbana2010", vk: "//vk.com/mr.dolce" ,gh: "//github.com/mr-scrpt"}
 <!DOCTYPE html>
 html(lang="ru")
   head

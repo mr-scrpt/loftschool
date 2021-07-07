@@ -1,0 +1,20 @@
+.my-work{
+  &__grid{
+    grid-area: content-body;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr auto;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    @include laptop{
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+    }
+  }
+  &__full{
+    grid-column: 1/4;
+    @include laptop{
+      grid-column: 1/2;
+    }
+  }
+}

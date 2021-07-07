@@ -7,7 +7,7 @@
   user-select: none;
   color: #fff;
   border: 0;
-  outline: 0;
+  //outline: 0;
   background: $orange; // Цвет бордера
   @include ts(background);
   text-align: center;
@@ -100,7 +100,12 @@
   text-overflow: ellipsis;
   vertical-align: top;
 }
+.button_scroll {
+  .button__text{
+    @include ts(color);
+  }
 
+}
 /*Размеры кнопок*/
 /*S - Начало*/
 .button_size_s{
@@ -129,10 +134,13 @@
 /*L - Начало*/
 .button_size_l{
   font-size: 15px;
-  line-height: 32px;
+  line-height: 30px;
 }
 .button_size_l .button__text{
   margin: 0 15px;
+}
+.button_size_l .button__icon{
+  height: 30px;
 }
 /*L - КОНЕЦ*/
 
@@ -209,3 +217,11 @@
   border-color: $orange;
 }
 
+.button.button_scroll:hover{
+  & > .button__icon{
+    fill: $orange;
+  }
+  & > .button__text{
+    color: $orange;
+  }
+}

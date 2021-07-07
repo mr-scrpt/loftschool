@@ -1,0 +1,123 @@
+
+.button_rainbow:hover{
+  & .button__text{
+    color: $orange;
+  }
+}
+
+.button.button_close:hover{
+  &:before{
+    opacity: 0.7;
+    background: url("../images/icons/icon__menu-close.png") no-repeat;
+    background-size: contain;
+  }
+}.button{
+   font: 16px / 1.42 'Open Sans', Arial, sans-serif;
+   touch-action: manipulation;
+   position: relative;
+   display: inline-block;
+   margin: 0;
+   padding: 0;
+   user-select: none;
+   color: #fff;
+   border: 0;
+   outline: 0;
+   background: none; // Цвет бордера
+   text-align: center;
+   white-space: nowrap;
+   &_flex{
+     display: flex;
+     align-items: center;
+   }
+   &_close{
+     background: none;
+     height: 20px;
+     width: 20px;
+   }
+ }
+
+
+
+.button:before{
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  left: 1px;
+  content: '';
+  background: none; //цвет фона
+}
+
+.button_rainbow:before{
+  background: linear-gradient(to top left, $gradient_blue-dark, $gradient_blue-light);
+  border-radius: 24px;
+}
+
+.button_close:before{
+  background: url("../images/icons/icon__menu-close.png") no-repeat;
+  background-size: contain;
+}
+.button_wide{
+  padding-left:40px;
+  padding-right:40px;
+}
+.button{
+  & .button__text{
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: top;
+    color: $blue;
+    @include ts(color);
+  }
+}
+
+.button_rainbow{
+  & .button__text{
+    color: #fff;
+    @include ts(color);
+  }
+}
+
+
+/*M - Начало*/
+.button_size_m{
+  font-size: 15px;
+  line-height: 32px;
+}
+.button_size_m .button__text{
+  margin: 0 15px;
+}
+/*M - КОНЕЦ*/
+
+/*L - Начало*/
+.button_size_l{
+  font-size: 16px;
+  line-height: 32px;
+}
+.button_size_l .button__text{
+  margin: 0 15px;
+}
+/*L - КОНЕЦ*/
+
+/*XL - Начало*/
+.button_size_xl{
+  font-size: 18px;
+  line-height: 38px;
+  font-weight: $font_bold;
+  text-transform: uppercase;
+}
+.button_size_xl .button__text{
+  padding: 5px 20px;
+}
+/*XL - КОНЕЦ*/
+/*Состояния*/
+//Стандартная кнопка
+
+.button:hover{
+  cursor: pointer;
+  & .button__text {
+    color: $orange;
+  }
+}

@@ -1,11 +1,15 @@
 import Vue from 'vue';
+import axios from 'axios';
+
+
+axios.defaults.baseURL = "https://webdev-api.loftschool.com/";
 
 const thumbsSlider = {
-  template: "#slider-thumbs"
-  ,props:{
-    works: Array
-    ,currentWork: Object
-
+  template: "#slider-thumbs",
+  props:{
+    works: Array,
+    currentWork: Object,
+    ready: Boolean
   }
 };
 
@@ -15,20 +19,32 @@ const btnsSlider = {
 };
 
 const displaySlider = {
-  template: "#slider-display"
-  ,components:{
-    btnsSlider
-    ,thumbsSlider
+  template: "#slider-display",
+  components:{
+    btnsSlider,
+    thumbsSlider
 
+  },
+  props:{
+    works: Array,
+    currentWork: Object,
+    currentIndex: Number,
+    ready: Boolean
+
+  },
+  methods: {
+    press(work){
+      this.currentWork = work;
+    },
+    async fetchWorks(){
+      try {
+        const response = await axios.get('/works/126');
+        return response;
+      }catch (error) {
+        throw new Error(error.response.data.error || error.response.data.message)
+      }
+    }
   }
-  ,props:{
-    works: Array
-    ,currentWork: Object
-    ,currentIndex: Number
-    ,clickSlide: Number
-  }
-
-
 };
 const tags= {
   template: "#slider-tags"
@@ -43,27 +59,29 @@ const infoSlider = {
     tags
   }
   ,props:{
-    currentWork: Object
+    currentWork: Object,
+    ready: Boolean
   }
   ,computed: {
     tagsArr(){
-      return this.currentWork.skills.split(',')
+      return this.currentWork.techs.split(',')
     }
   }
 };
 
 
 new Vue({
-  template: '#slider-container'
-  ,el: '#slider-component'
-  ,components: {
-    displaySlider
-    ,infoSlider
-  }
-  ,data(){
+  template: '#slider-container',
+  el: '#slider-component',
+  components: {
+    displaySlider,
+    infoSlider
+  },
+  data(){
     return{
-      works: []
-      ,currentIndex: 0
+      works: [],
+      currentIndex: 0,
+      ready: false
     }
   }
   ,computed:{
@@ -84,24 +102,36 @@ new Vue({
     }
     ,makeArrWithReqImg(data){
       return data.map(item=>{
-        item.photo = require(`../images/slider/${item.photo}`);
+        //item.photo = require(`../images/slider/${item.photo}`);
+        item.photo = `https://webdev-api.loftschool.com/${item.photo}`;
         return item;
       })
     }
     ,handelSlide(dir){
       if(dir === "next"){
         this.currentIndex--;
+        console.log(this.currentIndex);
       } else if (dir === "prev"){
         this.currentIndex++;
+        console.log(this.currentIndex);
       }
     },
-    changeSlide(id){
-      this.currentIndex = id - 1;
+    changeSlide(work){
+      //this.currentWork = work;
+      //console.log(work);
+    },
+    async fetchWorks(){
+      try {
+        const response = await axios.get('/works/126');
+        return response;
+      }catch (error) {
+        throw new Error(error.response.data.error || error.response.data.message)
+      }
     }
-
   }
-  ,created(){
-    const data = require('../data/works');
-    this.works =this.makeArrWithReqImg(data);
+  ,async created(){
+    const work = await this.fetchWorks();
+    this.works = this.makeArrWithReqImg(work.data);
+    this.ready = true;
   }
 });

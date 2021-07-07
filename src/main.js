@@ -10,3 +10,4 @@ import "./scripts/parallax";
 import "./scripts/vue-skills";
 import "./scripts/vue-works";
 import "./scripts/vue-comments";
+import "./scripts/vue-form-comments";
